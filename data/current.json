@@ -1,1 +1,118 @@
-
+{
+  "year": 2026,
+  "as_of_week": 10,
+  "status": "provisional",
+  "source": "ESPN screenshot, commissioner-confirmed",
+  "playoff_spots": 6,
+  "regular_season_weeks": 14,
+  "standings": [
+    {
+      "gm_id": 11,
+      "team": "Westside Wolves",
+      "wins": 7,
+      "losses": 3,
+      "ties": 0,
+      "pf": 1203.66,
+      "pa": 1050.06
+    },
+    {
+      "gm_id": 8,
+      "team": "Low Country Cougars",
+      "wins": 7,
+      "losses": 3,
+      "ties": 0,
+      "pf": 1166.14,
+      "pa": 1058.8
+    },
+    {
+      "gm_id": 9,
+      "team": "Damn S3xy gOATs",
+      "wins": 7,
+      "losses": 3,
+      "ties": 0,
+      "pf": 1117.92,
+      "pa": 1027.46
+    },
+    {
+      "gm_id": 13,
+      "team": "Bedford Bulls",
+      "wins": 6,
+      "losses": 4,
+      "ties": 0,
+      "pf": 1108.54,
+      "pa": 962.94
+    },
+    {
+      "gm_id": 3,
+      "team": "The Sloths",
+      "wins": 6,
+      "losses": 4,
+      "ties": 0,
+      "pf": 1028.18,
+      "pa": 978.32
+    },
+    {
+      "gm_id": 18,
+      "team": "Williamsburg Squirrels",
+      "wins": 5,
+      "losses": 5,
+      "ties": 0,
+      "pf": 1109.82,
+      "pa": 1083.08
+    },
+    {
+      "gm_id": 19,
+      "team": "Fort Greene Foxes",
+      "wins": 5,
+      "losses": 5,
+      "ties": 0,
+      "pf": 1037.96,
+      "pa": 1064.24
+    },
+    {
+      "gm_id": 12,
+      "team": "💩 Bees",
+      "wins": 4,
+      "losses": 6,
+      "ties": 0,
+      "pf": 1015.48,
+      "pa": 1118.88
+    },
+    {
+      "gm_id": 1,
+      "team": "Screaming Alpacas",
+      "wins": 4,
+      "losses": 6,
+      "ties": 0,
+      "pf": 985.02,
+      "pa": 1162.56
+    },
+    {
+      "gm_id": 5,
+      "team": "Lord Commander Krumbs XVIII",
+      "wins": 4,
+      "losses": 6,
+      "ties": 0,
+      "pf": 945.52,
+      "pa": 1074.36
+    },
+    {
+      "gm_id": 2,
+      "team": "Duck's Ducks",
+      "wins": 3,
+      "losses": 7,
+      "ties": 0,
+      "pf": 1036.4,
+      "pa": 1022.86
+    },
+    {
+      "gm_id": 17,
+      "team": "Brunswick Torenados",
+      "wins": 2,
+      "losses": 8,
+      "ties": 0,
+      "pf": 977.4,
+      "pa": 1128.48
+    }
+  ]
+}
