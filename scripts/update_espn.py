@@ -25,7 +25,13 @@ ENDPOINTS = (
 
 
 def clean(text):
-    text = unicodedata.normalize('NFKC', html.unescape(str(text or '')))
+    text = unicodedata.normalize(
+        'NFKC', html.unescape(str(text or ''))
+    )
+    text = ''.join(
+        ch if ch.isalnum() or ch.isspace() else ' '
+        for ch in text
+    )
     return ' '.join(text.casefold().split())
 
 
