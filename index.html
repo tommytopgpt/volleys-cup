@@ -1,0 +1,6141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#202124">
+<meta name="description" content="The Volleys Cup fantasy football league, 2015 to today. Trophy room, GM rankings, seasons and playoff race.">
+<title>Volleys Cup — Fantasy League HQ</title>
+<style>
+:root{--bg:#09101d;--card:#111d2e;--card2:#152339;--line:#27364d;--txt:#eff5fc;--mut:#9dabc0;--gold:#f3cb71;--green:#68ddb0;--red:#ff8d8d;--blue:#86b9ff}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:radial-gradient(circle at 90% -10%,#233653 0,transparent 35%),var(--bg);color:var(--txt);font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;margin:0;font-size:14px}
+button,select,input,textarea{font:inherit}
+button{cursor:pointer}
+a{color:inherit}
+.shell{max-width:1220px;margin:0 auto;padding:0 26px}
+.top{position:sticky;top:0;z-index:20;background:rgba(9,16,29,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.header{display:flex;align-items:center;justify-content:space-between;min-height:74px;gap:20px}
+.brand{display:flex;align-items:center;gap:13px;font-size:17px;font-weight:800;letter-spacing:.02em}
+.logo{background:linear-gradient(125deg,#f4d288,#ad7a31);color:#172134;border-radius:12px;width:42px;height:42px;display:grid;place-items:center;font-size:24px;box-shadow:0 8px 30px #f0c36c22}
+.brand small{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.20em;color:var(--mut);font-weight:700;margin-top:3px}
+.nav{display:flex;gap:4px;flex-wrap:wrap}
+.nav button{background:transparent;border:0;border-radius:9px;padding:11px 13px;color:var(--mut);font-weight:650}
+.nav button.active{color:var(--gold);background:#293345}
+.nav button:hover{color:#fff;background:#233047}
+.hero{padding:48px 0 31px;display:grid;grid-template-columns:1.5fr .8fr;gap:25px;align-items:center}
+.eyebrow{text-transform:uppercase;color:var(--gold);font-size:11px;letter-spacing:.22em;font-weight:800}
+h1{font-size:clamp(36px,5vw,66px);letter-spacing:-.055em;line-height:1.02;margin:13px 0 17px}
+h2{font-size:26px;letter-spacing:-.03em;margin:0 0 7px}
+h3{margin:0 0 9px;font-size:17px}
+p{line-height:1.65;color:var(--mut)}
+.hero p{font-size:16px;max-width:660px;margin:0}
+.heroart{min-height:196px;border:1px solid #685639;border-radius:18px;background:radial-gradient(ellipse at 50% 100%,#e9c57620,transparent 60%),linear-gradient(140deg,#1d293d,#0c1523);display:flex;align-items:center;justify-content:center;flex-direction:column;overflow:hidden;position:relative}
+.heroart .cup{font-size:85px;filter:drop-shadow(0 18px 20px #0007)}
+.heroart .arttext{letter-spacing:.34em;color:var(--gold);font-size:10px;font-weight:850}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin:0 0 34px}
+.stat{background:var(--card);border:1px solid var(--line);padding:20px;border-radius:14px}
+.stat b{display:block;font-size:29px;letter-spacing:-.035em;color:#fff}
+.stat span{font-size:11px;text-transform:uppercase;letter-spacing:.11em;color:var(--mut)}
+.main{padding-bottom:90px}
+.page{display:none}
+.page.active{display:block;animation:rise .2s ease}
+@keyframes rise{from{opacity:.5;transform:translateY(5px)}
+to{opacity:1;transform:translateY(0)}
+}
+.section{margin:0 0 22px}
+.sub{color:var(--mut);margin:2px 0 19px}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.panel{border:1px solid var(--line);background:var(--card);border-radius:16px;padding:21px;min-width:0}
+.panel.soft{background:linear-gradient(155deg,#1b2a40,#101a2a)}
+.panel .label{font-size:11px;color:var(--mut);letter-spacing:.09em;text-transform:uppercase;font-weight:750}
+.panel .big{font-size:27px;font-weight:850;letter-spacing:-.04em;margin:9px 0}
+.panel .desc{color:var(--mut);line-height:1.5;font-size:13px}
+.controls{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:20px 0}
+.controlgroup{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+select,input[type=number],input[type=text],textarea{background:#101c2d;border:1px solid #364761;color:var(--txt);padding:10px 13px;border-radius:9px;min-width:115px}
+label{font-size:12px;color:var(--mut)}
+.btn{padding:10px 15px;border-radius:10px;background:#233b5a;border:1px solid #406083;color:white;font-weight:700}
+.btn:hover{background:#305076}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:#152235}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--mut)}
+.btn.sm{font-size:12px;padding:7px 10px}
+.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:15px;background:var(--card)}
+table{border-collapse:collapse;width:100%;white-space:nowrap}
+th,td{text-align:left;padding:12px 15px;border-bottom:1px solid #26344a}
+th{font-size:10px;text-transform:uppercase;color:var(--mut);letter-spacing:.08em;background:#19263b;position:sticky;top:0}
+tr:last-child td{border-bottom:none}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+tbody tr:hover{background:#213047}
+tbody tr{cursor:pointer}
+.muted{color:var(--mut)}
+.tag{display:inline-flex;align-items:center;padding:5px 9px;border-radius:30px;background:#2b374a;color:#ccdaed;font-size:10px;font-weight:750;letter-spacing:.05em}
+.tag.gold{color:var(--gold);background:#4b402e}
+.tag.green{color:var(--green);background:#1b413e}
+.tag.red{color:var(--red);background:#4b2936}
+.podium{display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:13px;align-items:end;margin:15px 0 26px}
+.pedestal{text-align:center;border-radius:13px 13px 7px 7px;padding:24px 10px;min-width:0;box-shadow:inset 0 1px 0 #ffffff17}
+.pedestal.first{min-height:220px;background:linear-gradient(170deg,#69562e,#2f2a25);border:1px solid #9c7841}
+.pedestal.second{min-height:175px;background:linear-gradient(170deg,#4c6174,#243346);border:1px solid #70899f}
+.pedestal.third{min-height:150px;background:linear-gradient(170deg,#654b3d,#312a2b);border:1px solid #8c6550}
+.pedestal .medal{font-size:38px}
+.pedestal strong{display:block;font-size:17px;margin:7px 0;overflow-wrap:anywhere}
+.pedestal small{display:block;color:#c6ced8}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.gmgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.gmcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;cursor:pointer}
+.gmcard:hover{border-color:#547699}
+.gmcard strong{font-size:15px}
+.gmcard .row{display:flex;justify-content:space-between;margin-top:13px;color:var(--mut);font-size:12px}
+.gmcard b{color:#eaf3ff;font-size:17px}
+.pill{border:1px solid #384862;border-radius:12px;padding:15px;margin:12px 0;background:#152238}
+.alert{padding:14px 16px;border-radius:12px;border:1px solid #655334;color:#f2d693;background:#3d332521;font-size:12px;line-height:1.55}
+.profile{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.profile .hero-profile{grid-column:1/-1}
+.facts{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.fact{padding:8px 10px;background:#233249;border-radius:8px;color:#d4e2f3;font-size:12px}
+.barrow{display:grid;grid-template-columns:150px 1fr 60px;gap:10px;align-items:center;margin:13px 0}
+.track{background:#2c3b51;border-radius:50px;height:11px;overflow:hidden}
+.fill{height:100%;background:linear-gradient(90deg,#608ad3,#8cd4d1);border-radius:50px}
+.rowline{display:flex;justify-content:space-between;gap:15px;margin:10px 0}
+.rowline span{color:var(--mut)}
+.simrows{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.simstat{text-align:center;background:#16263b;padding:15px 8px;border-radius:11px}
+.simstat b{display:block;font-size:24px;color:var(--gold)}
+.scenario{display:flex;gap:12px;align-items:end;flex-wrap:wrap}
+.scenario>div{display:flex;flex-direction:column;gap:7px}
+textarea{min-height:170px;width:100%;line-height:1.5;resize:vertical;font-family:ui-monospace,monospace;font-size:12px}
+details{border:1px solid var(--line);border-radius:13px;margin:12px 0;background:#121f31}
+summary{cursor:pointer;padding:17px;font-weight:750}
+details .detail{padding:0 18px 19px;color:var(--mut);line-height:1.6}
+.footer{border-top:1px solid var(--line);padding:25px 0 40px;color:var(--mut);font-size:12px}
+.footer .shell{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.hide{display:none!important}
+.note{color:var(--mut);font-size:12px;line-height:1.6}
+.good{color:var(--green)}
+.bad{color:var(--red)}
+.strike{color:var(--gold)}
+.btnrow{display:flex;gap:9px;flex-wrap:wrap}
+.span2{grid-column:span 2}
+button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+@media(max-width:920px){.cards,.gmgrid{grid-template-columns:repeat(2,1fr)}
+.hero{grid-template-columns:1fr}
+.heroart{display:none}
+.stats{grid-template-columns:repeat(2,1fr)}
+.nav{gap:0}
+.nav button{padding:10px 8px;font-size:12px}
+}
+@media(max-width:630px){.shell{padding:0 15px}
+.header{display:block;padding:12px 0}
+.nav{overflow-x:auto;flex-wrap:nowrap;padding-top:10px}
+.nav button{white-space:nowrap}
+.hero{padding-top:29px}
+.cards,.gmgrid,.grid2,.profile,.simrows{grid-template-columns:1fr}
+.profile .hero-profile{grid-column:auto}
+.pedestal{padding:15px 4px}
+.pedestal strong{font-size:12px}
+.pedestal .medal{font-size:29px}
+.pedestal.first{min-height:180px}
+.pedestal.second{min-height:150px}
+.pedestal.third{min-height:130px}
+.barrow{grid-template-columns:115px 1fr 40px;font-size:11px}
+.stat{padding:14px}
+.stat b{font-size:22px}
+}
+
+
+/* ESPN Fantasy-inspired visual language: original Volleys Cup branding, no ESPN marks. */
+:root{--bg:#f1f2f4;--card:#ffffff;--card2:#f6f7f9;--line:#dfe2e6;--txt:#191b20;--mut:#636b75;--gold:#c71727;--green:#117d51;--red:#be202e;--blue:#176ec0}
+
+html{scroll-behavior:smooth}
+body{background:#f1f2f4;color:var(--txt);font-family:Arial,Helvetica,system-ui,sans-serif;font-size:14px}
+
+.top{background:#202124;border-bottom:4px solid #c71727;backdrop-filter:none;box-shadow:0 3px 12px #0002}
+.header{min-height:68px}
+.brand{color:#fff;font-size:20px;letter-spacing:-.04em}
+.brand small{color:#b1b5bd;font-size:9px;letter-spacing:.13em}
+.logo{background:#c71727;color:#fff;box-shadow:none;border-radius:4px;width:43px;height:43px}
+.nav button{border-radius:0;color:#d4d6dc;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.02em;padding:14px 10px}
+.nav button.active{color:#fff;background:#34363a;box-shadow:inset 0 -3px #ed3542}
+.nav button:hover{background:#34363a;color:#fff}
+
+.hero{padding:35px 0 24px;grid-template-columns:1.4fr .7fr}
+.eyebrow{color:#bf1927;letter-spacing:.13em;font-size:10px;font-weight:900}
+.hero h1{font-family:Arial Black,Arial,sans-serif;font-weight:900;font-size:clamp(36px,5.2vw,66px);line-height:1.02;letter-spacing:-.055em;color:#191b20}
+.hero p{color:#545d67;font-size:15px}
+.heroart{background:linear-gradient(145deg,#27292c,#111214);border-radius:5px;border:0}
+.heroart .arttext{color:#fff}
+.heroart:after{content:"THE MISTRESS\'S DOMAIN";position:absolute;left:0;right:0;bottom:0;background:#c71727;padding:9px;font-weight:800;font-size:10px;letter-spacing:.17em;text-align:center;color:#fff}
+
+.stat,.panel,.gmcard,.tablewrap,.pill,details{background:#fff;border:1px solid #dfe2e6;border-radius:5px;box-shadow:0 1px 2px #00000008}
+.stat{padding:16px 18px;border-top:3px solid #c71727}
+.stat b{color:#1e2125;font-size:28px}
+.stat span,.panel .label{color:#666f7b;font-weight:800}
+.panel.soft{background:#fff}
+.panel .big{color:#c71727}
+.panel .desc{color:#626b75}
+.section h2,h2{font-size:25px;letter-spacing:-.025em;color:#1e2125}
+.section h2:after{content:'';display:block;margin-top:9px;width:42px;height:3px;background:#c71727}
+.section .sub,p,.note{color:#68717c}
+.panel h3,.gmcard strong{color:#1b1f24}
+
+select,input[type=number],input[type=text],textarea{background:#fff;border:1px solid #cbd0d6;color:#21242a;border-radius:4px}
+label{color:#626b75;font-weight:800}
+.btn{border-radius:4px;background:#25272b;border:1px solid #25272b;color:#fff}
+.btn:hover{background:#44464c}
+.btn.gold{background:#c71727;border-color:#c71727;color:#fff}
+.btn.ghost{background:#fff;border:1px solid #cfd3da;color:#25272b}
+.btn.ghost:hover{background:#f4f4f4}
+.tablewrap{overflow:auto}
+th{background:#292b2e;color:#fff;letter-spacing:.06em;padding:12px 13px}
+td{border-bottom:1px solid #e9ebee;color:#30343a;padding:12px 13px}
+tbody tr:hover{background:#fff1f2}
+.muted,.rowline span{color:#6b747f}
+.tag{background:#e7e9ec;color:#3c434e;border-radius:4px}
+.tag.gold{background:#fce6e8;color:#b20e1a}
+.tag.green{background:#e5f4ed;color:#17754b}
+.tag.red{background:#ffe7e9;color:#c71727}
+.gmcard:hover{border-color:#c71727;box-shadow:0 2px 9px #b7122220}
+.gmcard b{color:#15181d}
+.fact{background:#f0f1f3;color:#40474e}
+.track{background:#e4e7eb}
+.fill{background:linear-gradient(90deg,#951220,#db2636)}
+.simstat{background:#f2f3f5;border:1px solid #e2e4e7}
+.simstat b{color:#c71727}
+.alert{border:1px solid #e1b9bd;background:#fff5f5;color:#89333a;border-left:4px solid #cb1f2f;border-radius:4px}
+.pedestal{border-radius:5px}
+.pedestal.first{background:linear-gradient(170deg,#f8e6b0,#e4bb58);border-color:#ba922e}
+.pedestal.second{background:linear-gradient(170deg,#e3e8ee,#b9c2cd);border-color:#9aabbc}
+.pedestal.third{background:linear-gradient(170deg,#efc6a8,#cd8f68);border-color:#b2774e}
+.pedestal strong,.pedestal small{color:#25272b}
+.footer{background:#202124;border-top:4px solid #c71727;color:#d6d9de}
+.good{color:#117d51}
+.bad{color:#c71727}
+.strike{color:#c71727}
+.panel .rowline b{color:#25272b}
+.panel .barrow{color:#25272b}
+
+.mistress-intro{display:grid;grid-template-columns:70px 1fr;gap:18px;align-items:center;background:#232428;border-left:5px solid #c71727;border-radius:5px;padding:24px;color:#fff;margin:22px 0}
+.mistress-intro .eyebrow{color:#ff7b88}
+.mistress-intro h3{font-size:20px;margin:5px 0;color:#fff}
+.mistress-intro p{color:#c7cbd1;margin:0}
+.mistress-symbol{font-family:Georgia,serif;font-size:60px;color:#e84455;text-align:center}
+.moment-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
+.moment-card{background:#fff;border:1px solid #dfe2e6;border-top:4px solid #c71727;border-radius:5px;padding:22px;min-width:0}
+.moment-card .year{font-size:11px;color:#ad1523;letter-spacing:.12em;font-weight:900}
+.moment-card h3{font-size:18px;line-height:1.2;margin:10px 0;color:#1f2226}
+.moment-card p{margin:0 0 13px;font-size:13px}
+.moment-card .evidence{font-size:11px;color:#747d87;border-top:1px solid #e8e9ed;padding-top:12px}
+.moment-card .moment-score{display:inline-block;background:#f5eef0;color:#ab1522;padding:8px 10px;font-weight:900;margin:0 0 12px;border-radius:3px}
+.moment-icon{font-size:22px;float:right}
+.mistress-home-link{margin-top:20px;border-left:4px solid #c71727;background:#fff;padding:17px 20px;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.mistress-home-link strong{font-size:16px}
+.mistress-home-link p{margin:5px 0 0}
+.mistress-home-link button{white-space:nowrap}
+
+@media(max-width:920px){.nav button{padding:12px 8px;font-size:11px}
+}
+@media(max-width:630px){.header{padding:11px 0}
+.nav{margin-top:8px}
+.nav button{padding:11px 9px}
+.hero{padding:26px 0 20px}
+.moment-grid{grid-template-columns:1fr}
+.mistress-intro{grid-template-columns:1fr}
+.mistress-symbol{text-align:left;font-size:40px}
+.mistress-home-link{display:block}
+.mistress-home-link button{margin-top:12px}
+.stat b{font-size:23px}
+}
+
+
+
+/* Volleys Cup shoe identity: linked product photograph, not an ESPN/Volley trademark logo. */
+.logo.shoe-mark{width:47px;height:47px;flex:0 0 47px;background:#fff;border:1px solid #d7d9dc;border-radius:7px;box-shadow:none;overflow:hidden;display:flex;align-items:center;justify-content:center;text-decoration:none}
+
+.logo.shoe-mark img{display:block;width:100%;height:100%;object-fit:contain}
+
+.heroart{min-height:220px;position:relative;background:linear-gradient(130deg,#f6f8fc,#e8f0fa);border:1px solid #dde2ea;overflow:hidden}
+
+.hero-shoe{width:210px;height:210px;object-fit:contain;mix-blend-mode:multiply;filter:drop-shadow(0 12px 18px #1a25342a);margin-bottom:4px}
+
+.heroart .arttext{position:absolute;z-index:1;top:13px;left:0;right:0;color:#19508a;letter-spacing:.17em;font-size:10px}
+
+.heroart:after{content:"THE MISTRESS'S DOMAIN"}
+
+@media(max-width:920px){.heroart{display:flex;min-height:160px}
+.hero-shoe{height:140px;width:160px}
+}
+
+</style>
+</head>
+<body>
+<header class="top">
+<div class="shell header">
+<div class="brand">
+<a class="logo shoe-mark" href="https://volley.com.au/products/international-low-whiteblue-136798" target="_blank" rel="noopener" aria-label="Volley International Low White/Blue — source product">
+<img src="shoe.webp" alt="White and blue Volley International Low sneaker" loading="eager">
+</a>
+<div>VOLLEYS CUP<small>Fantasy League HQ · Est. 2015</small>
+</div>
+</div>
+<nav class="nav" aria-label="Main navigation">
+<button class="active" data-page="home">Overview</button>
+<button data-page="trophies">Trophy Room</button>
+<button data-page="gms">GMs & Records</button>
+<button data-page="seasons">Seasons</button>
+<button data-page="race">Playoff Race</button>
+<button data-page="moments">Mistress Musings</button>
+<button data-page="admin">Commissioner</button>
+</nav>
+</div>
+</header>
+<div class="shell">
+<section class="hero">
+<div>
+<div class="eyebrow">The iconic Aussie shoe. The league. The Mistress.</div>
+<h1>The Mistress<br>
+<span style="color:var(--gold)">has spoken.</span>
+</h1>
+<p>Every matchup has a winner. Every season has a champion. But only the Mistress controls our fantasy football fates. Named for the iconic Australian Volley International shoe. Explore eleven seasons of glory, chaos and receipts.</p>
+</div>
+<div class="heroart">
+<img class="hero-shoe" src="shoe.webp" alt="Iconic Australian white and blue Volley International Low sneaker">
+<div class="arttext">THE SHOE BEHIND THE CUP</div>
+</div>
+</section>
+<div class="stats" id="heroStats">
+</div>
+</div>
+<main class="shell main">
+<section class="page active" id="page-home">
+<div class="section">
+<div class="eyebrow">League pulse</div>
+<h2>The Hall of Fame & Shame</h2>
+<p class="sub">The numbers behind eleven seasons of terrible excuses.</p>
+</div>
+<div class="cards" id="homeCards">
+</div>
+<div class="mistress-home-link">
+<div>
+<strong>✦ Mistress Musings</strong>
+<p>Wild stories, historical numbers and the occasional reminder that nobody controls their fate.</p>
+</div>
+<button id="openMoments" class="btn gold">Read the musings →</button>
+</div>
+<div class="section" style="margin-top:30px">
+<h2>Championship legacy</h2>
+<p class="sub">Who has actually gotten it done?</p>
+</div>
+<div class="grid2">
+<div class="panel" id="homeChamps">
+</div>
+<div class="panel" id="homeRecent">
+</div>
+</div>
+</section>
+<section class="page" id="page-trophies">
+<div class="section">
+<div class="eyebrow">The silverware</div>
+<h2>Trophy Room</h2>
+<p class="sub">Gold, silver and bronze across the Volleys Cup years.</p>
+</div>
+<div class="controls">
+<div class="controlgroup">
+<label for="trophyYear">Season</label>
+<select id="trophyYear">
+</select>
+</div>
+<div class="controlgroup">
+<button id="previousTrophy" class="btn ghost sm">← Previous</button>
+<button id="nextTrophy" class="btn ghost sm">Next →</button>
+</div>
+</div>
+<div class="panel" id="trophyDetail">
+</div>
+<div class="section" style="margin-top:27px">
+<h2>Championship table</h2>
+</div>
+<div class="tablewrap" id="champsTable">
+</div>
+</section>
+<section class="page" id="page-gms">
+<div class="section">
+<div class="eyebrow">Where reputations are made</div>
+<h2>GM Rankings & Profiles</h2>
+<p class="sub">All-time regular-season statistics ranked by half-PPR-equivalent PF/G (+9.34 per standard-scoring game), including the latest published season by default. Raw PF/G is shown alongside.</p>
+</div>
+<div id="rankingCoverage" class="alert" style="margin:12px 0 16px" aria-live="polite"></div>
+<div class="controls">
+<div class="controlgroup">
+<label for="rankScope">Ranking coverage</label>
+<select id="rankScope">
+<option value="latest" selected>Latest available scores (includes 2026)</option>
+<option value="completed">Completed seasons only (through 2025)</option>
+</select>
+</div>
+<div class="controlgroup">
+<label for="gmMetric">Sort by</label>
+<select id="gmMetric">
+<option value="normalized_ppg" selected>Normalized PF / game (+9.34 half-PPR)</option>
+<option value="winpct">Win percentage</option>
+<option value="wins">Career wins</option>
+<option value="titles">Championships</option>
+<option value="playoffs">Playoff rate</option>
+<option value="raw_ppg">Raw PF / game</option>
+
+<option value="pa">Raw PA / game</option>
+</select>
+</div>
+<div class="controlgroup">
+<label for="gmFilter">GM</label>
+<select id="gmFilter">
+<option value="all">All GMs</option>
+</select>
+</div>
+</div>
+<div id="gmsContent">
+</div>
+</section>
+<section class="page" id="page-seasons">
+<div class="section">
+<div class="eyebrow">The archives</div>
+<h2>Season Explorer</h2>
+<p class="sub">Final regular-season standings, team identities and playoff results, year by year.</p>
+</div>
+<div class="controls">
+<div class="controlgroup">
+<label for="seasonYear">Season</label>
+<select id="seasonYear">
+</select>
+</div>
+<div id="seasonTags">
+</div>
+</div>
+<div class="panel" id="seasonSummary">
+</div>
+<h3 style="margin-top:26px">Regular-season standings</h3>
+<div class="tablewrap" id="seasonTable">
+</div>
+<h3 style="margin-top:26px">Postseason & notable results</h3>
+<div class="panel" id="seasonPlayoffs">
+</div>
+</section>
+<section class="page" id="page-race">
+<div class="section">
+<div class="eyebrow">The chase is on</div>
+<h2>2026 Playoff Race</h2>
+<p class="sub" id="raceSub">
+</p>
+</div>
+<div class="alert">⚠️ <b>Schedule-aware estimates, not official ESPN odds.</b> All Week 11–14 opponents are taken from the commissioner’s ESPN schedule screenshot. Records and PF are from the last completed Week 10 standings. Week 11 displayed scores are <b>in progress</b> and are not assumed final or included as full-game forecasts. The model uses season scoring averages, simulated game variance, and projected PF as an assumed first tiebreak; injuries, lineup news, and ESPN-specific tiebreaks are not modeled.</div>
+<div class="controls">
+<div class="controlgroup">
+<label for="playoffSlots">Playoff spots</label>
+<select id="playoffSlots">
+<option value="6">6 teams</option>
+<option value="4">4 teams</option>
+<option value="8">8 teams</option>
+</select>
+</div>
+<button class="btn" id="runSim">↻ Run simulations</button>
+</div>
+<div class="cards" id="raceCards">
+</div>
+<h3 id="raceOddsHeading" style="margin:28px 0 12px">Projected qualification chances</h3>
+<div class="tablewrap" id="raceTable">
+</div>
+<div class="section" style="margin-top:24px"><div class="controls"><h3 id="raceScheduleHeading">Remaining matchups & playoff implications</h3><label for="scheduleWeek">Week <select id="scheduleWeek"></select></label></div><p class="note" id="scheduleContext">Remaining matchups from the ESPN league schedule.</p><div id="scheduleRows" class="cards"></div></div>
+<div class="grid2" style="margin-top:17px">
+<div class="panel">
+<h3>Path to the playoffs</h3>
+<p class="note" id="scenarioIntro">Choose a GM to model wins across their remaining matchups.</p>
+<div class="scenario">
+<div>
+<label for="scenarioGM">GM</label>
+<select id="scenarioGM">
+</select>
+</div>
+<div>
+<label for="scenarioWins">Wins in remaining games</label>
+<select id="scenarioWins">
+<option value="any">No constraint</option>
+</select>
+</div>
+<button id="scenarioButton" class="btn gold">Calculate path</button>
+</div>
+<div class="pill" id="scenarioResult">Pick a GM and a scenario.</div>
+</div>
+<div class="panel">
+<h3>How this works</h3>
+<p class="note" id="raceMethod">Simulations use the remaining head-to-head schedule and latest completed standings.</p><p class="note" id="raceMeaning">The model estimates playoff qualification chances; it is not an ESPN forecast.</p>
+</div>
+</div>
+</section>
+<section class="page" id="page-moments">
+<div class="section">
+<div class="eyebrow">The Mistress has a sense of humor</div>
+<h2>Mistress Musings</h2>
+<p class="sub">An archive of eyebrow-raising facts, near misses, improbable escapes and strange decisions by the being that controls Volleys Cup destiny.</p>
+</div>
+<div class="mistress-intro">
+<div class="mistress-symbol">✦</div>
+<div>
+<div class="eyebrow">The Volleys Cup mythology</div>
+<h3>No one defeats the Mistress. Some are merely spared.</h3>
+<p>These stories and statistical musings are grounded in the league's historical record. Where the details are incomplete, we say so. Nothing here changes the official standings or the trophy room.</p>
+</div>
+</div>
+<div class="controls">
+<div class="controlgroup">
+<label for="momentFilter">Season</label>
+<select id="momentFilter">
+<option value="all">All musings</option>
+<option value="2025">2025</option>
+<option value="2024">2024</option>
+<option value="2022">2022</option>
+<option value="2021">2021</option>
+<option value="2018">2018</option>
+</select>
+</div>
+</div>
+<div class="moment-grid" id="momentGrid">
+</div>
+<div class="panel" style="margin-top:22px">
+<h3>Suggest a musing</h3>
+<p class="note">The commissioner can add new stories and statistical insights after checking the relevant screenshot, bracket or original scoring table. The Mistress may be capricious; the historical record should not be.</p>
+</div>
+</section>
+<section class="page" id="page-admin">
+<div class="section">
+<div class="eyebrow">Commissioner only · local editing</div>
+<h2>Commissioner Desk</h2>
+<p class="sub">Make Tuesday updates and publish a new season snapshot.</p>
+</div>
+<div class="alert">
+<b>How publishing works:</b> Changes made on this page stay in <b>this browser</b> until the updated JSON is uploaded to the deployed website. They do not automatically change what other GMs see. Weekly updates can be published by replacing data/current.json on your hosting service. Automatic ESPN syncing would require a separate secure, tested integration. Never put ESPN login cookies in this public page.</div>
+<div class="grid2" style="margin-top:19px">
+<div class="panel">
+<h3>Update current standings</h3>
+<p class="note">Edit values below or paste JSON into the import box. Standings are historical snapshots, not week-by-week matchups.</p>
+<div class="controlgroup" style="margin-bottom:12px">
+<label for="adminWeek">Through week</label>
+<input type="number" id="adminWeek" min="1" max="18" style="width:88px">
+<button class="btn" id="saveLocal">Save in this browser</button>
+</div>
+<div id="adminRows" class="tablewrap">
+</div>
+<div class="btnrow" style="margin-top:12px">
+<button id="downloadSnapshot" class="btn gold">Download current.json</button>
+<button id="resetSnapshot" class="btn ghost">Reset to archived snapshot</button>
+</div>
+<p id="adminMessage" class="note" aria-live="polite">
+</p>
+</div>
+<div class="panel">
+<h3>Import a Tuesday update</h3>
+<p class="note">Import a previously exported <code>current.json</code>, or paste JSON in the supported schema. Screenshots must be transcribed or processed before import; this browser-only site cannot reliably extract them.</p>
+<input type="file" id="jsonUpload" accept=".json,application/json">
+<textarea id="jsonEditor" placeholder='{"year":2026,"as_of_week":11,"standings":[...]}
+...' style="margin:12px 0">
+</textarea>
+<div class="btnrow">
+<button id="importJSON" class="btn">Import JSON</button>
+<button id="fillJSON" class="btn ghost">Show current JSON</button>
+</div>
+<p id="importMessage" class="note" aria-live="polite">
+</p>
+<details>
+<summary>Weekly publishing checklist</summary>
+<div class="detail">1. Record ESPN's newest standings after Monday Night Football.<br>2. Confirm all GMs, records, PF and PA.<br>3. Export <code>current.json</code>.<br>4. Replace <code>data/current.json</code> in the hosted repository and commit.<br>5. GitHub Pages or Netlify redeploys automatically.<br>6. Verify the site shows the new week and odds.<br>7. Preserve that snapshot in the historical archive.</div>
+</details>
+</div>
+</div>
+<div class="panel" style="margin-top:17px">
+<h3>Future automation options</h3>
+<p class="note">
+<b>Recommended:</b> GitHub Pages with GitHub Actions, running Tuesday mornings. For a private ESPN league, an unofficial data endpoint can require ESPN authentication and may change; the included fetch script is optional, requires secure repository secrets, and won't run until team IDs have been mapped. <b>Fallback:</b> supply a Tuesday screenshot, use ChatGPT to transcribe it, and commit the updated JSON. The website itself can remain publicly viewable without exposing ESPN credentials.</p>
+</div>
+</section>
+</main>
+<footer class="footer">
+<div class="shell">
+<span>VOLLEYS CUP · Historical data 2015–2025 · 2026 provisional</span>
+<span>Built for the league. The Mistress is watching.</span>
+</div>
+</footer>
+<script id="historyData" type="application/json">{
+ "gms": [
+  {
+   "gm_id": 1,
+   "name": "Aaron White"
+  }
+,
+  {
+   "gm_id": 2,
+   "name": "Alan Wilson"
+  }
+,
+  {
+   "gm_id": 3,
+   "name": "Benjamin Hall"
+  }
+,
+  {
+   "gm_id": 4,
+   "name": "Cory McCollum"
+  }
+,
+  {
+   "gm_id": 5,
+   "name": "Dominic Benson"
+  }
+,
+  {
+   "gm_id": 6,
+   "name": "Jack Beech"
+  }
+,
+  {
+   "gm_id": 7,
+   "name": "Jack Watty"
+  }
+,
+  {
+   "gm_id": 8,
+   "name": "James Shin"
+  }
+,
+  {
+   "gm_id": 9,
+   "name": "Lachlan White"
+  }
+,
+  {
+   "gm_id": 10,
+   "name": "Luke DeCourcey"
+  }
+,
+  {
+   "gm_id": 11,
+   "name": "Luke Woodard"
+  }
+,
+  {
+   "gm_id": 12,
+   "name": "Matthew Blainey"
+  }
+,
+  {
+   "gm_id": 13,
+   "name": "Matthew Schultz"
+  }
+,
+  {
+   "gm_id": 14,
+   "name": "Nathaniel Quick"
+  }
+,
+  {
+   "gm_id": 15,
+   "name": "Nicholas Ward"
+  }
+,
+  {
+   "gm_id": 16,
+   "name": "Nicolas Mouchel"
+  }
+,
+  {
+   "gm_id": 17,
+   "name": "Salvatore Valvo"
+  }
+,
+  {
+   "gm_id": 18,
+   "name": "Stephen Doyle"
+  }
+,
+  {
+   "gm_id": 19,
+   "name": "Tommy Top"
+  }
+
+ ],
+ "seasons": [
+  {
+   "year": 2015,
+   "platform": "NFL.com",
+   "scoring_format": "standard",
+   "league_size": 8,
+   "regular_season_games": 14,
+   "status": "final",
+   "standings_source": "Screenshot 2026-11-21 at 7.21.49 AM.png",
+   "postseason_source": "Screenshot 2026-11-21 at 9.13.55 AM.png",
+   "league_avg_ppg": 97.17142857142858,
+   "league_ppg_sd": 4.0883730110584375
+  }
+,
+  {
+   "year": 2016,
+   "platform": "NFL.com",
+   "scoring_format": "standard",
+   "league_size": 10,
+   "regular_season_games": 14,
+   "status": "final",
+   "standings_source": "Screenshot 2026-11-21 at 7.51.08 AM.png",
+   "postseason_source": "Screenshot 2026-11-21 at 9.14.07 AM.png",
+   "league_avg_ppg": 93.64028571428571,
+   "league_ppg_sd": 7.703453023793676
+  }
+,
+  {
+   "year": 2017,
+   "platform": "NFL.com",
+   "scoring_format": "standard",
+   "league_size": 10,
+   "regular_season_games": 14,
+   "status": "final",
+   "standings_source": "Screenshot 2026-11-21 at 7.54.17 AM.png",
+   "postseason_source": "Screenshot 2026-11-21 at 9.14.16 AM.png",
+   "league_avg_ppg": 90.21471428571428,
+   "league_ppg_sd": 6.5723504027346635
+  }
+,
+  {
+   "year": 2018,
+   "platform": "NFL.com",
+   "scoring_format": "standard",
+   "league_size": 10,
+   "regular_season_games": 14,
+   "status": "final",
+   "standings_source": "Screenshot 2026-11-21 at 8.03.45 AM.png",
+   "postseason_source": "Screenshot 2026-11-21 at 9.14.24 AM.png",
+   "league_avg_ppg": 100.59985714285715,
+   "league_ppg_sd": 8.35049006138599
+  }
+,
+  {
+   "year": 2019,
+   "platform": "NFL.com",
+   "scoring_format": "standard",
+   "league_size": 12,
+   "regular_season_games": 13,
+   "status": "final",
+   "standings_source": "Screenshot 2026-11-21 at 8.11.55 AM.png",
+   "postseason_source": "Screenshot 2026-11-21 at 9.14.31 AM.png",
+   "league_avg_ppg": 94.56564102564103,
+   "league_ppg_sd": 8.45569579945917
+  }
+,
+  {
+   "year": 2020,
+   "platform": "NFL.com",
+   "scoring_format": "standard",
+   "league_size": 12,
+   "regular_season_games": 13,
+   "status": "final",
+   "standings_source": "Screenshot 2026-11-21 at 8.18.18 AM.png",
+   "postseason_source": "Screenshot 2026-11-21 at 9.14.39 AM.png",
+   "league_avg_ppg": 95.19089743589744,
+   "league_ppg_sd": 7.56342847387489
+  }
+,
+  {
+   "year": 2021,
+   "platform": "Sleeper",
+   "scoring_format": "standard",
+   "league_size": 12,
+   "regular_season_games": 14,
+   "status": "final",
+   "standings_source": "Screenshot 2026-11-21 at 8.23.23 AM.png",
+   "postseason_source": "67851.png",
+   "league_avg_ppg": 95.97559523809524,
+   "league_ppg_sd": 6.2141901595919276
+  }
+,
+  {
+   "year": 2022,
+   "platform": "ESPN",
+   "scoring_format": "half_PPR",
+   "league_size": 12,
+   "regular_season_games": 14,
+   "status": "final",
+   "standings_source": "Screenshot 2026-11-21 at 8.26.45 AM.png",
+   "postseason_source": "Screenshot 2026-11-21 at 9.10.06 AM.png",
+   "league_avg_ppg": 103.85702380952381,
+   "league_ppg_sd": 6.8078428276084235
+  }
+,
+  {
+   "year": 2023,
+   "platform": "ESPN",
+   "scoring_format": "half_PPR",
+   "league_size": 12,
+   "regular_season_games": 14,
+   "status": "final",
+   "standings_source": "Screenshot 2026-11-21 at 8.29.07 AM.png",
+   "postseason_source": "Screenshot 2026-11-21 at 9.09.16 AM.png",
+   "league_avg_ppg": 104.61571428571428,
+   "league_ppg_sd": 7.195392965778366
+  }
+,
+  {
+   "year": 2024,
+   "platform": "ESPN",
+   "scoring_format": "half_PPR",
+   "league_size": 12,
+   "regular_season_games": 14,
+   "status": "final",
+   "standings_source": "Screenshot 2026-11-21 at 8.33.51 AM.png",
+   "postseason_source": "Screenshot 2026-11-21 at 9.08.20 AM.png",
+   "league_avg_ppg": 105.34392857142856,
+   "league_ppg_sd": 8.791461285765616
+  }
+,
+  {
+   "year": 2025,
+   "platform": "ESPN",
+   "scoring_format": "half_PPR",
+   "league_size": 12,
+   "regular_season_games": 14,
+   "status": "final",
+   "standings_source": "Screenshot 2026-11-21 at 8.37.00 AM.png",
+   "postseason_source": "Screenshot 2026-11-21 at 9.07.12 AM.png",
+   "league_avg_ppg": 104.6020238095238,
+   "league_ppg_sd": 6.84439878394873
+  }
+,
+  {
+   "year": 2026,
+   "platform": "ESPN",
+   "scoring_format": "half_PPR",
+   "league_size": 12,
+   "regular_season_games": 10,
+   "status": "provisional Week 10",
+   "standings_source": "67845.png",
+   "postseason_source": null,
+   "league_avg_ppg": 106.10033333333334,
+   "league_ppg_sd": 7.6197331901378895
+  }
+
+ ],
+ "season_entries": [
+  {
+   "year": 2024,
+   "gm_id": 4,
+   "franchise_key": "Lamprey",
+   "historical_team_name": "The Lamprey",
+   "wins": 9,
+   "losses": 5,
+   "ties": 0,
+   "points_for": 1555.98,
+   "points_against": 1469.92,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2015,
+   "gm_id": 11,
+   "franchise_key": "Wolves",
+   "historical_team_name": "JJ WHAT",
+   "wins": 7,
+   "losses": 7,
+   "ties": 0,
+   "points_for": 1320.34,
+   "points_against": 1400.32,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2016,
+   "gm_id": 11,
+   "franchise_key": "Wolves",
+   "historical_team_name": "Bend it like Odell Beckham",
+   "wins": 6,
+   "losses": 8,
+   "ties": 0,
+   "points_for": 1338.16,
+   "points_against": 1255.54,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2017,
+   "gm_id": 11,
+   "franchise_key": "Wolves",
+   "historical_team_name": "Mayfair Wolves",
+   "wins": 5,
+   "losses": 9,
+   "ties": 0,
+   "points_for": 1226.58,
+   "points_against": 1275.94,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2018,
+   "gm_id": 11,
+   "franchise_key": "Wolves",
+   "historical_team_name": "Mayfair Wolves",
+   "wins": 9,
+   "losses": 5,
+   "ties": 0,
+   "points_for": 1585.8,
+   "points_against": 1409.02,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook; corroborated by 2018 WhatsApp scoring-table screenshot (source_evidence/2018_whatsapp_final_regular_season_scoring.jpg)"
+  }
+,
+  {
+   "year": 2019,
+   "gm_id": 11,
+   "franchise_key": "Wolves",
+   "historical_team_name": "Westside Wolves",
+   "wins": 9,
+   "losses": 4,
+   "ties": 0,
+   "points_for": 1461.22,
+   "points_against": 1282.08,
+   "games": 13,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2020,
+   "gm_id": 11,
+   "franchise_key": "Wolves",
+   "historical_team_name": "Westside Wolves",
+   "wins": 8,
+   "losses": 5,
+   "ties": 0,
+   "points_for": 1269.44,
+   "points_against": 1180.58,
+   "games": 13,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2021,
+   "gm_id": 11,
+   "franchise_key": "Wolves",
+   "historical_team_name": "Westside Wolves",
+   "wins": 10,
+   "losses": 4,
+   "ties": 0,
+   "points_for": 1478.4,
+   "points_against": 1282.9,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2022,
+   "gm_id": 11,
+   "franchise_key": "Wolves",
+   "historical_team_name": "Westside Wolves",
+   "wins": 6,
+   "losses": 8,
+   "ties": 0,
+   "points_for": 1429.88,
+   "points_against": 1465.26,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2023,
+   "gm_id": 11,
+   "franchise_key": "Wolves",
+   "historical_team_name": "Westside Wolves",
+   "wins": 11,
+   "losses": 3,
+   "ties": 0,
+   "points_for": 1712.22,
+   "points_against": 1453.88,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2024,
+   "gm_id": 11,
+   "franchise_key": "Wolves",
+   "historical_team_name": "Westside Wolves",
+   "wins": 4,
+   "losses": 10,
+   "ties": 0,
+   "points_for": 1386.38,
+   "points_against": 1477.38,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2016,
+   "gm_id": 18,
+   "franchise_key": "Squirrels",
+   "historical_team_name": "Stave's Squirrels",
+   "wins": 6,
+   "losses": 8,
+   "ties": 0,
+   "points_for": 1233.72,
+   "points_against": 1350.72,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2017,
+   "gm_id": 18,
+   "franchise_key": "Squirrels",
+   "historical_team_name": "Stave's Squirrels",
+   "wins": 10,
+   "losses": 4,
+   "ties": 0,
+   "points_for": 1425.2,
+   "points_against": 1129.96,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2018,
+   "gm_id": 18,
+   "franchise_key": "Squirrels",
+   "historical_team_name": "Stave's Squirrels",
+   "wins": 9,
+   "losses": 5,
+   "ties": 0,
+   "points_for": 1483.92,
+   "points_against": 1345.62,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook; corroborated by 2018 WhatsApp scoring-table screenshot (source_evidence/2018_whatsapp_final_regular_season_scoring.jpg)"
+  }
+,
+  {
+   "year": 2019,
+   "gm_id": 18,
+   "franchise_key": "Squirrels",
+   "historical_team_name": "Stave's Squirrels",
+   "wins": 7,
+   "losses": 6,
+   "ties": 0,
+   "points_for": 1215.38,
+   "points_against": 1201.24,
+   "games": 13,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2020,
+   "gm_id": 18,
+   "franchise_key": "Squirrels",
+   "historical_team_name": "Stave's Squirrels",
+   "wins": 7,
+   "losses": 6,
+   "ties": 0,
+   "points_for": 1202.06,
+   "points_against": 1176.58,
+   "games": 13,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2021,
+   "gm_id": 18,
+   "franchise_key": "Squirrels",
+   "historical_team_name": "Williamsburg Squirrels",
+   "wins": 6,
+   "losses": 8,
+   "ties": 0,
+   "points_for": 1268.6,
+   "points_against": 1380.82,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2022,
+   "gm_id": 18,
+   "franchise_key": "Squirrels",
+   "historical_team_name": "Williamsburg Squirrels",
+   "wins": 7,
+   "losses": 7,
+   "ties": 0,
+   "points_for": 1559.02,
+   "points_against": 1569.42,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2023,
+   "gm_id": 18,
+   "franchise_key": "Squirrels",
+   "historical_team_name": "Williamsburg Squirrels",
+   "wins": 7,
+   "losses": 7,
+   "ties": 0,
+   "points_for": 1524.0,
+   "points_against": 1520.62,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2024,
+   "gm_id": 18,
+   "franchise_key": "Squirrels",
+   "historical_team_name": "Williamsburg Squirrels",
+   "wins": 12,
+   "losses": 2,
+   "ties": 0,
+   "points_for": 1743.62,
+   "points_against": 1448.38,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2019,
+   "gm_id": 3,
+   "franchise_key": "Sloths",
+   "historical_team_name": "Bridge St Bullies",
+   "wins": 6,
+   "losses": 7,
+   "ties": 0,
+   "points_for": 1214.38,
+   "points_against": 1183.84,
+   "games": 13,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2020,
+   "gm_id": 3,
+   "franchise_key": "Sloths",
+   "historical_team_name": "Bridge St Bullies",
+   "wins": 4,
+   "losses": 9,
+   "ties": 0,
+   "points_for": 1131.06,
+   "points_against": 1297.0,
+   "games": 13,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2021,
+   "gm_id": 3,
+   "franchise_key": "Sloths",
+   "historical_team_name": "Emoji-named team (bhall2709)",
+   "wins": 8,
+   "losses": 6,
+   "ties": 0,
+   "points_for": 1386.84,
+   "points_against": 1314.76,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2022,
+   "gm_id": 3,
+   "franchise_key": "Sloths",
+   "historical_team_name": "San Diego Sloths",
+   "wins": 9,
+   "losses": 5,
+   "ties": 0,
+   "points_for": 1506.62,
+   "points_against": 1398.18,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2023,
+   "gm_id": 3,
+   "franchise_key": "Sloths",
+   "historical_team_name": "Carlton North",
+   "wins": 6,
+   "losses": 8,
+   "ties": 0,
+   "points_for": 1430.46,
+   "points_against": 1420.62,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2024,
+   "gm_id": 3,
+   "franchise_key": "Sloths",
+   "historical_team_name": "The Sloths",
+   "wins": 10,
+   "losses": 4,
+   "ties": 0,
+   "points_for": 1586.28,
+   "points_against": 1278.54,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2017,
+   "gm_id": 2,
+   "franchise_key": "Ducks",
+   "historical_team_name": "Duck's Ducks",
+   "wins": 5,
+   "losses": 9,
+   "ties": 0,
+   "points_for": 1163.34,
+   "points_against": 1325.02,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2018,
+   "gm_id": 2,
+   "franchise_key": "Ducks",
+   "historical_team_name": "Duck's Ducks",
+   "wins": 9,
+   "losses": 5,
+   "ties": 0,
+   "points_for": 1545.0,
+   "points_against": 1402.94,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook; corroborated by 2018 WhatsApp scoring-table screenshot (source_evidence/2018_whatsapp_final_regular_season_scoring.jpg)"
+  }
+,
+  {
+   "year": 2019,
+   "gm_id": 2,
+   "franchise_key": "Ducks",
+   "historical_team_name": "Duck's Ducks",
+   "wins": 8,
+   "losses": 5,
+   "ties": 0,
+   "points_for": 1291.16,
+   "points_against": 1177.3,
+   "games": 13,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2020,
+   "gm_id": 2,
+   "franchise_key": "Ducks",
+   "historical_team_name": "Duck's Ducks",
+   "wins": 11,
+   "losses": 2,
+   "ties": 0,
+   "points_for": 1463.08,
+   "points_against": 1175.9,
+   "games": 13,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2021,
+   "gm_id": 2,
+   "franchise_key": "Ducks",
+   "historical_team_name": "Duck's Ducks",
+   "wins": 7,
+   "losses": 7,
+   "ties": 0,
+   "points_for": 1370.04,
+   "points_against": 1357.92,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2022,
+   "gm_id": 2,
+   "franchise_key": "Ducks",
+   "historical_team_name": "Duck's Ducks",
+   "wins": 5,
+   "losses": 9,
+   "ties": 0,
+   "points_for": 1346.22,
+   "points_against": 1487.24,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2023,
+   "gm_id": 2,
+   "franchise_key": "Ducks",
+   "historical_team_name": "Goose",
+   "wins": 7,
+   "losses": 7,
+   "ties": 0,
+   "points_for": 1353.18,
+   "points_against": 1478.98,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2024,
+   "gm_id": 2,
+   "franchise_key": "Ducks",
+   "historical_team_name": "Duck's Ducks",
+   "wins": 7,
+   "losses": 7,
+   "ties": 0,
+   "points_for": 1463.06,
+   "points_against": 1527.7,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2019,
+   "gm_id": 17,
+   "franchise_key": "Tornadoes",
+   "historical_team_name": "Greenpoint Torenados",
+   "wins": 8,
+   "losses": 5,
+   "ties": 0,
+   "points_for": 1246.7,
+   "points_against": 1158.9,
+   "games": 13,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2021,
+   "gm_id": 17,
+   "franchise_key": "Tornadoes",
+   "historical_team_name": "Lygon St Torenado's",
+   "wins": 6,
+   "losses": 8,
+   "ties": 0,
+   "points_for": 1355.34,
+   "points_against": 1306.5,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2022,
+   "gm_id": 17,
+   "franchise_key": "Tornadoes",
+   "historical_team_name": "Josh Allen's Torenados",
+   "wins": 5,
+   "losses": 9,
+   "ties": 0,
+   "points_for": 1478.96,
+   "points_against": 1574.96,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2023,
+   "gm_id": 17,
+   "franchise_key": "Tornadoes",
+   "historical_team_name": "Tore Cutlets",
+   "wins": 4,
+   "losses": 10,
+   "ties": 0,
+   "points_for": 1423.24,
+   "points_against": 1618.36,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2024,
+   "gm_id": 17,
+   "franchise_key": "Tornadoes",
+   "historical_team_name": "Bijan Torenados",
+   "wins": 6,
+   "losses": 8,
+   "ties": 0,
+   "points_for": 1421.64,
+   "points_against": 1530.0,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2015,
+   "gm_id": 9,
+   "franchise_key": "Gators",
+   "historical_team_name": "Taco's Team of Fifteen",
+   "wins": 9,
+   "losses": 5,
+   "ties": 0,
+   "points_for": 1452.82,
+   "points_against": 1320.16,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2016,
+   "gm_id": 9,
+   "franchise_key": "Gators",
+   "historical_team_name": "Taco's Team of Fifteen",
+   "wins": 5,
+   "losses": 9,
+   "ties": 0,
+   "points_for": 1127.02,
+   "points_against": 1265.24,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2017,
+   "gm_id": 9,
+   "franchise_key": "Gators",
+   "historical_team_name": "Taco's Team of Fifteen",
+   "wins": 8,
+   "losses": 6,
+   "ties": 0,
+   "points_for": 1408.32,
+   "points_against": 1334.62,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2018,
+   "gm_id": 9,
+   "franchise_key": "Gators",
+   "historical_team_name": "Soho Tacos",
+   "wins": 6,
+   "losses": 8,
+   "ties": 0,
+   "points_for": 1466.14,
+   "points_against": 1467.92,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook; corroborated by 2018 WhatsApp scoring-table screenshot (source_evidence/2018_whatsapp_final_regular_season_scoring.jpg)"
+  }
+,
+  {
+   "year": 2019,
+   "gm_id": 9,
+   "franchise_key": "Gators",
+   "historical_team_name": "Soho Tacos",
+   "wins": 5,
+   "losses": 8,
+   "ties": 0,
+   "points_for": 1223.04,
+   "points_against": 1297.8,
+   "games": 13,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2020,
+   "gm_id": 9,
+   "franchise_key": "Gators",
+   "historical_team_name": "Rootin Tootin Roosters",
+   "wins": 5,
+   "losses": 8,
+   "ties": 0,
+   "points_for": 1211.98,
+   "points_against": 1229.72,
+   "games": 13,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2021,
+   "gm_id": 9,
+   "franchise_key": "Gators",
+   "historical_team_name": "Sadomasochistic Sharks",
+   "wins": 8,
+   "losses": 6,
+   "ties": 0,
+   "points_for": 1383.4,
+   "points_against": 1246.68,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2022,
+   "gm_id": 9,
+   "franchise_key": "Gators",
+   "historical_team_name": "Kings County Sharks",
+   "wins": 10,
+   "losses": 4,
+   "ties": 0,
+   "points_for": 1544.18,
+   "points_against": 1325.84,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2023,
+   "gm_id": 9,
+   "franchise_key": "Gators",
+   "historical_team_name": "Greenpoint Gators",
+   "wins": 7,
+   "losses": 7,
+   "ties": 0,
+   "points_for": 1466.34,
+   "points_against": 1397.28,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2024,
+   "gm_id": 9,
+   "franchise_key": "Gators",
+   "historical_team_name": "Greenpoint Gators",
+   "wins": 5,
+   "losses": 9,
+   "ties": 0,
+   "points_for": 1366.18,
+   "points_against": 1611.96,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2015,
+   "gm_id": 19,
+   "franchise_key": "Foxes",
+   "historical_team_name": "Team Tommy",
+   "wins": 8,
+   "losses": 6,
+   "ties": 0,
+   "points_for": 1404.3,
+   "points_against": 1275.56,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2016,
+   "gm_id": 19,
+   "franchise_key": "Foxes",
+   "historical_team_name": "Team Tommy",
+   "wins": 9,
+   "losses": 5,
+   "ties": 0,
+   "points_for": 1405.96,
+   "points_against": 1199.48,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2017,
+   "gm_id": 19,
+   "franchise_key": "Foxes",
+   "historical_team_name": "Team Tommy",
+   "wins": 10,
+   "losses": 4,
+   "ties": 0,
+   "points_for": 1264.5,
+   "points_against": 1231.0,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2018,
+   "gm_id": 19,
+   "franchise_key": "Foxes",
+   "historical_team_name": "KiNg sKeEmA",
+   "wins": 5,
+   "losses": 9,
+   "ties": 0,
+   "points_for": 1395.64,
+   "points_against": 1574.36,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook; corroborated by 2018 WhatsApp scoring-table screenshot (source_evidence/2018_whatsapp_final_regular_season_scoring.jpg)"
+  }
+,
+  {
+   "year": 2019,
+   "gm_id": 19,
+   "franchise_key": "Foxes",
+   "historical_team_name": "Fort Greene Foxes",
+   "wins": 6,
+   "losses": 7,
+   "ties": 0,
+   "points_for": 1240.9,
+   "points_against": 1218.58,
+   "games": 13,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2020,
+   "gm_id": 19,
+   "franchise_key": "Foxes",
+   "historical_team_name": "Fort Greene Foxes",
+   "wins": 3,
+   "losses": 10,
+   "ties": 0,
+   "points_for": 1208.54,
+   "points_against": 1340.36,
+   "games": 13,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2021,
+   "gm_id": 19,
+   "franchise_key": "Foxes",
+   "historical_team_name": "Fort Greene Foxes",
+   "wins": 6,
+   "losses": 8,
+   "ties": 0,
+   "points_for": 1227.64,
+   "points_against": 1372.62,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2022,
+   "gm_id": 19,
+   "franchise_key": "Foxes",
+   "historical_team_name": "Fort Greene Foxes",
+   "wins": 9,
+   "losses": 5,
+   "ties": 0,
+   "points_for": 1560.36,
+   "points_against": 1418.38,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2023,
+   "gm_id": 19,
+   "franchise_key": "Foxes",
+   "historical_team_name": "Fort Greene Foxes",
+   "wins": 9,
+   "losses": 5,
+   "ties": 0,
+   "points_for": 1521.0,
+   "points_against": 1421.36,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2024,
+   "gm_id": 19,
+   "franchise_key": "Foxes",
+   "historical_team_name": "Fort Greene Foxes",
+   "wins": 7,
+   "losses": 7,
+   "ties": 0,
+   "points_for": 1441.78,
+   "points_against": 1445.42,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2015,
+   "gm_id": 8,
+   "franchise_key": "Cougars",
+   "historical_team_name": "PEDs and Deflategate",
+   "wins": 7,
+   "losses": 7,
+   "ties": 0,
+   "points_for": 1429.64,
+   "points_against": 1399.4,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2016,
+   "gm_id": 8,
+   "franchise_key": "Cougars",
+   "historical_team_name": "E Z E M V P",
+   "wins": 8,
+   "losses": 6,
+   "ties": 0,
+   "points_for": 1363.16,
+   "points_against": 1335.54,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2017,
+   "gm_id": 8,
+   "franchise_key": "Cougars",
+   "historical_team_name": "Dollar Dollar Bilal Y'all",
+   "wins": 6,
+   "losses": 8,
+   "ties": 0,
+   "points_for": 1267.54,
+   "points_against": 1319.0,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2018,
+   "gm_id": 8,
+   "franchise_key": "Cougars",
+   "historical_team_name": "GOOD-NIGHT FAGGOTS",
+   "wins": 2,
+   "losses": 12,
+   "ties": 0,
+   "points_for": 1173.36,
+   "points_against": 1465.78,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook; corroborated by 2018 WhatsApp scoring-table screenshot (source_evidence/2018_whatsapp_final_regular_season_scoring.jpg)"
+  }
+,
+  {
+   "year": 2019,
+   "gm_id": 8,
+   "franchise_key": "Cougars",
+   "historical_team_name": "D A K M V P",
+   "wins": 7,
+   "losses": 6,
+   "ties": 0,
+   "points_for": 1315.12,
+   "points_against": 1241.72,
+   "games": 13,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2020,
+   "gm_id": 8,
+   "franchise_key": "Cougars",
+   "historical_team_name": "Low Country Cougars",
+   "wins": 6,
+   "losses": 7,
+   "ties": 0,
+   "points_for": 1230.44,
+   "points_against": 1186.72,
+   "games": 13,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2021,
+   "gm_id": 8,
+   "franchise_key": "Cougars",
+   "historical_team_name": "Low Country Cougars",
+   "wins": 7,
+   "losses": 7,
+   "ties": 0,
+   "points_for": 1376.64,
+   "points_against": 1342.36,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2022,
+   "gm_id": 8,
+   "franchise_key": "Cougars",
+   "historical_team_name": "Low Country Cougars",
+   "wins": 5,
+   "losses": 9,
+   "ties": 0,
+   "points_for": 1335.44,
+   "points_against": 1543.14,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2023,
+   "gm_id": 8,
+   "franchise_key": "Cougars",
+   "historical_team_name": "Low Country Cougars",
+   "wins": 9,
+   "losses": 5,
+   "ties": 0,
+   "points_for": 1491.44,
+   "points_against": 1421.34,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2024,
+   "gm_id": 8,
+   "franchise_key": "Cougars",
+   "historical_team_name": "Low Country Cougars",
+   "wins": 7,
+   "losses": 7,
+   "ties": 0,
+   "points_for": 1465.66,
+   "points_against": 1412.3,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2019,
+   "gm_id": 12,
+   "franchise_key": "Bees",
+   "historical_team_name": "Killer Bees",
+   "wins": 6,
+   "losses": 7,
+   "ties": 0,
+   "points_for": 1038.42,
+   "points_against": 1271.34,
+   "games": 13,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2020,
+   "gm_id": 12,
+   "franchise_key": "Bees",
+   "historical_team_name": "Killer Bees",
+   "wins": 6,
+   "losses": 7,
+   "ties": 0,
+   "points_for": 1196.52,
+   "points_against": 1240.82,
+   "games": 13,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2021,
+   "gm_id": 12,
+   "franchise_key": "Bees",
+   "historical_team_name": "Killer Bees",
+   "wins": 10,
+   "losses": 4,
+   "ties": 0,
+   "points_for": 1392.52,
+   "points_against": 1339.8,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2022,
+   "gm_id": 12,
+   "franchise_key": "Bees",
+   "historical_team_name": "Killer Bees",
+   "wins": 7,
+   "losses": 7,
+   "ties": 0,
+   "points_for": 1385.98,
+   "points_against": 1399.32,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2023,
+   "gm_id": 12,
+   "franchise_key": "Bees",
+   "historical_team_name": "Dak 🐝 💩",
+   "wins": 5,
+   "losses": 9,
+   "ties": 0,
+   "points_for": 1388.46,
+   "points_against": 1491.14,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2024,
+   "gm_id": 12,
+   "franchise_key": "Bees",
+   "historical_team_name": "Chef's Bees",
+   "wins": 8,
+   "losses": 6,
+   "ties": 0,
+   "points_for": 1603.46,
+   "points_against": 1504.98,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2019,
+   "gm_id": 13,
+   "franchise_key": "Rhinos",
+   "historical_team_name": "Reposchnedo Rhinos",
+   "wins": 6,
+   "losses": 7,
+   "ties": 0,
+   "points_for": 1270.0,
+   "points_against": 1240.12,
+   "games": 13,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2020,
+   "gm_id": 13,
+   "franchise_key": "Rhinos",
+   "historical_team_name": "Reposchneedo Rhinos",
+   "wins": 6,
+   "losses": 7,
+   "ties": 0,
+   "points_for": 1235.28,
+   "points_against": 1325.84,
+   "games": 13,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2021,
+   "gm_id": 13,
+   "franchise_key": "Rhinos",
+   "historical_team_name": "The Waiver Rhino",
+   "wins": 6,
+   "losses": 8,
+   "ties": 0,
+   "points_for": 1240.5,
+   "points_against": 1251.8,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2022,
+   "gm_id": 13,
+   "franchise_key": "Rhinos",
+   "historical_team_name": "Alphabet City Rha Ra Rhino's",
+   "wins": 9,
+   "losses": 5,
+   "ties": 0,
+   "points_for": 1362.04,
+   "points_against": 1379.84,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2023,
+   "gm_id": 13,
+   "franchise_key": "Rhinos",
+   "historical_team_name": "Achane is a dog",
+   "wins": 7,
+   "losses": 7,
+   "ties": 0,
+   "points_for": 1464.4,
+   "points_against": 1417.66,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2024,
+   "gm_id": 13,
+   "franchise_key": "Rhinos",
+   "historical_team_name": "Bye Bye",
+   "wins": 3,
+   "losses": 11,
+   "ties": 0,
+   "points_for": 1263.54,
+   "points_against": 1575.78,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2023,
+   "gm_id": 1,
+   "franchise_key": "Alpacas",
+   "historical_team_name": "Aaron's Screaming Alpacas",
+   "wins": 5,
+   "losses": 9,
+   "ties": 0,
+   "points_for": 1291.54,
+   "points_against": 1484.92,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2024,
+   "gm_id": 1,
+   "franchise_key": "Alpacas",
+   "historical_team_name": "Screaming Alpacas",
+   "wins": 6,
+   "losses": 8,
+   "ties": 0,
+   "points_for": 1400.2,
+   "points_against": 1415.42,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2015,
+   "gm_id": 16,
+   "franchise_key": "Orangutans",
+   "historical_team_name": "RG3000000",
+   "wins": 7,
+   "losses": 7,
+   "ties": 0,
+   "points_for": 1326.0,
+   "points_against": 1371.06,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2016,
+   "gm_id": 16,
+   "franchise_key": "Orangutans",
+   "historical_team_name": "RG3000000",
+   "wins": 9,
+   "losses": 5,
+   "ties": 0,
+   "points_for": 1335.14,
+   "points_against": 1322.5,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2017,
+   "gm_id": 16,
+   "franchise_key": "Orangutans",
+   "historical_team_name": "RG3000000",
+   "wins": 7,
+   "losses": 7,
+   "ties": 0,
+   "points_for": 1309.3,
+   "points_against": 1260.34,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2018,
+   "gm_id": 16,
+   "franchise_key": "Orangutans",
+   "historical_team_name": "RGHOOOVES",
+   "wins": 5,
+   "losses": 9,
+   "ties": 0,
+   "points_for": 1294.86,
+   "points_against": 1385.38,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook; corroborated by 2018 WhatsApp scoring-table screenshot (source_evidence/2018_whatsapp_final_regular_season_scoring.jpg)"
+  }
+,
+  {
+   "year": 2020,
+   "gm_id": 16,
+   "franchise_key": "Orangutans",
+   "historical_team_name": "Oriental Orangutans",
+   "wins": 10,
+   "losses": 3,
+   "ties": 0,
+   "points_for": 1352.44,
+   "points_against": 1117.28,
+   "games": 13,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2021,
+   "gm_id": 16,
+   "franchise_key": "Orangutans",
+   "historical_team_name": "Oriental Orangutans",
+   "wins": 8,
+   "losses": 6,
+   "ties": 0,
+   "points_for": 1452.84,
+   "points_against": 1371.88,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2022,
+   "gm_id": 16,
+   "franchise_key": "Orangutans",
+   "historical_team_name": "Oriental Orangutans",
+   "wins": 7,
+   "losses": 7,
+   "ties": 0,
+   "points_for": 1602.52,
+   "points_against": 1520.6,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2023,
+   "gm_id": 16,
+   "franchise_key": "Orangutans",
+   "historical_team_name": "Oriental Orangutans",
+   "wins": 7,
+   "losses": 7,
+   "ties": 0,
+   "points_for": 1509.16,
+   "points_against": 1449.28,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2022,
+   "gm_id": 10,
+   "franchise_key": "Foreskins",
+   "historical_team_name": "33rd St Foreskins",
+   "wins": 5,
+   "losses": 9,
+   "ties": 0,
+   "points_for": 1336.76,
+   "points_against": 1365.8,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2015,
+   "gm_id": 14,
+   "franchise_key": "Quick",
+   "historical_team_name": "Quicky",
+   "wins": 5,
+   "losses": 9,
+   "ties": 0,
+   "points_for": 1339.64,
+   "points_against": 1410.32,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2016,
+   "gm_id": 14,
+   "franchise_key": "Quick",
+   "historical_team_name": "Quicky",
+   "wins": 7,
+   "losses": 7,
+   "ties": 0,
+   "points_for": 1350.88,
+   "points_against": 1338.52,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2017,
+   "gm_id": 14,
+   "franchise_key": "Quick",
+   "historical_team_name": "Quicky",
+   "wins": 8,
+   "losses": 6,
+   "ties": 0,
+   "points_for": 1257.18,
+   "points_against": 1161.4,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2018,
+   "gm_id": 14,
+   "franchise_key": "Quick",
+   "historical_team_name": "Kwik",
+   "wins": 7,
+   "losses": 7,
+   "ties": 0,
+   "points_for": 1388.98,
+   "points_against": 1467.7,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook; corroborated by 2018 WhatsApp scoring-table screenshot (source_evidence/2018_whatsapp_final_regular_season_scoring.jpg)"
+  }
+,
+  {
+   "year": 2016,
+   "gm_id": 7,
+   "franchise_key": "Kingsnakes",
+   "historical_team_name": "Scottsdale Kingsnakes",
+   "wins": 11,
+   "losses": 3,
+   "ties": 0,
+   "points_for": 1483.58,
+   "points_against": 1302.9,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2017,
+   "gm_id": 7,
+   "franchise_key": "Kingsnakes",
+   "historical_team_name": "Scottsdale Kingsnakes",
+   "wins": 5,
+   "losses": 9,
+   "ties": 0,
+   "points_for": 1149.7,
+   "points_against": 1240.08,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2018,
+   "gm_id": 7,
+   "franchise_key": "Kingsnakes",
+   "historical_team_name": "Scottsdale Kingsnakes",
+   "wins": 9,
+   "losses": 5,
+   "ties": 0,
+   "points_for": 1317.62,
+   "points_against": 1318.92,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook; corroborated by 2018 WhatsApp scoring-table screenshot (source_evidence/2018_whatsapp_final_regular_season_scoring.jpg)"
+  }
+,
+  {
+   "year": 2019,
+   "gm_id": 7,
+   "franchise_key": "Kingsnakes",
+   "historical_team_name": "Scottsdale Kingsnakes",
+   "wins": 5,
+   "losses": 8,
+   "ties": 0,
+   "points_for": 1208.08,
+   "points_against": 1314.98,
+   "games": 13,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2020,
+   "gm_id": 7,
+   "franchise_key": "Kingsnakes",
+   "historical_team_name": "Scottsdale Kingsnakes",
+   "wins": 8,
+   "losses": 5,
+   "ties": 0,
+   "points_for": 1290.96,
+   "points_against": 1314.74,
+   "games": 13,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2021,
+   "gm_id": 7,
+   "franchise_key": "Kingsnakes",
+   "historical_team_name": "Scottsdale Kingsnakes",
+   "wins": 2,
+   "losses": 12,
+   "ties": 0,
+   "points_for": 1191.14,
+   "points_against": 1555.86,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Original Sleeper or ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2015,
+   "gm_id": 15,
+   "franchise_key": "Bulldogs",
+   "historical_team_name": "It's Mike Vick in a box",
+   "wins": 6,
+   "losses": 8,
+   "ties": 0,
+   "points_for": 1276.6,
+   "points_against": 1400.5,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2016,
+   "gm_id": 15,
+   "franchise_key": "Bulldogs",
+   "historical_team_name": "It's Mike Vick in a box",
+   "wins": 5,
+   "losses": 9,
+   "ties": 0,
+   "points_for": 1338.02,
+   "points_against": 1396.04,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2017,
+   "gm_id": 15,
+   "franchise_key": "Bulldogs",
+   "historical_team_name": "Bella Vista Bulldogs",
+   "wins": 6,
+   "losses": 8,
+   "ties": 0,
+   "points_for": 1158.4,
+   "points_against": 1352.7,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2018,
+   "gm_id": 15,
+   "franchise_key": "Bulldogs",
+   "historical_team_name": "Bella Vista Bulldogs",
+   "wins": 9,
+   "losses": 5,
+   "ties": 0,
+   "points_for": 1432.66,
+   "points_against": 1246.34,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook; corroborated by 2018 WhatsApp scoring-table screenshot (source_evidence/2018_whatsapp_final_regular_season_scoring.jpg)"
+  }
+,
+  {
+   "year": 2019,
+   "gm_id": 15,
+   "franchise_key": "Bulldogs",
+   "historical_team_name": "Bella Vista Bulldogs",
+   "wins": 5,
+   "losses": 8,
+   "ties": 0,
+   "points_for": 1027.84,
+   "points_against": 1164.34,
+   "games": 13,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2020,
+   "gm_id": 15,
+   "franchise_key": "Bulldogs",
+   "historical_team_name": "Bella Vista Bulldogs",
+   "wins": 4,
+   "losses": 9,
+   "ties": 0,
+   "points_for": 1057.98,
+   "points_against": 1264.24,
+   "games": 13,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2015,
+   "gm_id": 6,
+   "franchise_key": "Beech",
+   "historical_team_name": "Choss Block",
+   "wins": 7,
+   "losses": 7,
+   "ties": 0,
+   "points_for": 1333.86,
+   "points_against": 1305.88,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2016,
+   "gm_id": 6,
+   "franchise_key": "Beech",
+   "historical_team_name": "El Cunado",
+   "wins": 4,
+   "losses": 10,
+   "ties": 0,
+   "points_for": 1134.0,
+   "points_against": 1343.16,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "Historic workbook + historical standings screenshot",
+   "points_source": "Historic workbook (not independently screenshot-verified)"
+  }
+,
+  {
+   "year": 2025,
+   "gm_id": 17,
+   "franchise_key": "Tornadoes",
+   "historical_team_name": "Brunswick Torenados",
+   "wins": 8,
+   "losses": 6,
+   "ties": 0,
+   "points_for": 1511.36,
+   "points_against": 1457.24,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "ESPN standings screenshot",
+   "points_source": "ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2025,
+   "gm_id": 1,
+   "franchise_key": "Alpacas",
+   "historical_team_name": "Screaming Alpacas",
+   "wins": 10,
+   "losses": 4,
+   "ties": 0,
+   "points_for": 1524.44,
+   "points_against": 1367.58,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "ESPN standings screenshot",
+   "points_source": "ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2025,
+   "gm_id": 18,
+   "franchise_key": "Squirrels",
+   "historical_team_name": "Williamsburg Triage",
+   "wins": 10,
+   "losses": 4,
+   "ties": 0,
+   "points_for": 1625.84,
+   "points_against": 1511.22,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "ESPN standings screenshot",
+   "points_source": "ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2025,
+   "gm_id": 12,
+   "franchise_key": "Bees",
+   "historical_team_name": "Greenpoint Bees",
+   "wins": 9,
+   "losses": 5,
+   "ties": 0,
+   "points_for": 1610.1,
+   "points_against": 1604.7,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "ESPN standings screenshot",
+   "points_source": "ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2025,
+   "gm_id": 19,
+   "franchise_key": "Foxes",
+   "historical_team_name": "Fort Greene Foxes",
+   "wins": 7,
+   "losses": 7,
+   "ties": 0,
+   "points_for": 1392.6,
+   "points_against": 1415.5,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "ESPN standings screenshot",
+   "points_source": "ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2025,
+   "gm_id": 13,
+   "franchise_key": "Rhinos",
+   "historical_team_name": "Domino Dawgs",
+   "wins": 7,
+   "losses": 7,
+   "ties": 0,
+   "points_for": 1430.56,
+   "points_against": 1444.42,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "ESPN standings screenshot",
+   "points_source": "ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2025,
+   "gm_id": 11,
+   "franchise_key": "Wolves",
+   "historical_team_name": "Westside Wolves",
+   "wins": 7,
+   "losses": 7,
+   "ties": 0,
+   "points_for": 1382.86,
+   "points_against": 1373.28,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "ESPN standings screenshot",
+   "points_source": "ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2025,
+   "gm_id": 8,
+   "franchise_key": "Cougars",
+   "historical_team_name": "Low Country Cougars",
+   "wins": 6,
+   "losses": 8,
+   "ties": 0,
+   "points_for": 1475.44,
+   "points_against": 1463.46,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "ESPN standings screenshot",
+   "points_source": "ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2025,
+   "gm_id": 2,
+   "franchise_key": "Ducks",
+   "historical_team_name": "Bondi Cucks",
+   "wins": 6,
+   "losses": 8,
+   "ties": 0,
+   "points_for": 1423.18,
+   "points_against": 1379.88,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "ESPN standings screenshot",
+   "points_source": "ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2025,
+   "gm_id": 3,
+   "franchise_key": "Sloths",
+   "historical_team_name": "The Sloths",
+   "wins": 6,
+   "losses": 8,
+   "ties": 0,
+   "points_for": 1504.98,
+   "points_against": 1558.26,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "ESPN standings screenshot",
+   "points_source": "ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2025,
+   "gm_id": 4,
+   "franchise_key": "Lamprey",
+   "historical_team_name": "The Lamprey",
+   "wins": 2,
+   "losses": 12,
+   "ties": 0,
+   "points_for": 1266.6,
+   "points_against": 1561.42,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "ESPN standings screenshot",
+   "points_source": "ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2025,
+   "gm_id": 9,
+   "franchise_key": "Gators",
+   "historical_team_name": "Cliffo Clangers",
+   "wins": 6,
+   "losses": 8,
+   "ties": 0,
+   "points_for": 1425.18,
+   "points_against": 1436.18,
+   "games": 14,
+   "is_final": 1,
+   "record_source": "ESPN standings screenshot",
+   "points_source": "ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2026,
+   "gm_id": 11,
+   "franchise_key": "Wolves",
+   "historical_team_name": "Westside Wolves",
+   "wins": 7,
+   "losses": 3,
+   "ties": 0,
+   "points_for": 1203.66,
+   "points_against": 1050.06,
+   "games": 10,
+   "is_final": 0,
+   "record_source": "ESPN standings screenshot",
+   "points_source": "ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2026,
+   "gm_id": 8,
+   "franchise_key": "Cougars",
+   "historical_team_name": "Low Country Cougars",
+   "wins": 7,
+   "losses": 3,
+   "ties": 0,
+   "points_for": 1166.14,
+   "points_against": 1058.8,
+   "games": 10,
+   "is_final": 0,
+   "record_source": "ESPN standings screenshot",
+   "points_source": "ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2026,
+   "gm_id": 9,
+   "franchise_key": "Gators",
+   "historical_team_name": "Damn S3xy gOATs",
+   "wins": 7,
+   "losses": 3,
+   "ties": 0,
+   "points_for": 1117.92,
+   "points_against": 1027.46,
+   "games": 10,
+   "is_final": 0,
+   "record_source": "ESPN standings screenshot",
+   "points_source": "ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2026,
+   "gm_id": 13,
+   "franchise_key": "Rhinos",
+   "historical_team_name": "Bedford Bulls",
+   "wins": 6,
+   "losses": 4,
+   "ties": 0,
+   "points_for": 1108.54,
+   "points_against": 962.94,
+   "games": 10,
+   "is_final": 0,
+   "record_source": "ESPN standings screenshot",
+   "points_source": "ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2026,
+   "gm_id": 3,
+   "franchise_key": "Sloths",
+   "historical_team_name": "The Sloths",
+   "wins": 6,
+   "losses": 4,
+   "ties": 0,
+   "points_for": 1028.18,
+   "points_against": 978.32,
+   "games": 10,
+   "is_final": 0,
+   "record_source": "ESPN standings screenshot",
+   "points_source": "ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2026,
+   "gm_id": 18,
+   "franchise_key": "Squirrels",
+   "historical_team_name": "Williamsburg Squirrels",
+   "wins": 5,
+   "losses": 5,
+   "ties": 0,
+   "points_for": 1109.82,
+   "points_against": 1083.08,
+   "games": 10,
+   "is_final": 0,
+   "record_source": "ESPN standings screenshot",
+   "points_source": "ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2026,
+   "gm_id": 19,
+   "franchise_key": "Foxes",
+   "historical_team_name": "Fort Greene Foxes",
+   "wins": 5,
+   "losses": 5,
+   "ties": 0,
+   "points_for": 1037.96,
+   "points_against": 1064.24,
+   "games": 10,
+   "is_final": 0,
+   "record_source": "ESPN standings screenshot",
+   "points_source": "ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2026,
+   "gm_id": 12,
+   "franchise_key": "Bees",
+   "historical_team_name": "💩 Bees",
+   "wins": 4,
+   "losses": 6,
+   "ties": 0,
+   "points_for": 1015.48,
+   "points_against": 1118.88,
+   "games": 10,
+   "is_final": 0,
+   "record_source": "ESPN standings screenshot",
+   "points_source": "ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2026,
+   "gm_id": 1,
+   "franchise_key": "Alpacas",
+   "historical_team_name": "Screaming Alpacas",
+   "wins": 4,
+   "losses": 6,
+   "ties": 0,
+   "points_for": 985.02,
+   "points_against": 1162.56,
+   "games": 10,
+   "is_final": 0,
+   "record_source": "ESPN standings screenshot",
+   "points_source": "ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2026,
+   "gm_id": 5,
+   "franchise_key": "Krumbs",
+   "historical_team_name": "Lord Commander Krumbs XVIII",
+   "wins": 4,
+   "losses": 6,
+   "ties": 0,
+   "points_for": 945.52,
+   "points_against": 1074.36,
+   "games": 10,
+   "is_final": 0,
+   "record_source": "ESPN standings screenshot",
+   "points_source": "ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2026,
+   "gm_id": 2,
+   "franchise_key": "Ducks",
+   "historical_team_name": "Duck's Ducks",
+   "wins": 3,
+   "losses": 7,
+   "ties": 0,
+   "points_for": 1036.4,
+   "points_against": 1022.86,
+   "games": 10,
+   "is_final": 0,
+   "record_source": "ESPN standings screenshot",
+   "points_source": "ESPN standings screenshot"
+  }
+,
+  {
+   "year": 2026,
+   "gm_id": 17,
+   "franchise_key": "Tornadoes",
+   "historical_team_name": "Brunswick Torenados",
+   "wins": 2,
+   "losses": 8,
+   "ties": 0,
+   "points_for": 977.4,
+   "points_against": 1128.48,
+   "games": 10,
+   "is_final": 0,
+   "record_source": "ESPN standings screenshot",
+   "points_source": "ESPN standings screenshot"
+  }
+
+ ],
+ "team_aliases": [
+  {
+   "year": 2015,
+   "gm_id": 11,
+   "franchise_key": "Wolves",
+   "name": "JJ WHAT",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2015,
+   "gm_id": 9,
+   "franchise_key": "Gators",
+   "name": "Taco's Team of Fifteen",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2015,
+   "gm_id": 19,
+   "franchise_key": "Foxes",
+   "name": "Team Tommy",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2015,
+   "gm_id": 8,
+   "franchise_key": "Cougars",
+   "name": "PEDs and Deflategate",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2015,
+   "gm_id": 16,
+   "franchise_key": "Orangutans",
+   "name": "RG3000000",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2015,
+   "gm_id": 14,
+   "franchise_key": "Quick",
+   "name": "Quicky",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2015,
+   "gm_id": 15,
+   "franchise_key": "Bulldogs",
+   "name": "It's Mike Vick in a box",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2015,
+   "gm_id": 6,
+   "franchise_key": "Beech",
+   "name": "Choss Block",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2016,
+   "gm_id": 11,
+   "franchise_key": "Wolves",
+   "name": "Bend it like Odell Beckham",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2016,
+   "gm_id": 18,
+   "franchise_key": "Squirrels",
+   "name": "Stave's Squirrels",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2016,
+   "gm_id": 9,
+   "franchise_key": "Gators",
+   "name": "Taco's Team of Fifteen",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2016,
+   "gm_id": 19,
+   "franchise_key": "Foxes",
+   "name": "Team Tommy",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2016,
+   "gm_id": 8,
+   "franchise_key": "Cougars",
+   "name": "E Z E M V P",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2016,
+   "gm_id": 16,
+   "franchise_key": "Orangutans",
+   "name": "RG3000000",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2016,
+   "gm_id": 14,
+   "franchise_key": "Quick",
+   "name": "Quicky",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2016,
+   "gm_id": 7,
+   "franchise_key": "Kingsnakes",
+   "name": "Scottsdale Kingsnakes",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2016,
+   "gm_id": 15,
+   "franchise_key": "Bulldogs",
+   "name": "It's Mike Vick in a box",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2016,
+   "gm_id": 6,
+   "franchise_key": "Beech",
+   "name": "El Cunado",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2017,
+   "gm_id": 11,
+   "franchise_key": "Wolves",
+   "name": "Mayfair Wolves",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2017,
+   "gm_id": 18,
+   "franchise_key": "Squirrels",
+   "name": "Stave's Squirrels",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2017,
+   "gm_id": 2,
+   "franchise_key": "Ducks",
+   "name": "Duck's Ducks",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2017,
+   "gm_id": 9,
+   "franchise_key": "Gators",
+   "name": "Taco's Team of Fifteen",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2017,
+   "gm_id": 19,
+   "franchise_key": "Foxes",
+   "name": "Team Tommy",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2017,
+   "gm_id": 8,
+   "franchise_key": "Cougars",
+   "name": "Dollar Dollar Bilal Y'all",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2017,
+   "gm_id": 16,
+   "franchise_key": "Orangutans",
+   "name": "RG3000000",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2017,
+   "gm_id": 14,
+   "franchise_key": "Quick",
+   "name": "Quicky",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2017,
+   "gm_id": 7,
+   "franchise_key": "Kingsnakes",
+   "name": "Scottsdale Kingsnakes",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2017,
+   "gm_id": 15,
+   "franchise_key": "Bulldogs",
+   "name": "Bella Vista Bulldogs",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2018,
+   "gm_id": 11,
+   "franchise_key": "Wolves",
+   "name": "Mayfair Wolves",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2018,
+   "gm_id": 18,
+   "franchise_key": "Squirrels",
+   "name": "Stave's Squirrels",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2018,
+   "gm_id": 2,
+   "franchise_key": "Ducks",
+   "name": "Duck's Ducks",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2018,
+   "gm_id": 9,
+   "franchise_key": "Gators",
+   "name": "Soho Tacos",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2018,
+   "gm_id": 19,
+   "franchise_key": "Foxes",
+   "name": "KiNg sKeEmA",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2018,
+   "gm_id": 8,
+   "franchise_key": "Cougars",
+   "name": "GOOD-NIGHT FAGGOTS",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2018,
+   "gm_id": 16,
+   "franchise_key": "Orangutans",
+   "name": "RGHOOOVES",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2018,
+   "gm_id": 14,
+   "franchise_key": "Quick",
+   "name": "Kwik",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2018,
+   "gm_id": 7,
+   "franchise_key": "Kingsnakes",
+   "name": "Scottsdale Kingsnakes",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2018,
+   "gm_id": 15,
+   "franchise_key": "Bulldogs",
+   "name": "Bella Vista Bulldogs",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2019,
+   "gm_id": 11,
+   "franchise_key": "Wolves",
+   "name": "Westside Wolves",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2019,
+   "gm_id": 18,
+   "franchise_key": "Squirrels",
+   "name": "Stave's Squirrels",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2019,
+   "gm_id": 3,
+   "franchise_key": "Sloths",
+   "name": "Bridge St Bullies",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2019,
+   "gm_id": 2,
+   "franchise_key": "Ducks",
+   "name": "Duck's Ducks",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2019,
+   "gm_id": 17,
+   "franchise_key": "Tornadoes",
+   "name": "Greenpoint Torenados",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2019,
+   "gm_id": 9,
+   "franchise_key": "Gators",
+   "name": "Soho Tacos",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2019,
+   "gm_id": 19,
+   "franchise_key": "Foxes",
+   "name": "Fort Greene Foxes",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2019,
+   "gm_id": 8,
+   "franchise_key": "Cougars",
+   "name": "D A K M V P",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2019,
+   "gm_id": 12,
+   "franchise_key": "Bees",
+   "name": "Killer Bees",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2019,
+   "gm_id": 13,
+   "franchise_key": "Rhinos",
+   "name": "Reposchnedo Rhinos",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2019,
+   "gm_id": 7,
+   "franchise_key": "Kingsnakes",
+   "name": "Scottsdale Kingsnakes",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2019,
+   "gm_id": 15,
+   "franchise_key": "Bulldogs",
+   "name": "Bella Vista Bulldogs",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2020,
+   "gm_id": 11,
+   "franchise_key": "Wolves",
+   "name": "Westside Wolves",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2020,
+   "gm_id": 18,
+   "franchise_key": "Squirrels",
+   "name": "Stave's Squirrels",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2020,
+   "gm_id": 3,
+   "franchise_key": "Sloths",
+   "name": "Bridge St Bullies",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2020,
+   "gm_id": 2,
+   "franchise_key": "Ducks",
+   "name": "Duck's Ducks",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2020,
+   "gm_id": 9,
+   "franchise_key": "Gators",
+   "name": "Rootin Tootin Roosters",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2020,
+   "gm_id": 19,
+   "franchise_key": "Foxes",
+   "name": "Fort Greene Foxes",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2020,
+   "gm_id": 8,
+   "franchise_key": "Cougars",
+   "name": "Low Country Cougars",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2020,
+   "gm_id": 16,
+   "franchise_key": "Orangutans",
+   "name": "Oriental Orangutans",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2020,
+   "gm_id": 12,
+   "franchise_key": "Bees",
+   "name": "Killer Bees",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2020,
+   "gm_id": 13,
+   "franchise_key": "Rhinos",
+   "name": "Reposchneedo Rhinos",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2020,
+   "gm_id": 7,
+   "franchise_key": "Kingsnakes",
+   "name": "Scottsdale Kingsnakes",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2020,
+   "gm_id": 15,
+   "franchise_key": "Bulldogs",
+   "name": "Bella Vista Bulldogs",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2021,
+   "gm_id": 11,
+   "franchise_key": "Wolves",
+   "name": "Westside Wolves",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2021,
+   "gm_id": 18,
+   "franchise_key": "Squirrels",
+   "name": "Williamsburg Squirrels",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2021,
+   "gm_id": 3,
+   "franchise_key": "Sloths",
+   "name": "Emoji-named team (bhall2709)",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2021,
+   "gm_id": 2,
+   "franchise_key": "Ducks",
+   "name": "Duck's Ducks",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2021,
+   "gm_id": 17,
+   "franchise_key": "Tornadoes",
+   "name": "Lygon St Torenado's",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2021,
+   "gm_id": 9,
+   "franchise_key": "Gators",
+   "name": "Sadomasochistic Sharks",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2021,
+   "gm_id": 19,
+   "franchise_key": "Foxes",
+   "name": "Fort Greene Foxes",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2021,
+   "gm_id": 8,
+   "franchise_key": "Cougars",
+   "name": "Low Country Cougars",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2021,
+   "gm_id": 16,
+   "franchise_key": "Orangutans",
+   "name": "Oriental Orangutans",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2021,
+   "gm_id": 12,
+   "franchise_key": "Bees",
+   "name": "Killer Bees",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2021,
+   "gm_id": 13,
+   "franchise_key": "Rhinos",
+   "name": "The Waiver Rhino",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2021,
+   "gm_id": 7,
+   "franchise_key": "Kingsnakes",
+   "name": "Scottsdale Kingsnakes",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2022,
+   "gm_id": 11,
+   "franchise_key": "Wolves",
+   "name": "Westside Wolves",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2022,
+   "gm_id": 18,
+   "franchise_key": "Squirrels",
+   "name": "Williamsburg Squirrels",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2022,
+   "gm_id": 3,
+   "franchise_key": "Sloths",
+   "name": "San Diego Sloths",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2022,
+   "gm_id": 2,
+   "franchise_key": "Ducks",
+   "name": "Duck's Ducks",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2022,
+   "gm_id": 17,
+   "franchise_key": "Tornadoes",
+   "name": "Josh Allen's Torenados",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2022,
+   "gm_id": 9,
+   "franchise_key": "Gators",
+   "name": "Kings County Sharks",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2022,
+   "gm_id": 19,
+   "franchise_key": "Foxes",
+   "name": "Fort Greene Foxes",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2022,
+   "gm_id": 8,
+   "franchise_key": "Cougars",
+   "name": "Low Country Cougars",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2022,
+   "gm_id": 16,
+   "franchise_key": "Orangutans",
+   "name": "Oriental Orangutans",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2022,
+   "gm_id": 12,
+   "franchise_key": "Bees",
+   "name": "Killer Bees",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2022,
+   "gm_id": 13,
+   "franchise_key": "Rhinos",
+   "name": "Alphabet City Rha Ra Rhino's",
+   "commissioner_confirmed": 1,
+   "notes": "Truncated in original screenshot; fuller name supported by 2022 bracket"
+  }
+,
+  {
+   "year": 2022,
+   "gm_id": 10,
+   "franchise_key": "Foreskins",
+   "name": "33rd St Foreskins",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2023,
+   "gm_id": 11,
+   "franchise_key": "Wolves",
+   "name": "Westside Wolves",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2023,
+   "gm_id": 18,
+   "franchise_key": "Squirrels",
+   "name": "Williamsburg Squirrels",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2023,
+   "gm_id": 3,
+   "franchise_key": "Sloths",
+   "name": "Carlton North",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2023,
+   "gm_id": 2,
+   "franchise_key": "Ducks",
+   "name": "Goose",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2023,
+   "gm_id": 17,
+   "franchise_key": "Tornadoes",
+   "name": "Tore Cutlets",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2023,
+   "gm_id": 9,
+   "franchise_key": "Gators",
+   "name": "Greenpoint Gators",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2023,
+   "gm_id": 19,
+   "franchise_key": "Foxes",
+   "name": "Fort Greene Foxes",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2023,
+   "gm_id": 8,
+   "franchise_key": "Cougars",
+   "name": "Low Country Cougars",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2023,
+   "gm_id": 16,
+   "franchise_key": "Orangutans",
+   "name": "Oriental Orangutans",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2023,
+   "gm_id": 12,
+   "franchise_key": "Bees",
+   "name": "Dak 🐝 💩",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2023,
+   "gm_id": 13,
+   "franchise_key": "Rhinos",
+   "name": "Achane is a dog",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2023,
+   "gm_id": 1,
+   "franchise_key": "Alpacas",
+   "name": "Aaron's Screaming Alpacas",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2024,
+   "gm_id": 11,
+   "franchise_key": "Wolves",
+   "name": "Westside Wolves",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2024,
+   "gm_id": 18,
+   "franchise_key": "Squirrels",
+   "name": "Williamsburg Squirrels",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2024,
+   "gm_id": 3,
+   "franchise_key": "Sloths",
+   "name": "The Sloths",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2024,
+   "gm_id": 2,
+   "franchise_key": "Ducks",
+   "name": "Duck's Ducks",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2024,
+   "gm_id": 17,
+   "franchise_key": "Tornadoes",
+   "name": "Bijan Torenados",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2024,
+   "gm_id": 9,
+   "franchise_key": "Gators",
+   "name": "Greenpoint Gators",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2024,
+   "gm_id": 19,
+   "franchise_key": "Foxes",
+   "name": "Fort Greene Foxes",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2024,
+   "gm_id": 8,
+   "franchise_key": "Cougars",
+   "name": "Low Country Cougars",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2024,
+   "gm_id": 12,
+   "franchise_key": "Bees",
+   "name": "Chef's Bees",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2024,
+   "gm_id": 13,
+   "franchise_key": "Rhinos",
+   "name": "Bye Bye",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2024,
+   "gm_id": 1,
+   "franchise_key": "Alpacas",
+   "name": "Screaming Alpacas",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2024,
+   "gm_id": 4,
+   "franchise_key": "Lamprey",
+   "name": "The Lamprey",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2025,
+   "gm_id": 11,
+   "franchise_key": "Wolves",
+   "name": "Westside Wolves",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2025,
+   "gm_id": 18,
+   "franchise_key": "Squirrels",
+   "name": "Williamsburg Triage",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2025,
+   "gm_id": 3,
+   "franchise_key": "Sloths",
+   "name": "The Sloths",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2025,
+   "gm_id": 17,
+   "franchise_key": "Tornadoes",
+   "name": "Brunswick Torenados",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2025,
+   "gm_id": 9,
+   "franchise_key": "Gators",
+   "name": "Cliffo Clangers",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2025,
+   "gm_id": 19,
+   "franchise_key": "Foxes",
+   "name": "Fort Greene Foxes",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2025,
+   "gm_id": 8,
+   "franchise_key": "Cougars",
+   "name": "Low Country Cougars",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2025,
+   "gm_id": 12,
+   "franchise_key": "Bees",
+   "name": "Greenpoint Bees",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2025,
+   "gm_id": 13,
+   "franchise_key": "Rhinos",
+   "name": "Domino Dawgs",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2025,
+   "gm_id": 1,
+   "franchise_key": "Alpacas",
+   "name": "Screaming Alpacas",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2025,
+   "gm_id": 4,
+   "franchise_key": "Lamprey",
+   "name": "The Lamprey",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2025,
+   "gm_id": 2,
+   "franchise_key": "Ducks",
+   "name": "Bondi Cucks",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2026,
+   "gm_id": 11,
+   "franchise_key": "Wolves",
+   "name": "Westside Wolves",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2026,
+   "gm_id": 18,
+   "franchise_key": "Squirrels",
+   "name": "Williamsburg Squirrels",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2026,
+   "gm_id": 3,
+   "franchise_key": "Sloths",
+   "name": "The Sloths",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2026,
+   "gm_id": 17,
+   "franchise_key": "Tornadoes",
+   "name": "Brunswick Torenados",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2026,
+   "gm_id": 9,
+   "franchise_key": "Gators",
+   "name": "Damn S3xy gOATs",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2026,
+   "gm_id": 19,
+   "franchise_key": "Foxes",
+   "name": "Fort Greene Foxes",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2026,
+   "gm_id": 8,
+   "franchise_key": "Cougars",
+   "name": "Low Country Cougars",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2026,
+   "gm_id": 12,
+   "franchise_key": "Bees",
+   "name": "💩 Bees",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2026,
+   "gm_id": 13,
+   "franchise_key": "Rhinos",
+   "name": "Bedford Bulls",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2026,
+   "gm_id": 1,
+   "franchise_key": "Alpacas",
+   "name": "Screaming Alpacas",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2026,
+   "gm_id": 2,
+   "franchise_key": "Ducks",
+   "name": "Duck's Ducks",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2026,
+   "gm_id": 5,
+   "franchise_key": "Krumbs",
+   "name": "Lord Commander Krumbs XVIII",
+   "commissioner_confirmed": 1,
+   "notes": ""
+  }
+,
+  {
+   "year": 2017,
+   "gm_id": 2,
+   "franchise_key": "Ducks",
+   "name": "Alan's Aardvarks",
+   "commissioner_confirmed": 1,
+   "notes": "Midseason alias confirmed by commissioner"
+  }
+
+ ],
+ "postseason_placements": [
+  {
+   "year": 2015,
+   "gm_id": 9,
+   "final_place": 1,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.13.55 AM.png"
+  }
+,
+  {
+   "year": 2015,
+   "gm_id": 11,
+   "final_place": 2,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.13.55 AM.png"
+  }
+,
+  {
+   "year": 2015,
+   "gm_id": 19,
+   "final_place": 3,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.13.55 AM.png"
+  }
+,
+  {
+   "year": 2015,
+   "gm_id": 8,
+   "final_place": 4,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.13.55 AM.png"
+  }
+,
+  {
+   "year": 2015,
+   "gm_id": 16,
+   "final_place": 5,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.13.55 AM.png"
+  }
+,
+  {
+   "year": 2015,
+   "gm_id": 6,
+   "final_place": 6,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.13.55 AM.png"
+  }
+,
+  {
+   "year": 2015,
+   "gm_id": 15,
+   "final_place": 7,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.13.55 AM.png"
+  }
+,
+  {
+   "year": 2015,
+   "gm_id": 14,
+   "final_place": 8,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.13.55 AM.png"
+  }
+,
+  {
+   "year": 2016,
+   "gm_id": 8,
+   "final_place": 1,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.07 AM.png"
+  }
+,
+  {
+   "year": 2016,
+   "gm_id": 16,
+   "final_place": 2,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.07 AM.png"
+  }
+,
+  {
+   "year": 2016,
+   "gm_id": 7,
+   "final_place": 3,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.07 AM.png"
+  }
+,
+  {
+   "year": 2016,
+   "gm_id": 19,
+   "final_place": 4,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.07 AM.png"
+  }
+,
+  {
+   "year": 2016,
+   "gm_id": 18,
+   "final_place": 5,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.07 AM.png"
+  }
+,
+  {
+   "year": 2016,
+   "gm_id": 15,
+   "final_place": 6,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.07 AM.png"
+  }
+,
+  {
+   "year": 2016,
+   "gm_id": 11,
+   "final_place": 7,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.07 AM.png"
+  }
+,
+  {
+   "year": 2016,
+   "gm_id": 14,
+   "final_place": 8,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.07 AM.png"
+  }
+,
+  {
+   "year": 2016,
+   "gm_id": 9,
+   "final_place": 9,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.07 AM.png"
+  }
+,
+  {
+   "year": 2016,
+   "gm_id": 6,
+   "final_place": 10,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.07 AM.png"
+  }
+,
+  {
+   "year": 2017,
+   "gm_id": 9,
+   "final_place": 1,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.16 AM.png"
+  }
+,
+  {
+   "year": 2017,
+   "gm_id": 14,
+   "final_place": 2,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.16 AM.png"
+  }
+,
+  {
+   "year": 2017,
+   "gm_id": 19,
+   "final_place": 3,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.16 AM.png"
+  }
+,
+  {
+   "year": 2017,
+   "gm_id": 18,
+   "final_place": 4,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.16 AM.png"
+  }
+,
+  {
+   "year": 2017,
+   "gm_id": 15,
+   "final_place": 5,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.16 AM.png"
+  }
+,
+  {
+   "year": 2017,
+   "gm_id": 11,
+   "final_place": 6,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.16 AM.png"
+  }
+,
+  {
+   "year": 2017,
+   "gm_id": 8,
+   "final_place": 7,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.16 AM.png"
+  }
+,
+  {
+   "year": 2017,
+   "gm_id": 16,
+   "final_place": 8,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.16 AM.png"
+  }
+,
+  {
+   "year": 2017,
+   "gm_id": 2,
+   "final_place": 9,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.16 AM.png"
+  }
+,
+  {
+   "year": 2017,
+   "gm_id": 7,
+   "final_place": 10,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.16 AM.png"
+  }
+,
+  {
+   "year": 2018,
+   "gm_id": 18,
+   "final_place": 1,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.24 AM.png"
+  }
+,
+  {
+   "year": 2018,
+   "gm_id": 11,
+   "final_place": 2,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.24 AM.png"
+  }
+,
+  {
+   "year": 2018,
+   "gm_id": 15,
+   "final_place": 3,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.24 AM.png"
+  }
+,
+  {
+   "year": 2018,
+   "gm_id": 2,
+   "final_place": 4,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.24 AM.png"
+  }
+,
+  {
+   "year": 2018,
+   "gm_id": 19,
+   "final_place": 5,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.24 AM.png"
+  }
+,
+  {
+   "year": 2018,
+   "gm_id": 14,
+   "final_place": 6,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.24 AM.png"
+  }
+,
+  {
+   "year": 2018,
+   "gm_id": 7,
+   "final_place": 7,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.24 AM.png"
+  }
+,
+  {
+   "year": 2018,
+   "gm_id": 9,
+   "final_place": 8,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.24 AM.png"
+  }
+,
+  {
+   "year": 2018,
+   "gm_id": 16,
+   "final_place": 9,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.24 AM.png"
+  }
+,
+  {
+   "year": 2018,
+   "gm_id": 8,
+   "final_place": 10,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.24 AM.png"
+  }
+,
+  {
+   "year": 2019,
+   "gm_id": 11,
+   "final_place": 1,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.31 AM.png"
+  }
+,
+  {
+   "year": 2019,
+   "gm_id": 2,
+   "final_place": 2,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.31 AM.png"
+  }
+,
+  {
+   "year": 2019,
+   "gm_id": 13,
+   "final_place": 3,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.31 AM.png"
+  }
+,
+  {
+   "year": 2019,
+   "gm_id": 18,
+   "final_place": 4,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.31 AM.png"
+  }
+,
+  {
+   "year": 2019,
+   "gm_id": 17,
+   "final_place": 5,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.31 AM.png"
+  }
+,
+  {
+   "year": 2019,
+   "gm_id": 8,
+   "final_place": 6,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.31 AM.png"
+  }
+,
+  {
+   "year": 2019,
+   "gm_id": 12,
+   "final_place": 7,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.31 AM.png"
+  }
+,
+  {
+   "year": 2019,
+   "gm_id": 19,
+   "final_place": 8,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.31 AM.png"
+  }
+,
+  {
+   "year": 2019,
+   "gm_id": 7,
+   "final_place": 9,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.31 AM.png"
+  }
+,
+  {
+   "year": 2019,
+   "gm_id": 3,
+   "final_place": 10,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.31 AM.png"
+  }
+,
+  {
+   "year": 2019,
+   "gm_id": 9,
+   "final_place": 11,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.31 AM.png"
+  }
+,
+  {
+   "year": 2019,
+   "gm_id": 15,
+   "final_place": 12,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.31 AM.png"
+  }
+,
+  {
+   "year": 2020,
+   "gm_id": 2,
+   "final_place": 1,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.39 AM.png"
+  }
+,
+  {
+   "year": 2020,
+   "gm_id": 16,
+   "final_place": 2,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.39 AM.png"
+  }
+,
+  {
+   "year": 2020,
+   "gm_id": 18,
+   "final_place": 3,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.39 AM.png"
+  }
+,
+  {
+   "year": 2020,
+   "gm_id": 13,
+   "final_place": 4,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.39 AM.png"
+  }
+,
+  {
+   "year": 2020,
+   "gm_id": 11,
+   "final_place": 5,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.39 AM.png"
+  }
+,
+  {
+   "year": 2020,
+   "gm_id": 7,
+   "final_place": 6,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.39 AM.png"
+  }
+,
+  {
+   "year": 2020,
+   "gm_id": 19,
+   "final_place": 7,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.39 AM.png"
+  }
+,
+  {
+   "year": 2020,
+   "gm_id": 3,
+   "final_place": 8,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.39 AM.png"
+  }
+,
+  {
+   "year": 2020,
+   "gm_id": 8,
+   "final_place": 9,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.39 AM.png"
+  }
+,
+  {
+   "year": 2020,
+   "gm_id": 12,
+   "final_place": 10,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.39 AM.png"
+  }
+,
+  {
+   "year": 2020,
+   "gm_id": 9,
+   "final_place": 11,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.39 AM.png"
+  }
+,
+  {
+   "year": 2020,
+   "gm_id": 15,
+   "final_place": 12,
+   "evidence": "platform podium / final table",
+   "source_image": "Screenshot 2026-11-21 at 9.14.39 AM.png"
+  }
+,
+  {
+   "year": 2021,
+   "gm_id": 9,
+   "final_place": 1,
+   "evidence": "platform playoff bracket / placement label",
+   "source_image": "67851.png"
+  }
+,
+  {
+   "year": 2021,
+   "gm_id": 16,
+   "final_place": 2,
+   "evidence": "platform playoff bracket / placement label",
+   "source_image": "67851.png"
+  }
+,
+  {
+   "year": 2021,
+   "gm_id": 11,
+   "final_place": 3,
+   "evidence": "platform playoff bracket / placement label",
+   "source_image": "67851.png"
+  }
+,
+  {
+   "year": 2021,
+   "gm_id": 12,
+   "final_place": 4,
+   "evidence": "platform playoff bracket / placement label",
+   "source_image": "67851.png"
+  }
+,
+  {
+   "year": 2021,
+   "gm_id": 8,
+   "final_place": 5,
+   "evidence": "platform playoff bracket / placement label",
+   "source_image": "67851.png"
+  }
+,
+  {
+   "year": 2021,
+   "gm_id": 3,
+   "final_place": 6,
+   "evidence": "platform playoff bracket / placement label",
+   "source_image": "67851.png"
+  }
+,
+  {
+   "year": 2022,
+   "gm_id": 16,
+   "final_place": 1,
+   "evidence": "platform playoff bracket / placement label",
+   "source_image": "Screenshot 2026-11-21 at 9.10.06 AM.png"
+  }
+,
+  {
+   "year": 2022,
+   "gm_id": 3,
+   "final_place": 2,
+   "evidence": "platform playoff bracket / placement label",
+   "source_image": "Screenshot 2026-11-21 at 9.10.06 AM.png"
+  }
+,
+  {
+   "year": 2022,
+   "gm_id": 19,
+   "final_place": 3,
+   "evidence": "platform playoff bracket / placement label",
+   "source_image": "Screenshot 2026-11-21 at 9.10.06 AM.png"
+  }
+,
+  {
+   "year": 2022,
+   "gm_id": 9,
+   "final_place": 4,
+   "evidence": "platform playoff bracket / placement label",
+   "source_image": "Screenshot 2026-11-21 at 9.10.06 AM.png"
+  }
+,
+  {
+   "year": 2022,
+   "gm_id": 18,
+   "final_place": 5,
+   "evidence": "platform playoff bracket / placement label",
+   "source_image": "Screenshot 2026-11-21 at 9.10.06 AM.png"
+  }
+,
+  {
+   "year": 2022,
+   "gm_id": 13,
+   "final_place": 6,
+   "evidence": "platform playoff bracket / placement label",
+   "source_image": "Screenshot 2026-11-21 at 9.10.06 AM.png"
+  }
+,
+  {
+   "year": 2023,
+   "gm_id": 18,
+   "final_place": 1,
+   "evidence": "platform playoff bracket / placement label",
+   "source_image": "Screenshot 2026-11-21 at 9.09.16 AM.png"
+  }
+,
+  {
+   "year": 2023,
+   "gm_id": 19,
+   "final_place": 2,
+   "evidence": "platform playoff bracket / placement label",
+   "source_image": "Screenshot 2026-11-21 at 9.09.16 AM.png"
+  }
+,
+  {
+   "year": 2023,
+   "gm_id": 9,
+   "final_place": 3,
+   "evidence": "platform playoff bracket / placement label",
+   "source_image": "Screenshot 2026-11-21 at 9.09.16 AM.png"
+  }
+,
+  {
+   "year": 2023,
+   "gm_id": 11,
+   "final_place": 4,
+   "evidence": "platform playoff bracket / placement label",
+   "source_image": "Screenshot 2026-11-21 at 9.09.16 AM.png"
+  }
+,
+  {
+   "year": 2023,
+   "gm_id": 16,
+   "final_place": 5,
+   "evidence": "platform playoff bracket / placement label",
+   "source_image": "Screenshot 2026-11-21 at 9.09.16 AM.png"
+  }
+,
+  {
+   "year": 2023,
+   "gm_id": 8,
+   "final_place": 6,
+   "evidence": "platform playoff bracket / placement label",
+   "source_image": "Screenshot 2026-11-21 at 9.09.16 AM.png"
+  }
+,
+  {
+   "year": 2024,
+   "gm_id": 3,
+   "final_place": 1,
+   "evidence": "platform playoff bracket / placement label",
+   "source_image": "Screenshot 2026-11-21 at 9.08.20 AM.png"
+  }
+,
+  {
+   "year": 2024,
+   "gm_id": 18,
+   "final_place": 2,
+   "evidence": "platform playoff bracket / placement label",
+   "source_image": "Screenshot 2026-11-21 at 9.08.20 AM.png"
+  }
+,
+  {
+   "year": 2024,
+   "gm_id": 12,
+   "final_place": 3,
+   "evidence": "platform playoff bracket / placement label",
+   "source_image": "Screenshot 2026-11-21 at 9.08.20 AM.png"
+  }
+,
+  {
+   "year": 2024,
+   "gm_id": 4,
+   "final_place": 4,
+   "evidence": "platform playoff bracket / placement label",
+   "source_image": "Screenshot 2026-11-21 at 9.08.20 AM.png"
+  }
+,
+  {
+   "year": 2024,
+   "gm_id": 2,
+   "final_place": 5,
+   "evidence": "platform playoff bracket / placement label",
+   "source_image": "Screenshot 2026-11-21 at 9.08.20 AM.png"
+  }
+,
+  {
+   "year": 2024,
+   "gm_id": 8,
+   "final_place": 6,
+   "evidence": "platform playoff bracket / placement label",
+   "source_image": "Screenshot 2026-11-21 at 9.08.20 AM.png"
+  }
+,
+  {
+   "year": 2025,
+   "gm_id": 17,
+   "final_place": 1,
+   "evidence": "platform playoff bracket / placement label",
+   "source_image": "Screenshot 2026-11-21 at 9.07.12 AM.png"
+  }
+,
+  {
+   "year": 2025,
+   "gm_id": 1,
+   "final_place": 2,
+   "evidence": "platform playoff bracket / placement label",
+   "source_image": "Screenshot 2026-11-21 at 9.07.12 AM.png"
+  }
+,
+  {
+   "year": 2025,
+   "gm_id": 18,
+   "final_place": 3,
+   "evidence": "platform playoff bracket / placement label",
+   "source_image": "Screenshot 2026-11-21 at 9.07.12 AM.png"
+  }
+,
+  {
+   "year": 2025,
+   "gm_id": 12,
+   "final_place": 4,
+   "evidence": "platform playoff bracket / placement label",
+   "source_image": "Screenshot 2026-11-21 at 9.07.12 AM.png"
+  }
+,
+  {
+   "year": 2025,
+   "gm_id": 19,
+   "final_place": 5,
+   "evidence": "platform playoff bracket / placement label",
+   "source_image": "Screenshot 2026-11-21 at 9.07.12 AM.png"
+  }
+,
+  {
+   "year": 2025,
+   "gm_id": 13,
+   "final_place": 6,
+   "evidence": "platform playoff bracket / placement label",
+   "source_image": "Screenshot 2026-11-21 at 9.07.12 AM.png"
+  }
+
+ ],
+ "playoff_games": [
+  {
+   "id": 1,
+   "year": 2021,
+   "round": "quarterfinal",
+   "winner_gm_id": 9,
+   "loser_gm_id": 3,
+   "winner_score": 94.78,
+   "loser_score": 60.54,
+   "notes": "",
+   "source_image": "67851.png"
+  }
+,
+  {
+   "id": 2,
+   "year": 2021,
+   "round": "quarterfinal",
+   "winner_gm_id": 16,
+   "loser_gm_id": 8,
+   "winner_score": 132.94,
+   "loser_score": 100.64,
+   "notes": "",
+   "source_image": "67851.png"
+  }
+,
+  {
+   "id": 3,
+   "year": 2021,
+   "round": "semifinal",
+   "winner_gm_id": 9,
+   "loser_gm_id": 11,
+   "winner_score": 121.8,
+   "loser_score": 90.98,
+   "notes": "",
+   "source_image": "67851.png"
+  }
+,
+  {
+   "id": 4,
+   "year": 2021,
+   "round": "semifinal",
+   "winner_gm_id": 16,
+   "loser_gm_id": 12,
+   "winner_score": 90.76,
+   "loser_score": 73.08,
+   "notes": "",
+   "source_image": "67851.png"
+  }
+,
+  {
+   "id": 5,
+   "year": 2021,
+   "round": "championship",
+   "winner_gm_id": 9,
+   "loser_gm_id": 16,
+   "winner_score": 139.74,
+   "loser_score": 85.76,
+   "notes": "",
+   "source_image": "67851.png"
+  }
+,
+  {
+   "id": 6,
+   "year": 2021,
+   "round": "third_place",
+   "winner_gm_id": 11,
+   "loser_gm_id": 12,
+   "winner_score": 119.3,
+   "loser_score": 107.32,
+   "notes": "",
+   "source_image": "67855.png"
+  }
+,
+  {
+   "id": 7,
+   "year": 2021,
+   "round": "fifth_place",
+   "winner_gm_id": 8,
+   "loser_gm_id": 3,
+   "winner_score": 104.34,
+   "loser_score": 67.04,
+   "notes": "",
+   "source_image": "67855.png"
+  }
+,
+  {
+   "id": 8,
+   "year": 2022,
+   "round": "quarterfinal",
+   "winner_gm_id": 16,
+   "loser_gm_id": 13,
+   "winner_score": 141.06,
+   "loser_score": 105.12,
+   "notes": "",
+   "source_image": "Screenshot 2026-11-21 at 9.10.06 AM.png"
+  }
+,
+  {
+   "id": 9,
+   "year": 2022,
+   "round": "quarterfinal",
+   "winner_gm_id": 3,
+   "loser_gm_id": 18,
+   "winner_score": 118.4,
+   "loser_score": 97.7,
+   "notes": "",
+   "source_image": "Screenshot 2026-11-21 at 9.10.06 AM.png"
+  }
+,
+  {
+   "id": 10,
+   "year": 2022,
+   "round": "semifinal",
+   "winner_gm_id": 16,
+   "loser_gm_id": 9,
+   "winner_score": 131.18,
+   "loser_score": 83.06,
+   "notes": "",
+   "source_image": "Screenshot 2026-11-21 at 9.10.06 AM.png"
+  }
+,
+  {
+   "id": 11,
+   "year": 2022,
+   "round": "semifinal",
+   "winner_gm_id": 3,
+   "loser_gm_id": 19,
+   "winner_score": 147.0,
+   "loser_score": 104.04,
+   "notes": "",
+   "source_image": "Screenshot 2026-11-21 at 9.10.06 AM.png"
+  }
+,
+  {
+   "id": 12,
+   "year": 2022,
+   "round": "championship",
+   "winner_gm_id": 16,
+   "loser_gm_id": 3,
+   "winner_score": 164.98,
+   "loser_score": 144.68,
+   "notes": "COMMISSIONER-CONFIRMED SPECIAL RULE (2022 final, played Jan 2023): after Damar Hamlin's Jan 2, 2023 cardiac arrest suspended the Bills-Bengals Week 17 game (subsequently canceled), Volleys Cup combined fantasy points from the partial game with replacement player scores from later games. The recorded 164.98-144.68 result reflects this exceptional league adjustment, not a standard one-week matchup. Retain winner and recorded points as official league history; flag/exclude from comparisons of unadjusted single-week championship scores. Exact per-player manual adjustments are not presently documented. Source: commissioner recollection Nov 21, 2026; external NFL confirmation for suspension/cancellation.",
+   "source_image": "Screenshot 2026-11-21 at 9.10.06 AM.png"
+  }
+,
+  {
+   "id": 13,
+   "year": 2023,
+   "round": "quarterfinal",
+   "winner_gm_id": 18,
+   "loser_gm_id": 16,
+   "winner_score": 110.92,
+   "loser_score": 108.52,
+   "notes": "",
+   "source_image": "Screenshot 2026-11-21 at 9.09.16 AM.png"
+  }
+,
+  {
+   "id": 14,
+   "year": 2023,
+   "round": "quarterfinal",
+   "winner_gm_id": 9,
+   "loser_gm_id": 8,
+   "winner_score": 96.56,
+   "loser_score": 84.06,
+   "notes": "",
+   "source_image": "Screenshot 2026-11-21 at 9.09.16 AM.png"
+  }
+,
+  {
+   "id": 15,
+   "year": 2023,
+   "round": "semifinal",
+   "winner_gm_id": 18,
+   "loser_gm_id": 11,
+   "winner_score": 122.92,
+   "loser_score": 90.6,
+   "notes": "",
+   "source_image": "Screenshot 2026-11-21 at 9.09.16 AM.png"
+  }
+,
+  {
+   "id": 16,
+   "year": 2023,
+   "round": "semifinal",
+   "winner_gm_id": 19,
+   "loser_gm_id": 9,
+   "winner_score": 130.18,
+   "loser_score": 96.64,
+   "notes": "",
+   "source_image": "Screenshot 2026-11-21 at 9.09.16 AM.png"
+  }
+,
+  {
+   "id": 17,
+   "year": 2023,
+   "round": "championship",
+   "winner_gm_id": 18,
+   "loser_gm_id": 19,
+   "winner_score": 145.18,
+   "loser_score": 136.94,
+   "notes": "",
+   "source_image": "Screenshot 2026-11-21 at 9.09.16 AM.png"
+  }
+,
+  {
+   "id": 18,
+   "year": 2024,
+   "round": "quarterfinal",
+   "winner_gm_id": 12,
+   "loser_gm_id": 8,
+   "winner_score": 116.66,
+   "loser_score": 46.54,
+   "notes": "",
+   "source_image": "Screenshot 2026-11-21 at 9.08.20 AM.png"
+  }
+,
+  {
+   "id": 19,
+   "year": 2024,
+   "round": "quarterfinal",
+   "winner_gm_id": 4,
+   "loser_gm_id": 2,
+   "winner_score": 105.18,
+   "loser_score": 90.1,
+   "notes": "",
+   "source_image": "Screenshot 2026-11-21 at 9.08.20 AM.png"
+  }
+,
+  {
+   "id": 20,
+   "year": 2024,
+   "round": "semifinal",
+   "winner_gm_id": 18,
+   "loser_gm_id": 12,
+   "winner_score": 153.28,
+   "loser_score": 125.78,
+   "notes": "",
+   "source_image": "Screenshot 2026-11-21 at 9.08.20 AM.png"
+  }
+,
+  {
+   "id": 21,
+   "year": 2024,
+   "round": "semifinal",
+   "winner_gm_id": 3,
+   "loser_gm_id": 4,
+   "winner_score": 121.98,
+   "loser_score": 121.98,
+   "notes": "Platform advanced Sloths on tie; exact tiebreaker not documented",
+   "source_image": "Screenshot 2026-11-21 at 9.08.20 AM.png"
+  }
+,
+  {
+   "id": 22,
+   "year": 2024,
+   "round": "championship",
+   "winner_gm_id": 3,
+   "loser_gm_id": 18,
+   "winner_score": 153.28,
+   "loser_score": 99.12,
+   "notes": "",
+   "source_image": "Screenshot 2026-11-21 at 9.08.20 AM.png"
+  }
+,
+  {
+   "id": 23,
+   "year": 2025,
+   "round": "quarterfinal",
+   "winner_gm_id": 17,
+   "loser_gm_id": 13,
+   "winner_score": 124.96,
+   "loser_score": 102.32,
+   "notes": "",
+   "source_image": "Screenshot 2026-11-21 at 9.07.12 AM.png"
+  }
+,
+  {
+   "id": 24,
+   "year": 2025,
+   "round": "quarterfinal",
+   "winner_gm_id": 12,
+   "loser_gm_id": 19,
+   "winner_score": 113.24,
+   "loser_score": 101.3,
+   "notes": "",
+   "source_image": "Screenshot 2026-11-21 at 9.07.12 AM.png"
+  }
+,
+  {
+   "id": 25,
+   "year": 2025,
+   "round": "semifinal",
+   "winner_gm_id": 17,
+   "loser_gm_id": 18,
+   "winner_score": 97.12,
+   "loser_score": 93.04,
+   "notes": "",
+   "source_image": "Screenshot 2026-11-21 at 9.07.12 AM.png"
+  }
+,
+  {
+   "id": 26,
+   "year": 2025,
+   "round": "semifinal",
+   "winner_gm_id": 1,
+   "loser_gm_id": 12,
+   "winner_score": 139.0,
+   "loser_score": 118.72,
+   "notes": "",
+   "source_image": "Screenshot 2026-11-21 at 9.07.12 AM.png"
+  }
+,
+  {
+   "id": 27,
+   "year": 2025,
+   "round": "championship",
+   "winner_gm_id": 17,
+   "loser_gm_id": 1,
+   "winner_score": 108.52,
+   "loser_score": 96.04,
+   "notes": "",
+   "source_image": "Screenshot 2026-11-21 at 9.07.12 AM.png"
+  }
+
+ ],
+ "rankings": [
+  {
+   "gm_id": 18,
+   "scope": "completed_2015_2025",
+   "seasons": 10,
+   "games": 138,
+   "raw_ppg": 103.4881,
+   "half_ppr_est_ppg": 108.3903,
+   "era_size_normalized_ppg": 109.0944,
+   "centered_ppg": 109.1745,
+   "season_z": 0.6023,
+   "raw_rank": 1,
+   "ppr_rank": 1,
+   "normalized_rank": 1
+  }
+,
+  {
+   "gm_id": 11,
+   "scope": "completed_2015_2025",
+   "seasons": 11,
+   "games": 152,
+   "raw_ppg": 102.5742,
+   "half_ppr_est_ppg": 107.7847,
+   "era_size_normalized_ppg": 108.1187,
+   "centered_ppg": 108.4215,
+   "season_z": 0.4714,
+   "raw_rank": 2,
+   "ppr_rank": 2,
+   "normalized_rank": 2
+  }
+,
+  {
+   "gm_id": 3,
+   "scope": "completed_2015_2025",
+   "seasons": 7,
+   "games": 96,
+   "raw_ppg": 101.6731,
+   "half_ppr_est_ppg": 105.1106,
+   "era_size_normalized_ppg": 105.5903,
+   "centered_ppg": 105.5658,
+   "season_z": 0.1322,
+   "raw_rank": 3,
+   "ppr_rank": 4,
+   "normalized_rank": 5
+  }
+,
+  {
+   "gm_id": 17,
+   "scope": "completed_2015_2025",
+   "seasons": 6,
+   "games": 83,
+   "raw_ppg": 101.6535,
+   "half_ppr_est_ppg": 104.3372,
+   "era_size_normalized_ppg": 104.8432,
+   "centered_ppg": 104.6814,
+   "season_z": 0.032,
+   "raw_rank": 4,
+   "ppr_rank": 7,
+   "normalized_rank": 7
+  }
+,
+  {
+   "gm_id": 4,
+   "scope": "completed_2015_2025",
+   "seasons": 2,
+   "games": 28,
+   "raw_ppg": 100.8064,
+   "half_ppr_est_ppg": 100.8064,
+   "era_size_normalized_ppg": 99.3678,
+   "centered_ppg": 100.4381,
+   "season_z": -0.7026,
+   "raw_rank": 5,
+   "ppr_rank": 13,
+   "normalized_rank": 15
+  }
+,
+  {
+   "gm_id": 16,
+   "scope": "completed_2015_2025",
+   "seasons": 8,
+   "games": 111,
+   "raw_ppg": 100.7411,
+   "half_ppr_est_ppg": 106.91,
+   "era_size_normalized_ppg": 107.8917,
+   "centered_ppg": 107.6653,
+   "season_z": 0.441,
+   "raw_rank": 6,
+   "ppr_rank": 3,
+   "normalized_rank": 3
+  }
+,
+  {
+   "gm_id": 1,
+   "scope": "completed_2015_2025",
+   "seasons": 3,
+   "games": 42,
+   "raw_ppg": 100.3852,
+   "half_ppr_est_ppg": 100.3852,
+   "era_size_normalized_ppg": 100.3854,
+   "centered_ppg": 100.136,
+   "season_z": -0.566,
+   "raw_rank": 7,
+   "ppr_rank": 14,
+   "normalized_rank": 13
+  }
+,
+  {
+   "gm_id": 12,
+   "scope": "completed_2015_2025",
+   "seasons": 7,
+   "games": 96,
+   "raw_ppg": 100.161,
+   "half_ppr_est_ppg": 103.5985,
+   "era_size_normalized_ppg": 104.2325,
+   "centered_ppg": 104.0537,
+   "season_z": -0.0499,
+   "raw_rank": 8,
+   "ppr_rank": 9,
+   "normalized_rank": 10
+  }
+,
+  {
+   "gm_id": 2,
+   "scope": "completed_2015_2025",
+   "seasons": 9,
+   "games": 124,
+   "raw_ppg": 100.1473,
+   "half_ppr_est_ppg": 104.6715,
+   "era_size_normalized_ppg": 104.8387,
+   "centered_ppg": 105.2377,
+   "season_z": 0.0314,
+   "raw_rank": 9,
+   "ppr_rank": 5,
+   "normalized_rank": 8
+  }
+,
+  {
+   "gm_id": 9,
+   "scope": "completed_2015_2025",
+   "seasons": 11,
+   "games": 152,
+   "raw_ppg": 99.175,
+   "half_ppr_est_ppg": 104.3855,
+   "era_size_normalized_ppg": 105.8515,
+   "centered_ppg": 105.0223,
+   "season_z": 0.1673,
+   "raw_rank": 10,
+   "ppr_rank": 6,
+   "normalized_rank": 4
+  }
+,
+  {
+   "gm_id": 19,
+   "scope": "completed_2015_2025",
+   "seasons": 11,
+   "games": 152,
+   "raw_ppg": 99.1001,
+   "half_ppr_est_ppg": 104.3107,
+   "era_size_normalized_ppg": 105.0875,
+   "centered_ppg": 104.9474,
+   "season_z": 0.0648,
+   "raw_rank": 11,
+   "ppr_rank": 8,
+   "normalized_rank": 6
+  }
+,
+  {
+   "gm_id": 8,
+   "scope": "completed_2015_2025",
+   "seasons": 11,
+   "games": 152,
+   "raw_ppg": 98.1834,
+   "half_ppr_est_ppg": 103.3939,
+   "era_size_normalized_ppg": 104.4896,
+   "centered_ppg": 104.0307,
+   "season_z": -0.0154,
+   "raw_rank": 12,
+   "ppr_rank": 11,
+   "normalized_rank": 9
+  }
+,
+  {
+   "gm_id": 13,
+   "scope": "completed_2015_2025",
+   "seasons": 7,
+   "games": 96,
+   "raw_ppg": 96.5242,
+   "half_ppr_est_ppg": 99.9617,
+   "era_size_normalized_ppg": 100.3649,
+   "centered_ppg": 100.4168,
+   "season_z": -0.5688,
+   "raw_rank": 13,
+   "ppr_rank": 15,
+   "normalized_rank": 14
+  }
+,
+  {
+   "gm_id": 10,
+   "scope": "completed_2015_2025",
+   "seasons": 1,
+   "games": 14,
+   "raw_ppg": 95.4829,
+   "half_ppr_est_ppg": 95.4829,
+   "era_size_normalized_ppg": 95.4355,
+   "centered_ppg": 96.2305,
+   "season_z": -1.2301,
+   "raw_rank": 14,
+   "ppr_rank": 18,
+   "normalized_rank": 18
+  }
+,
+  {
+   "gm_id": 14,
+   "scope": "completed_2015_2025",
+   "seasons": 4,
+   "games": 56,
+   "raw_ppg": 95.2979,
+   "half_ppr_est_ppg": 103.5479,
+   "era_size_normalized_ppg": 104.191,
+   "centered_ppg": 104.496,
+   "season_z": -0.0555,
+   "raw_rank": 15,
+   "ppr_rank": 10,
+   "normalized_rank": 11
+  }
+,
+  {
+   "gm_id": 7,
+   "scope": "completed_2015_2025",
+   "seasons": 6,
+   "games": 82,
+   "raw_ppg": 93.1839,
+   "half_ppr_est_ppg": 101.4339,
+   "era_size_normalized_ppg": 102.2692,
+   "centered_ppg": 102.7537,
+   "season_z": -0.3133,
+   "raw_rank": 16,
+   "ppr_rank": 12,
+   "normalized_rank": 12
+  }
+,
+  {
+   "gm_id": 15,
+   "scope": "completed_2015_2025",
+   "seasons": 6,
+   "games": 82,
+   "raw_ppg": 88.9207,
+   "half_ppr_est_ppg": 97.1707,
+   "era_size_normalized_ppg": 97.5542,
+   "centered_ppg": 98.2863,
+   "season_z": -0.9459,
+   "raw_rank": 17,
+   "ppr_rank": 16,
+   "normalized_rank": 16
+  }
+,
+  {
+   "gm_id": 6,
+   "scope": "completed_2015_2025",
+   "seasons": 2,
+   "games": 28,
+   "raw_ppg": 88.1379,
+   "half_ppr_est_ppg": 96.3879,
+   "era_size_normalized_ppg": 96.7609,
+   "centered_ppg": 97.3367,
+   "season_z": -1.0523,
+   "raw_rank": 18,
+   "ppr_rank": 17,
+   "normalized_rank": 17
+  }
+,
+  {
+   "gm_id": 18,
+   "scope": "including_2026_week10",
+   "seasons": 11,
+   "games": 148,
+   "raw_ppg": 103.9945,
+   "half_ppr_est_ppg": 108.5654,
+   "era_size_normalized_ppg": 109.1137,
+   "centered_ppg": 109.1956,
+   "season_z": 0.6049,
+   "raw_rank": 1,
+   "ppr_rank": 1,
+   "normalized_rank": 1
+  }
+,
+  {
+   "gm_id": 11,
+   "scope": "including_2026_week10",
+   "seasons": 12,
+   "games": 162,
+   "raw_ppg": 103.6725,
+   "half_ppr_est_ppg": 108.5614,
+   "era_size_normalized_ppg": 108.7632,
+   "centered_ppg": 109.0665,
+   "season_z": 0.5579,
+   "raw_rank": 2,
+   "ppr_rank": 2,
+   "normalized_rank": 2
+  }
+,
+  {
+   "gm_id": 3,
+   "scope": "including_2026_week10",
+   "seasons": 8,
+   "games": 106,
+   "raw_ppg": 101.7811,
+   "half_ppr_est_ppg": 104.8943,
+   "era_size_normalized_ppg": 105.1944,
+   "centered_ppg": 105.1654,
+   "season_z": 0.0791,
+   "raw_rank": 3,
+   "ppr_rank": 4,
+   "normalized_rank": 5
+  }
+,
+  {
+   "gm_id": 17,
+   "scope": "including_2026_week10",
+   "seasons": 7,
+   "games": 93,
+   "raw_ppg": 101.2327,
+   "half_ppr_est_ppg": 103.6278,
+   "era_size_normalized_ppg": 103.9381,
+   "centered_ppg": 103.7742,
+   "season_z": -0.0894,
+   "raw_rank": 4,
+   "ppr_rank": 9,
+   "normalized_rank": 10
+  }
+,
+  {
+   "gm_id": 4,
+   "scope": "including_2026_week10",
+   "seasons": 2,
+   "games": 28,
+   "raw_ppg": 100.8064,
+   "half_ppr_est_ppg": 100.8064,
+   "era_size_normalized_ppg": 99.3678,
+   "centered_ppg": 100.4381,
+   "season_z": -0.7026,
+   "raw_rank": 5,
+   "ppr_rank": 14,
+   "normalized_rank": 15
+  }
+,
+  {
+   "gm_id": 16,
+   "scope": "including_2026_week10",
+   "seasons": 8,
+   "games": 111,
+   "raw_ppg": 100.7411,
+   "half_ppr_est_ppg": 106.91,
+   "era_size_normalized_ppg": 107.8917,
+   "centered_ppg": 107.6653,
+   "season_z": 0.441,
+   "raw_rank": 6,
+   "ppr_rank": 3,
+   "normalized_rank": 3
+  }
+,
+  {
+   "gm_id": 2,
+   "scope": "including_2026_week10",
+   "seasons": 10,
+   "games": 134,
+   "raw_ppg": 100.4079,
+   "half_ppr_est_ppg": 104.5945,
+   "era_size_normalized_ppg": 104.6417,
+   "centered_ppg": 105.0069,
+   "season_z": 0.005,
+   "raw_rank": 7,
+   "ppr_rank": 6,
+   "normalized_rank": 8
+  }
+,
+  {
+   "gm_id": 12,
+   "scope": "including_2026_week10",
+   "seasons": 8,
+   "games": 106,
+   "raw_ppg": 100.2919,
+   "half_ppr_est_ppg": 103.4051,
+   "era_size_normalized_ppg": 103.8475,
+   "centered_ppg": 103.6762,
+   "season_z": -0.1016,
+   "raw_rank": 8,
+   "ppr_rank": 11,
+   "normalized_rank": 11
+  }
+,
+  {
+   "gm_id": 1,
+   "scope": "including_2026_week10",
+   "seasons": 4,
+   "games": 52,
+   "raw_ppg": 100.0231,
+   "half_ppr_est_ppg": 100.0231,
+   "era_size_normalized_ppg": 99.7673,
+   "centered_ppg": 99.5342,
+   "season_z": -0.649,
+   "raw_rank": 9,
+   "ppr_rank": 15,
+   "normalized_rank": 14
+  }
+,
+  {
+   "gm_id": 9,
+   "scope": "including_2026_week10",
+   "seasons": 12,
+   "games": 162,
+   "raw_ppg": 99.9538,
+   "half_ppr_est_ppg": 104.8427,
+   "era_size_normalized_ppg": 106.1182,
+   "centered_ppg": 105.3478,
+   "season_z": 0.203,
+   "raw_rank": 10,
+   "ppr_rank": 5,
+   "normalized_rank": 4
+  }
+,
+  {
+   "gm_id": 19,
+   "scope": "including_2026_week10",
+   "seasons": 12,
+   "games": 162,
+   "raw_ppg": 99.39,
+   "half_ppr_est_ppg": 104.2789,
+   "era_size_normalized_ppg": 104.9185,
+   "centered_ppg": 104.784,
+   "season_z": 0.0421,
+   "raw_rank": 11,
+   "ppr_rank": 7,
+   "normalized_rank": 7
+  }
+,
+  {
+   "gm_id": 8,
+   "scope": "including_2026_week10",
+   "seasons": 12,
+   "games": 162,
+   "raw_ppg": 99.3211,
+   "half_ppr_est_ppg": 104.21,
+   "era_size_normalized_ppg": 105.1316,
+   "centered_ppg": 104.7151,
+   "season_z": 0.0707,
+   "raw_rank": 12,
+   "ppr_rank": 8,
+   "normalized_rank": 6
+  }
+,
+  {
+   "gm_id": 13,
+   "scope": "including_2026_week10",
+   "seasons": 8,
+   "games": 106,
+   "raw_ppg": 97.876,
+   "half_ppr_est_ppg": 100.9892,
+   "era_size_normalized_ppg": 101.2036,
+   "centered_ppg": 101.2603,
+   "season_z": -0.4563,
+   "raw_rank": 13,
+   "ppr_rank": 13,
+   "normalized_rank": 13
+  }
+,
+  {
+   "gm_id": 10,
+   "scope": "including_2026_week10",
+   "seasons": 1,
+   "games": 14,
+   "raw_ppg": 95.4829,
+   "half_ppr_est_ppg": 95.4829,
+   "era_size_normalized_ppg": 95.4355,
+   "centered_ppg": 96.2305,
+   "season_z": -1.2301,
+   "raw_rank": 14,
+   "ppr_rank": 18,
+   "normalized_rank": 18
+  }
+,
+  {
+   "gm_id": 14,
+   "scope": "including_2026_week10",
+   "seasons": 4,
+   "games": 56,
+   "raw_ppg": 95.2979,
+   "half_ppr_est_ppg": 103.5479,
+   "era_size_normalized_ppg": 104.191,
+   "centered_ppg": 104.496,
+   "season_z": -0.0555,
+   "raw_rank": 15,
+   "ppr_rank": 10,
+   "normalized_rank": 9
+  }
+,
+  {
+   "gm_id": 5,
+   "scope": "including_2026_week10",
+   "seasons": 1,
+   "games": 10,
+   "raw_ppg": 94.552,
+   "half_ppr_est_ppg": 94.552,
+   "era_size_normalized_ppg": 93.3073,
+   "centered_ppg": 93.0563,
+   "season_z": -1.5156,
+   "raw_rank": 16,
+   "ppr_rank": 19,
+   "normalized_rank": 19
+  }
+,
+  {
+   "gm_id": 7,
+   "scope": "including_2026_week10",
+   "seasons": 6,
+   "games": 82,
+   "raw_ppg": 93.1839,
+   "half_ppr_est_ppg": 101.4339,
+   "era_size_normalized_ppg": 102.2692,
+   "centered_ppg": 102.7537,
+   "season_z": -0.3133,
+   "raw_rank": 17,
+   "ppr_rank": 12,
+   "normalized_rank": 12
+  }
+,
+  {
+   "gm_id": 15,
+   "scope": "including_2026_week10",
+   "seasons": 6,
+   "games": 82,
+   "raw_ppg": 88.9207,
+   "half_ppr_est_ppg": 97.1707,
+   "era_size_normalized_ppg": 97.5542,
+   "centered_ppg": 98.2863,
+   "season_z": -0.9459,
+   "raw_rank": 18,
+   "ppr_rank": 16,
+   "normalized_rank": 16
+  }
+,
+  {
+   "gm_id": 6,
+   "scope": "including_2026_week10",
+   "seasons": 2,
+   "games": 28,
+   "raw_ppg": 88.1379,
+   "half_ppr_est_ppg": 96.3879,
+   "era_size_normalized_ppg": 96.7609,
+   "centered_ppg": 97.3367,
+   "season_z": -1.0523,
+   "raw_rank": 19,
+   "ppr_rank": 17,
+   "normalized_rank": 17
+  }
+
+ ],
+ "historical_annotations": [
+  {
+   "annotation_id": 1,
+   "year": 2022,
+   "subject": "Nicolas Mouchel vs Benjamin Hall championship",
+   "category": "special_scoring_rule",
+   "detail": "COMMISSIONER-CONFIRMED SPECIAL RULE (2022 final, played Jan 2023): after Damar Hamlin's Jan 2, 2023 cardiac arrest suspended the Bills-Bengals Week 17 game (subsequently canceled), Volleys Cup combined fantasy points from the partial game with replacement player scores from later games. The recorded 164.98-144.68 result reflects this exceptional league adjustment, not a standard one-week matchup. Retain winner and recorded points as official league history; flag/exclude from comparisons of unadjusted single-week championship scores. Exact per-player manual adjustments are not presently documented. Source: commissioner recollection Nov 21, 2026; external NFL confirmation for suspension/cancellation.",
+   "source": "Commissioner statement, 2026-11-21; NFL 2023-01-05 cancellation announcement",
+   "confirmed_by_commissioner": 1
+  }
+
+ ],
+ "meta": {
+  "created": "2026-11-22",
+  "official_seasons": "2015–2025",
+  "snapshot": "2026 week 10",
+  "playoff_spots": 6
+ }
+
+}
+</script>
+<script id="currentData" type="application/json">{
+  "year": 2026,
+  "as_of_week": 10,
+  "status": "provisional",
+  "source": "ESPN screenshot, commissioner-confirmed",
+  "playoff_spots": 6,
+  "regular_season_weeks": 14,
+  "standings": [
+    {
+      "gm_id": 11,
+      "team": "Westside Wolves",
+      "wins": 7,
+      "losses": 3,
+      "ties": 0,
+      "pf": 1203.66,
+      "pa": 1050.06
+    }
+,
+    {
+      "gm_id": 8,
+      "team": "Low Country Cougars",
+      "wins": 7,
+      "losses": 3,
+      "ties": 0,
+      "pf": 1166.14,
+      "pa": 1058.8
+    }
+,
+    {
+      "gm_id": 9,
+      "team": "Damn S3xy gOATs",
+      "wins": 7,
+      "losses": 3,
+      "ties": 0,
+      "pf": 1117.92,
+      "pa": 1027.46
+    }
+,
+    {
+      "gm_id": 13,
+      "team": "Bedford Bulls",
+      "wins": 6,
+      "losses": 4,
+      "ties": 0,
+      "pf": 1108.54,
+      "pa": 962.94
+    }
+,
+    {
+      "gm_id": 3,
+      "team": "The Sloths",
+      "wins": 6,
+      "losses": 4,
+      "ties": 0,
+      "pf": 1028.18,
+      "pa": 978.32
+    }
+,
+    {
+      "gm_id": 18,
+      "team": "Williamsburg Squirrels",
+      "wins": 5,
+      "losses": 5,
+      "ties": 0,
+      "pf": 1109.82,
+      "pa": 1083.08
+    }
+,
+    {
+      "gm_id": 19,
+      "team": "Fort Greene Foxes",
+      "wins": 5,
+      "losses": 5,
+      "ties": 0,
+      "pf": 1037.96,
+      "pa": 1064.24
+    }
+,
+    {
+      "gm_id": 12,
+      "team": "💩 Bees",
+      "wins": 4,
+      "losses": 6,
+      "ties": 0,
+      "pf": 1015.48,
+      "pa": 1118.88
+    }
+,
+    {
+      "gm_id": 1,
+      "team": "Screaming Alpacas",
+      "wins": 4,
+      "losses": 6,
+      "ties": 0,
+      "pf": 985.02,
+      "pa": 1162.56
+    }
+,
+    {
+      "gm_id": 5,
+      "team": "Lord Commander Krumbs XVIII",
+      "wins": 4,
+      "losses": 6,
+      "ties": 0,
+      "pf": 945.52,
+      "pa": 1074.36
+    }
+,
+    {
+      "gm_id": 2,
+      "team": "Duck's Ducks",
+      "wins": 3,
+      "losses": 7,
+      "ties": 0,
+      "pf": 1036.4,
+      "pa": 1022.86
+    }
+,
+    {
+      "gm_id": 17,
+      "team": "Brunswick Torenados",
+      "wins": 2,
+      "losses": 8,
+      "ties": 0,
+      "pf": 977.4,
+      "pa": 1128.48
+    }
+
+  ]
+}
+</script>
+<script>
+(()=>{'use strict';
+const HIST=JSON.parse(document.getElementById('historyData').textContent);const BASE=JSON.parse(document.getElementById('currentData').textContent);const allg=HIST.gms;const gid=new Map(allg.map(g=>[g.gm_id,g.name]));const allYears=HIST.seasons.slice().sort((a,b)=>a.year-b.year);const finals=HIST.postseason_placements;const entries=HIST.season_entries;const games=HIST.playoff_games;const rankings=HIST.rankings.filter(r=>r.scope==='completed_2015_2025');const champCount={};for(const p of finals.filter(x=>x.final_place===1))champCount[p.gm_id]=(champCount[p.gm_id]||0)+1;
+let current=structuredClone(BASE);try{let l=localStorage.getItem('volleys_current_2026');if(l)current=validate(JSON.parse(l))}catch(e){console.warn(e)}
+const $=id=>document.getElementById(id),name=id=>gid.get(Number(id))||'Unknown GM',esc=s=>String(s??'').replace(/[&<>"']/g,k=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[k])),num=(v,d=2)=>Number(v||0).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d}),pct=v=>num(100*v,1)+'%',matchGM=(a,b)=>a.gm_id===b.gm_id;const getRow=(y,id)=>entries.find(e=>e.year===y&&e.gm_id===id);const getGMRec=id=>{let a=entries.filter(e=>e.gm_id===id&&e.is_final);let W=a.reduce((s,e)=>s+e.wins,0),L=a.reduce((s,e)=>s+e.losses,0),PF=a.reduce((s,e)=>s+e.points_for,0),PA=a.reduce((s,e)=>s+e.points_against,0),G=a.reduce((s,e)=>s+e.games,0),n=a.length,play=a.filter(e=>finals.some(p=>p.year===e.year&&p.gm_id===id&&p.final_place<= (e.year<=2018?4:6))).length;return {W,L,PF,PA,G,n,play,winpct:W/(W+L||1),pa:G?PA/G:0,pfg:G?PF/G:0,playoffs:n?play/n:0,titles:champCount[id]||0}};const statsByGM=new Map(allg.map(g=>[g.gm_id,getGMRec(g.gm_id)]));const rk=new Map(rankings.map(r=>[r.gm_id,r]));
+let activePage='home';function navigate(page){activePage=page;document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===page));document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id==='page-'+page));history.replaceState(null,'','#'+page);window.scrollTo({top:0,behavior:'instant'});if(page==='race')renderRace();if(page==='admin')renderAdmin();if(page==='gms')renderGMs()};document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>navigate(b.dataset.page)));
+function table(headers,rows){return '<table><thead><tr>'+headers.map(h=>'<th'+(h.right?' class="num"':'')+'>'+esc(h.name||h)+'</th>').join('')+'</tr></thead><tbody>'+rows.join('')+'</tbody></table>'};function td(text,right=false){return '<td'+(right?' class="num"':'')+'>'+text+'</td>'};function tr(cells,attrs=''){return '<tr '+attrs+'>'+cells.join('')+'</tr>'}
+const champions=Object.entries(champCount).sort((a,b)=>b[1]-a[1]||name(a[0]).localeCompare(name(b[0])));
+function initHome(){let finished=allYears.filter(s=>s.status==='final');$('heroStats').innerHTML=[[finished.length,'Completed seasons'],[allg.length,'All-time GMs'],[champions.length,'Different champions'],[current.as_of_week,'2026 through week']].map(([v,l])=>`<div class="stat"><b>${v}</b><span>${l}</span></div>`).join('');const leaders=[{title:'The title collector',gm:'Lachlan White',value:'3 championships',text:'Three titles and a losing career regular-season record.'},{title:'Most regular-season wins',gm:'Luke Woodard',value:'82 victories',text:'The long game belongs to the Westside Wolves.'},{title:'The bridesmaid',gm:'Tommy Top',value:'4 podiums · 0 rings',text:'Silver once, bronze three times. Still hunting the title.'},{title:'The scoring race',gm:(()=>{let top=allg.map(g=>({g,score:careerRank(g.gm_id,true).normalized_ppg})).filter(x=>x.score>0).sort((a,b)=>b.score-a.score)[0];return top?top.g.name:'—'})(),value:(()=>{let vals=allg.map(g=>careerRank(g.gm_id,true).normalized_ppg);return num(Math.max(...vals))+' normalized PF/G'})(),text:'Latest published standings included; +9.34 for standard-scoring games.'},{title:'The Bees conundrum',gm:'Matthew Blainey',value:'0 finals in 7 seasons',text:'2021, 2024 and 2025 playoffs. Still no championship appearance.'},{title:'The narrowest escape',gm:'Benjamin Hall',value:'121.98–121.98',text:'Advanced from the tied 2024 semifinal, then won the title.'}];$('homeCards').innerHTML=leaders.map(c=>`<div class="panel soft"><div class="label">${c.title}</div><div class="big">${esc(c.value)}</div><b>${esc(c.gm)}</b><p class="desc">${esc(c.text)}</p></div>`).join('');$('homeChamps').innerHTML='<h3>All-time championships</h3>'+champions.map(([id,v])=>`<div class="barrow"><span>${esc(name(id))}</span><div class="track"><div class="fill" style="width:${v/3*100}%;background:linear-gradient(90deg,#c99e4f,#f3d88a)"></div></div><b>${v}</b></div>`).join('');let p=finals.filter(f=>f.final_place===1).sort((a,b)=>b.year-a.year);$('homeRecent').innerHTML='<h3>Recent winners</h3>'+p.slice(0,6).map(f=>`<div class="rowline"><span>${f.year}</span><b>🏆 ${esc(name(f.gm_id))}</b></div>`).join('')+'<button class="btn ghost" id="openTrophy" style="margin-top:12px">Visit trophy room →</button>';$('openTrophy').onclick=()=>navigate('trophies')}
+let tyear=2025;function renderTrophy(){const p=finals.filter(x=>x.year===tyear).sort((a,b)=>a.final_place-b.final_place);const g=games.filter(x=>x.year===tyear&&x.round==='final')[0];const t=id=>{let e=getRow(tyear,id);return e?e.historical_team_name:''};const podium=rank=>{let r=p.find(x=>x.final_place===rank);if(!r)return {name:'Not recorded',team:''};return {name:name(r.gm_id),team:t(r.gm_id)}};let a=podium(1),b=podium(2),d=podium(3);$('trophyDetail').innerHTML=`<div style="text-align:center"><span class="tag gold">${tyear} CHAMPIONSHIP</span><h2 style="margin:16px 0 0">The ${tyear} Podium</h2></div><div class="podium"><div class="pedestal second"><div class="medal">🥈</div><strong>${esc(b.name)}</strong><small>${esc(b.team)}</small><div class="tag" style="margin-top:12px">2nd place</div></div><div class="pedestal first"><div class="medal">🏆</div><strong>${esc(a.name)}</strong><small>${esc(a.team)}</small><div class="tag gold" style="margin-top:15px">CHAMPION</div></div><div class="pedestal third"><div class="medal">🥉</div><strong>${esc(d.name)}</strong><small>${esc(d.team)}</small><div class="tag" style="margin-top:11px">3rd place</div></div></div><p style="text-align:center" class="note">${g?`Final score: ${esc(name(g.winner_gm_id))} ${num(g.winner_score)} — ${num(g.loser_score)} ${esc(name(g.loser_gm_id))}`:'Earlier championship game scores are not retained in the source archive.'}</p>${tyear===2022?'<div class="alert">2022 scoring exception: the final used a special combination of partially earned Bills–Bengals points and replacement-game scores following the suspended NFL game. The official result remains valid, but these totals are not ordinary single-week fantasy scores.</div>':''}`;const champRows=allYears.filter(y=>y.status==='final').sort((a,b)=>b.year-a.year).map(y=>{let r=finals.filter(x=>x.year===y.year);return tr([td(String(y.year)),...[1,2,3].map(place=>td(esc(name(r.find(p=>p.final_place===place)?.gm_id))))],`data-trophy="${y.year}"`)});$('champsTable').innerHTML=table(['Season','🏆 Gold','🥈 Silver','🥉 Bronze'],champRows);document.querySelectorAll('[data-trophy]').forEach(el=>el.onclick=()=>{tyear=Number(el.dataset.trophy);$('trophyYear').value=tyear;renderTrophy()})}
+function initTrophy(){$('trophyYear').innerHTML=allYears.filter(x=>x.status==='final').sort((a,b)=>b.year-a.year).map(x=>`<option value="${x.year}">${x.year}</option>`).join('');$('trophyYear').value=tyear;$('trophyYear').onchange=e=>{tyear=Number(e.target.value);renderTrophy()};function step(n){tyear=Math.max(2015,Math.min(2025,tyear+n));$('trophyYear').value=tyear;renderTrophy()}$('previousTrophy').onclick=()=>step(-1);$('nextTrophy').onclick=()=>step(1);renderTrophy()}
+// The commissioner-approved all-time scoring model. No league-size adjustment or season z-score.
+// Estimate each pre-2022 standard-scoring game as +9.34 points on a half-PPR-equivalent scale.
+const STANDARD_TO_HALF_PPR_UPLIFT = 9.34;
+function careerRank(id, includeLatest){
+ const finished=entries.filter(e=>e.gm_id===id&&e.is_final);
+ const selected=finished.map(e=>({year:e.year,points_for:e.points_for,games:e.games}));
+ if(includeLatest && current.as_of_week>0){
+  const r=current.standings.find(r=>r.gm_id===id);
+  if(r)selected.push({year:current.year,points_for:r.pf,games:current.as_of_week});
+ }
+ let PF=0,G=0,standardGames=0;
+ for(const e of selected){
+  const yy=HIST.seasons.find(s=>s.year===e.year);
+  if(!yy||!e.games)continue;
+  G+=e.games;PF+=e.points_for;
+  if(yy.scoring_format==='standard')standardGames+=e.games;
+ }
+ const raw_ppg=G?PF/G:0;
+ const normalized_ppg=G?(PF+standardGames*STANDARD_TO_HALF_PPR_UPLIFT)/G:0;
+ return {games:G,seasons:selected.length,standard_games:standardGames,raw_ppg,normalized_ppg,half_ppr_est_ppg:normalized_ppg};
+}
+function rankingSeasonText(){return Number(current.as_of_week)===14&&current.status==='final'?'2026 final standings':`2026 through Week ${current.as_of_week} (provisional)`;}
+function renderGMs(){
+ const include=$('rankScope').value==='latest',metric=$('gmMetric').value,filter=$('gmFilter').value;
+ const scope=include?rankingSeasonText():'completed 2015–2025';
+ const disclaimer=include?'2026 records are provisional, and values update whenever published standings update.':'This view uses completed seasons only and excludes 2026.';
+ $('rankingCoverage').innerHTML=`<b>Ranking includes: ${esc(scope)}</b> <span class="muted"> · ${esc(disclaimer)}</span>`;
+ const rankingByGM=new Map(allg.map(g=>[g.gm_id,careerRank(g.gm_id,include)]));
+ function stat(g){let o=Object.assign({},statsByGM.get(g.gm_id));if(include){let row=current.standings.find(r=>r.gm_id===g.gm_id);if(row){o.W+=row.wins;o.L+=row.losses;o.PF+=row.pf;o.PA+=row.pa;o.G+=current.as_of_week;o.n+=1;o.winpct=o.W/(o.W+o.L||1);o.pfg=o.PF/o.G;o.pa=o.PA/o.G;o.playoffs=o.play/o.n;}}return o;}
+ const ranked=allg.filter(g=>rankingByGM.get(g.gm_id).games>0);
+ const get=g=>{const rr=rankingByGM.get(g.gm_id),t=stat(g);return ['raw_ppg','normalized_ppg'].includes(metric)?rr[metric]:metric==='wins'?t.W:t[metric]??0};
+ ranked.sort((a,b)=>get(b)-get(a)||name(a.gm_id).localeCompare(name(b.gm_id)));
+ if(filter!=='all'){
+  let id=Number(filter),g=allg.find(g=>g.gm_id===id),st=stat(g),rr=rankingByGM.get(id);
+  const alias=HIST.team_aliases.filter(a=>a.gm_id===id).sort((a,b)=>a.year-b.year);
+  const ses=entries.filter(e=>e.gm_id===id&&e.is_final).sort((a,b)=>b.year-a.year);
+  const currentRow=include?current.standings.find(r=>r.gm_id===id):null;
+  let srow=currentRow?`<div class="rowline"><span>${esc(rankingSeasonText())}</span><b>${currentRow.wins}–${currentRow.losses} · ${num(currentRow.pf/current.as_of_week)} PF/G</b></div>`:'';
+  $('gmsContent').innerHTML=`<div class="profile"><div class="panel hero-profile"><div class="eyebrow">GM profile</div><h2 style="margin-top:10px">${esc(g.name)}</h2><div class="facts"><span class="fact">${st.n} seasons${include?' (incl. provisional)':''}</span><span class="fact">${st.W}–${st.L} career record</span><span class="fact">${st.titles} championships</span><span class="fact">${statsByGM.get(id).play} confirmed playoff appearances</span></div></div><div class="panel"><h3>Career by the numbers</h3>${[['Normalized PF / game (primary)',num(rr.normalized_ppg)],['Raw PF / game (secondary)',num(rr.raw_ppg)],['Win percentage',pct(st.winpct)],['Raw PA / game',num(st.pa)],['Standard-scoring adjustment',`${rr.standard_games} games × +9.34 PPG`]].map(v=>`<div class="rowline"><span>${v[0]}</span><b>${v[1]}</b></div>`).join('')}<p class="note">${esc(scope)}. Playoff appearances count completed seasons only.</p></div><div class="panel"><h3>Team names through the years</h3>${alias.map(a=>`<div class="rowline"><span>${a.year}</span><b style="text-align:right">${esc(a.name)}</b></div>`).join('')}</div><div class="panel span2"><h3>Season history</h3>${srow}<div class="tablewrap">${table(['Year','Team',{name:'W–L'},{name:'PF/G',right:true},{name:'PA/G',right:true},'Finish'],ses.map(e=>{let p=finals.find(p=>p.year===e.year&&p.gm_id===id);return tr([td(String(e.year)),td(esc(e.historical_team_name)),td(`${e.wins}–${e.losses}`),td(num(e.points_for/e.games),true),td(num(e.points_against/e.games),true),td(p&&p.final_place===1?'🏆 Champion':p&&p.final_place===2?'🥈 Runner-up':p&&p.final_place===3?'🥉 Third':p?'Playoffs':'—')])}))}</div></div></div>`;
+  return;
+ }
+ const rows=ranked.map((g,i)=>{
+  const st=stat(g),r=rankingByGM.get(g.gm_id),val=get(g);
+  return tr([td(String(i+1)),td(`<b>${esc(g.name)}</b>`),td(String(st.n),true),td(`${st.W}–${st.L}`,true),td(String(st.titles),true),td(`${statsByGM.get(g.gm_id).play}/${statsByGM.get(g.gm_id).n}`,true),td(`<b>${num(r.normalized_ppg)}</b>`,true),td(num(r.raw_ppg),true),td(['winpct','playoffs'].includes(metric)?pct(val):['raw_ppg','normalized_ppg','pa'].includes(metric)?num(val):String(val),true)],`data-gm="${g.gm_id}"`);
+ });
+ $('gmsContent').innerHTML=`<div class="tablewrap">${table(['Rank','General Manager',{name:'Seasons',right:true},{name:'W–L',right:true},{name:'Titles',right:true},{name:'Playoffs',right:true},{name:'Norm PF/G',right:true},{name:'Raw PF/G',right:true},{name:'Sort metric',right:true}],rows)}</div><p class="note">${esc(scope)}. Default includes the latest published scoring. Normalized PF/G = (career PF + 9.34 × standard-scoring games) ÷ career games, without league-size adjustment; raw PF/G is shown separately. The +9.34 uplift is an estimate, not actual receptions. Playoff counts include completed seasons only.</p>`;
+ document.querySelectorAll('[data-gm]').forEach(row=>row.onclick=()=>{$('gmFilter').value=row.dataset.gm;renderGMs()});
+}
+function initGMs(){$('gmFilter').innerHTML='<option value="all">All GMs</option>'+allg.map(g=>`<option value="${g.gm_id}">${esc(g.name)}</option>`).join('');$('gmFilter').onchange=renderGMs;$('gmMetric').onchange=renderGMs;$('rankScope').onchange=renderGMs;renderGMs()}
+function renderSeason(){
+ const year=Number($('seasonYear').value);
+ if(year===2026){
+  // The live 2026 source is data/current.json, shared with GM Rankings and Playoff Race.
+  // Do not use the embedded historical Week 10 entries for this season.
+  const completed=Number(current.as_of_week),total=Number(current.regular_season_weeks||14);
+  const done=completed>=total,remaining=Math.max(0,total-completed);
+  const rows=current.standings.slice().sort((a,b)=>b.wins-a.wins||b.pf-a.pf).map((r,i)=>tr([
+   td(String(i+1)),
+   td(esc(r.team)+'<br><span class="muted" style="font-size:11px">'+esc(name(r.gm_id))+'</span>'),
+   td(`${r.wins}–${r.losses}${r.ties?'–'+r.ties:''}`,true),
+   td(num(r.pf),true),td(num(r.pa),true),
+   td(num(completed?r.pf/completed:0),true),td(num(completed?r.pa/completed:0),true)
+  ]));
+  $('seasonTags').innerHTML=`<span class="tag ${done?'green':'gold'}">${done?'REGULAR SEASON COMPLETE':'PROVISIONAL'}</span><span class="tag">Through Week ${completed} of ${total}</span>`;
+  $('seasonSummary').innerHTML=`<div class="facts"><div class="fact">ESPN</div><div class="fact">Half-PPR</div><div class="fact">${current.standings.length} teams</div><div class="fact">${total}-game regular season</div></div><p class="note">${done?`All ${total} regular-season weeks are complete. Final playoff placements and results have not yet been added to the historical archive.`:`Standings through completed Week ${completed}, automatically synced from ESPN. ${remaining} regular-season week${remaining===1?'':'s'} remaining (Week${remaining===1?'':'s'} ${completed+1}${remaining>1?'–'+total:''}).`}</p>`;
+  $('seasonTable').innerHTML=table(['#','Team / GM',{name:'W–L',right:true},{name:'PF',right:true},{name:'PA',right:true},{name:'PF/G',right:true},{name:'PA/G',right:true}],rows);
+  $('seasonPlayoffs').innerHTML='<p class="note">The 2026 playoff bracket and final placements are not yet archived. Regular-season records above update automatically; postseason results require a separate archive update.</p>';
+  return;
+ }
+ // Historical seasons (2015–2025) remain unchanged and always use their verified archive.
+let season=allYears.find(x=>x.year===year),final=season.status==='final';let rows=entries.filter(e=>e.year===year).sort((a,b)=>b.wins-a.wins||b.points_for-a.points_for).map((e,i)=>tr([td(String(i+1)),td(esc(e.historical_team_name)+'<br><span class="muted" style="font-size:11px">'+esc(name(e.gm_id))+'</span>'),td(`${e.wins}–${e.losses}`,true),td(num(e.points_for),true),td(num(e.points_against),true),td(num(e.points_for/e.games),true),td(num(e.points_against/e.games),true)]));$('seasonTags').innerHTML=`<span class="tag ${final?'green':'gold'}">${final?'FINAL':'PROVISIONAL'}</span>`;$('seasonSummary').innerHTML=`<div class="facts"><div class="fact">${esc(season.platform)}</div><div class="fact">${esc(season.scoring_format==='half_PPR'?'Half-PPR':'Standard scoring')}</div><div class="fact">${season.league_size} teams</div><div class="fact">${season.regular_season_games}-game schedule${!final?' · snapshot only':''}</div></div><p class="note">${final?'Season standings and podium finalized.':'This historical season has provisional records.'}</p>`;$('seasonTable').innerHTML=table(['#','Team / GM',{name:'W–L',right:true},{name:'PF',right:true},{name:'PA',right:true},{name:'PF/G',right:true},{name:'PA/G',right:true}],rows);const places=finals.filter(x=>x.year===year).sort((a,b)=>a.final_place-b.final_place);const pg=games.filter(x=>x.year===year);$('seasonPlayoffs').innerHTML=!final?'<p class="note">The season is not yet complete. No official playoff placements have been recorded.</p>':`<div class="facts">${places.slice(0,3).map((x,i)=>`<div class="fact">${['🏆','🥈','🥉'][i]} ${esc(name(x.gm_id))}</div>`).join('')}</div>${pg.length?pg.map(x=>`<div class="rowline"><span>${esc(x.round)}${x.notes?' · special note':''}</span><b>${esc(name(x.winner_gm_id))} ${num(x.winner_score)} – ${num(x.loser_score)} ${esc(name(x.loser_gm_id))}</b></div>`).join(''):'<p class="note">Older individual playoff game scores are not available in the historical archive.</p>'}${year===2022?'<div class="alert">The 2022 title game used an unusual scoring rule after the suspended Bills–Bengals game; see the Trophy Room note.</div>':''}${year===2024?'<div class="note">2024 semifinal: Benjamin Hall advanced after a 121.98–121.98 tie; the precise tiebreak procedure is not archived.</div>':''}`}
+function updateSeasonOption(){
+ const option=$('seasonYear').querySelector('option[value="2026"]');
+ if(option)option.textContent=`2026 · through Week ${current.as_of_week}`;
+}
+function initSeasons(){
+ $('seasonYear').innerHTML=allYears.slice().reverse().map(x=>`<option value="${x.year}">${x.year}${x.status!=='final'?' · provisional':''}</option>`).join('');
+ updateSeasonOption();
+ $('seasonYear').value='2026';
+ $('seasonYear').onchange=renderSeason;
+ renderSeason();
+}
+function validate(d){if(!d||!Array.isArray(d.standings)||d.standings.length!==12||Number(d.year)!==2026)throw Error('Expected a 2026 JSON snapshot containing exactly 12 teams.');const seen=new Set();for(const r of d.standings){if(!gid.has(Number(r.gm_id))||seen.has(Number(r.gm_id)))throw Error('Each GM ID must appear once, and must exist in history.');seen.add(Number(r.gm_id));for(const f of ['wins','losses','ties','pf','pa']){let v=Number(r[f]);if(!Number.isFinite(v)||v<0)throw Error('Invalid '+f+' for '+name(r.gm_id));r[f]=v}r.gm_id=Number(r.gm_id);r.team=String(r.team||name(r.gm_id))}d.as_of_week=Number(d.as_of_week);if(!Number.isInteger(d.as_of_week)||d.as_of_week<1||d.as_of_week>18)throw Error('Week out of range.');for(const r of d.standings)if(r.wins+r.losses+r.ties!==d.as_of_week)throw Error(`${name(r.gm_id)} record does not equal Week ${d.as_of_week}.`);const W=d.standings.reduce((s,r)=>s+r.wins,0),L=d.standings.reduce((s,r)=>s+r.losses,0),P=d.standings.reduce((s,r)=>s+r.pf,0),A=d.standings.reduce((s,r)=>s+r.pa,0);if(W!==L)throw Error('League-wide wins and losses do not balance.');if(Math.abs(P-A)>.03)throw Error(`League-wide PF and PA do not balance: ${num(P-A)} points. Check the figures.`);return d}
+function renderAdmin(){$('adminWeek').value=current.as_of_week;const rows=current.standings.slice().sort((a,b)=>b.wins-a.wins||b.pf-a.pf).map(r=>tr([td(esc(name(r.gm_id))),td(`<input data-field="wins" data-id="${r.gm_id}" type="number" min="0" value="${r.wins}" style="width:63px;min-width:60px">`),td(`<input data-field="losses" data-id="${r.gm_id}" type="number" min="0" value="${r.losses}" style="width:63px;min-width:60px">`),td(`<input data-field="pf" data-id="${r.gm_id}" type="number" min="0" step=".01" value="${r.pf}" style="width:100px;min-width:90px">`),td(`<input data-field="pa" data-id="${r.gm_id}" type="number" min="0" step=".01" value="${r.pa}" style="width:100px;min-width:90px">`)]));$('adminRows').innerHTML=table(['GM','Wins','Losses','PF','PA'],rows)}
+function saveAdmin(){let next=structuredClone(current);next.as_of_week=Number($('adminWeek').value);for(const el of document.querySelectorAll('#adminRows input')){let r=next.standings.find(r=>r.gm_id===Number(el.dataset.id));r[el.dataset.field]=Number(el.value)}try{next=validate(next);current=next;localStorage.setItem('volleys_current_2026',JSON.stringify(next));$('adminMessage').textContent='Saved locally and validated. Export current.json and publish it to update everyone else.';refreshCurrent()}catch(e){$('adminMessage').textContent='Validation error: '+e.message}}
+function download(name,text){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:'application/json'}));a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}$('saveLocal').onclick=saveAdmin;$('downloadSnapshot').onclick=()=>download('current.json',JSON.stringify(current,null,2));$('resetSnapshot').onclick=()=>{current=structuredClone(BASE);localStorage.removeItem('volleys_current_2026');renderAdmin();refreshCurrent();$('adminMessage').textContent='Reverted to the embedded Week 10 snapshot.'};$('jsonUpload').onchange=async e=>{let f=e.target.files?.[0];if(f)$('jsonEditor').value=await f.text()};$('fillJSON').onclick=()=>$('jsonEditor').value=JSON.stringify(current,null,2);$('importJSON').onclick=()=>{try{current=validate(JSON.parse($('jsonEditor').value));localStorage.setItem('volleys_current_2026',JSON.stringify(current));renderAdmin();refreshCurrent();$('importMessage').textContent='Imported and validated. Download current.json to publish.'}catch(e){$('importMessage').textContent='Import failed: '+e.message}};
+function refreshCurrent(){$('heroStats').querySelector('.stat:last-child b').textContent=current.as_of_week;initScenario();renderRace();renderGMs();updateSeasonOption();renderSeason()}
+const maxWeeks=14;let simCache=null;const rankCurrent=()=>current.standings.slice().sort((a,b)=>b.wins-a.wins||b.pf-a.pf);let pendingScenario=null;
+// Commissioner-supplied ESPN Week 11–14 schedule. The values in partialScores are unfinished Week 11 scores, not outcomes.
+const LEAGUE_SCHEDULE={
+ 11:[[1,9],[12,13],[19,2],[3,17],[18,8],[11,5]],
+ 12:[[12,1],[9,19],[13,3],[2,18],[17,11],[8,5]],
+ 13:[[1,19],[3,12],[18,9],[11,13],[5,2],[8,17]],
+ 14:[[3,1],[19,18],[12,11],[9,5],[13,8],[2,17]]
+};
+const sdWeek=22;
+function normalScore(mean){let z=Math.sqrt(-2*Math.log(Math.max(1e-9,Math.random())))*Math.cos(2*Math.PI*Math.random());return Math.max(20,mean+sdWeek*z)}
+function createTeams(){return current.standings.map(r=>({...r,estppg:r.pf/current.as_of_week,finalwins:r.wins,finalpf:r.pf}))}
+function seasonMatches(){return Object.entries(LEAGUE_SCHEDULE).filter(([w])=>Number(w)>current.as_of_week&&Number(w)<=maxWeeks).flatMap(([week,pairs])=>pairs.map(([a,b])=>({week:Number(week),a,b,key:`${week}-${a}-${b}`})))}
+function simulate(count=8000){
+ const teams=createTeams(),matches=seasonMatches(),slots=Number($('playoffSlots').value);let probs=new Map(teams.map(t=>[t.gm_id,0])),winTotal=new Map(teams.map(t=>[t.gm_id,0])),conditional=new Map(),valid=0;
+ const force=pendingScenario;for(const m of matches)for(const id of [m.a,m.b])conditional.set(`${m.key}-${id}`,{win:[0,0],lose:[0,0]});
+ for(let loop=0;loop<count;loop++){
+  const t=teams.map(x=>({...x})),byId=new Map(t.map(x=>[x.gm_id,x])),outcomes=[],winsPer=new Map(t.map(x=>[x.gm_id,0]));
+  for(const m of matches){let a=byId.get(m.a),b=byId.get(m.b);if(!a||!b)continue;let sa=normalScore(a.estppg),sb=normalScore(b.estppg);let winner=sa>=sb?a:b;winner.finalwins++;winsPer.set(winner.gm_id,winsPer.get(winner.gm_id)+1);a.finalpf+=sa;b.finalpf+=sb;outcomes.push({...m,winner:winner.gm_id})}
+  if(force&&winsPer.get(force.id)!==force.wins)continue;
+  valid++;t.sort((a,b)=>b.finalwins-a.finalwins||b.finalpf-a.finalpf);const qualifiers=new Set(t.slice(0,slots).map(x=>x.gm_id));for(const a of t){probs.set(a.gm_id,probs.get(a.gm_id)+(qualifiers.has(a.gm_id)?1:0));winTotal.set(a.gm_id,winTotal.get(a.gm_id)+a.finalwins)}
+  if(!force){for(const o of outcomes){for(const id of [o.a,o.b]){const entry=conditional.get(`${o.key}-${id}`),bucket=o.winner===id?entry.win:entry.lose;bucket[1]++;if(qualifiers.has(id))bucket[0]++}}}
+ }
+ const data=teams.map(t=>({...t,p:valid?probs.get(t.gm_id)/valid:0,ewins:valid?winTotal.get(t.gm_id)/valid:t.wins}));return {data,valid,attempted:count,remaining:maxWeeks-current.as_of_week,forced:force,conditional,matches}
+}
+function renderSchedule(){
+ const week=Number($('scheduleWeek').value),matches=LEAGUE_SCHEDULE[week]||[],c=simCache?.conditional;
+ if(!week||week<=current.as_of_week||!matches.length){
+  $('scheduleContext').textContent='The regular season is complete. No future matchups remain.';
+  $('scheduleRows').innerHTML='';
+  return;
+ }
+ $('scheduleContext').textContent=`Week ${week} scheduled matchups. Win/loss playoff implications are simulated estimates, not live scores.`;
+ $('scheduleRows').innerHTML=matches.map(([id1,id2])=>{
+  const a=current.standings.find(x=>x.gm_id===id1),b=current.standings.find(x=>x.gm_id===id2),key=`${week}-${id1}-${id2}`;
+  const describe=id=>{
+   const result=c?.get(`${key}-${id}`),win=result?.win,lose=result?.lose;
+   return result&&win[1]&&lose[1]?`Win: ${pct(win[0]/win[1])} playoffs · Loss: ${pct(lose[0]/lose[1])} · Swing: +${num(100*(win[0]/win[1]-lose[0]/lose[1]),1)} pts`:'No model estimate for this matchup';
+  };
+  return `<article class="panel" style="padding:16px"><div class="label">WEEK ${week} · UPCOMING</div><div class="rowline"><b>${esc(a?.team||name(id1))}</b><b>${esc(b?.team||name(id2))}</b></div><div class="note">${esc(name(id1))}: ${describe(id1)}</div><div class="note">${esc(name(id2))}: ${describe(id2)}</div></article>`;
+ }).join('');
+}
+function renderRace(){if(activePage!=='race'&&activePage!=='admin')return;const remain=Math.max(0,maxWeeks-current.as_of_week);$('raceSub').textContent=remain?`Through completed Week ${current.as_of_week} · ${remain} regular-season week${remain===1?'':'s'} remaining · ${remain===1?'Week':'Weeks'} ${current.as_of_week+1}${remain>1?'–'+maxWeeks:''} schedule`:`Through completed Week ${maxWeeks} · Regular season complete`;
+ if(activePage==='admin')return;
+ $('raceOddsHeading').textContent=remain?'Projected qualification chances':'Qualification positions (using assumed PF tiebreak)';
+ $('raceScheduleHeading').textContent=remain?'Remaining matchups & playoff implications':'Regular-season matchups complete';
+ $('raceMethod').textContent=remain?`Each simulation plays the remaining ${remain===1?'Week':'Weeks'} ${current.as_of_week+1}${remain>1?'–'+maxWeeks:''} head-to-head schedule. Teams score around their updated Week ${current.as_of_week} PF/G, with a 22-point game standard deviation. Projected PF breaks final record ties (model assumption, not verified ESPN policy).`:'All 14 regular-season weeks have finished. The displayed qualification positions use the recorded standings and an assumed points-for tiebreak, not an independently verified ESPN tiebreak.';
+ $('raceMeaning').textContent=remain?'The matchup cards compare each GM’s simulated playoff chance after a win versus a loss. These estimates are recalculated using the latest completed ESPN standings.':'There are no remaining regular-season matchups or win/loss scenarios.';
+ simCache=simulate(pendingScenario?18000:10000);const r=simCache;const sorted=rankCurrent();const currentCut=sorted[Number($('playoffSlots').value)-1];const cards=[['Weeks remaining',remain],['Current cutoff',currentCut?`${currentCut.wins}–${currentCut.losses}`:'—'],['Playoff spots',Number($('playoffSlots').value)],['Valid simulations',r.valid.toLocaleString()]];$('raceCards').innerHTML=cards.map(([label,val])=>`<div class="panel"><div class="label">${label}</div><div class="big">${val}</div></div>`).join('');let odds=r.data.sort((a,b)=>b.p-a.p||b.wins-a.wins);$('raceTable').innerHTML=table(['#','GM','2026 team',{name:'W–L',right:true},{name:'PF/G',right:true},{name:'Avg final W',right:true},{name:'Est. playoff %',right:true}],odds.map((x,i)=>tr([td(String(i+1)),td(esc(name(x.gm_id))),td(esc(x.team)),td(`${x.wins}–${x.losses}`,true),td(num(x.estppg),true),td(num(x.ewins,1),true),td(`<b class="${x.p>=.7?'good':x.p<=.2?'bad':'strike'}">${pct(x.p)}</b>`,true)])));
+ if(pendingScenario){const o=r.data.find(x=>x.gm_id===pendingScenario.id);$('scenarioResult').innerHTML=r.valid?`If <b>${esc(name(pendingScenario.id))}</b> wins exactly <b>${pendingScenario.wins} of ${remain}</b> scheduled games: <strong class="strike">${pct(o.p)}</strong> playoff chance from ${r.valid.toLocaleString()} matching simulations. Assumes final PF tiebreak.`:`No matching simulations of ${r.attempted.toLocaleString()}. This condition may be extremely unlikely; try another scenario.`}else $('scenarioResult').textContent=remain?'Choose a GM and exactly how many of their remaining games they win.':'The regular season is complete; no remaining matchups to simulate.';
+ if(!pendingScenario)renderSchedule();else{$('scheduleContext').textContent='Clear the scenario constraint to see matchup-specific win/loss probability swings.';$('scheduleRows').innerHTML='<div class="panel note">Matchup leverage is displayed in the unconstrained model. Select “No constraint” to see it.</div>'}
+}
+function initScenario(){
+ const remain=Math.max(0,maxWeeks-current.as_of_week);
+ const available=Object.keys(LEAGUE_SCHEDULE).map(Number).filter(w=>w>current.as_of_week&&w<=maxWeeks).sort((a,b)=>a-b);
+ const selector=$('scheduleWeek'),previous=Number(selector.value);
+ selector.innerHTML=available.length?available.map(w=>`<option value="${w}">${w} · Upcoming</option>`).join(''):'<option value="">Season complete</option>';
+ selector.disabled=!available.length;
+ if(available.length)selector.value=String(available.includes(previous)?previous:available[0]);
+ $('scenarioGM').innerHTML=current.standings.slice().sort((a,b)=>a.gm_id-b.gm_id).map(r=>`<option value="${r.gm_id}">${esc(name(r.gm_id))}</option>`).join('');
+ $('scenarioWins').innerHTML='<option value="any">No constraint</option>'+(remain?Array.from({length:remain+1},(_,n)=>`<option value="${n}">${n} of ${remain}</option>`).join(''):'');
+ $('scenarioWins').disabled=!remain;
+ $('scenarioButton').disabled=!remain;
+ $('scenarioIntro').textContent=remain?`Choose a GM and test winning 0–${remain} of their remaining ${remain===1?'Week':'Weeks'} ${current.as_of_week+1}${remain>1?'–'+maxWeeks:''} matchup${remain===1?'':'s'}.`:'All 14 regular-season weeks have finished. No future wins remain to model.';
+ pendingScenario=null;
+}
+$('scheduleWeek').onchange=()=>renderSchedule();$('runSim').onclick=renderRace;$('playoffSlots').onchange=renderRace;$('scenarioButton').onclick=()=>{let n=$('scenarioWins').value;pendingScenario=n==='any'?null:{id:Number($('scenarioGM').value),wins:Number(n)};renderRace()};
+async function hydrate(){try{const res=await fetch('data/current.json?bust='+Date.now(),{cache:'no-store'});if(res.ok){let d=validate(await res.json());if(Number(d.as_of_week)>=Number(current.as_of_week))current=d}}catch(e){}initHome();initTrophy();initGMs();initSeasons();initScenario();renderAdmin();renderRace()}
+
+const MISTRESS_MOMENTS=[
+{year:2025,icon:'📊',title:'The regular season rarely gets the last word',score:'4 of 11 champions led the league in wins',detail:'Across 2015–2025, only four champions finished tied for the best regular-season record: Lachlan in 2015, Stephen in 2018, Luke in 2019 and Alan in 2020. Seven other champions lifted the cup without even matching the league-leading win total. The Mistress loves the playoffs.',evidence:'League standings and champions, 2015–2025; includes ties for most wins.'},
+{year:2025,icon:'🔥',title:'The points leader is usually not the champion',score:'Only 4 of 11 led regular-season PF',detail:'The championship winner was the league’s highest regular-season scorer in only 2015, 2019, 2020 and 2022. In seven of eleven seasons the highest-scoring team watched someone else lift the Cup.',evidence:'Regular-season PF totals matched against the champion of each year, 2015–2025.'},
+{year:2025,icon:'🥈',title:'The eternal bridesmaid club',score:'Tommy: 4 podiums, 0 titles',detail:'Tommy Top stood on the podium four times—bronze in 2015, 2017 and 2022, silver in 2023—without ever winning the championship. The Mistress hands out medals, just not always the right one.',evidence:'Annual verified podiums, 2015–2025.'},
+{year:2025,icon:'🐝',title:'The Bees can play. Can they finish?',score:'3 playoffs · 0 finals',detail:'Matthew Blainey’s Bees qualified in 2021, 2024 and 2025, and finished third in 2024. Seven completed seasons have produced no grand-final appearances, despite a career regular-season win rate above 50%.',evidence:'Season W–L totals, 2021/2024/2025 brackets and podiums.'},
+{year:2024,icon:'⚖️',title:'The tie that crowned a champion',score:'121.98 — 121.98',detail:'Benjamin Hall and Cory McCollum finished their semifinal tied to the hundredth. Benjamin advanced under a tiebreak rule that is not preserved in the archive, then won the championship. The Mistress could not have scripted a narrower escape.',evidence:'2024 ESPN playoff bracket; advancement confirmed, exact tiebreak unknown.'},
+{year:2022,icon:'🏈',title:'The championship that broke the scoring rules',score:'Nicolas 164.98 · Benjamin 144.68',detail:'After Damar Hamlin suffered cardiac arrest during the January 2, 2023 Bills–Bengals game, the league applied an exceptional rule combining partially earned points and replacement-player scores. The official championship stands, but the score is not comparable to a typical single-week fantasy total.',evidence:'Commissioner-confirmed scoring exception; exact player adjustments unavailable.'},
+{year:2021,icon:'🥈',title:'Nicolas and the endless silver medals',score:'Three lost finals before a title',detail:'Nicolas Mouchel lost grand finals in 2016, 2020 and 2021 before finally lifting the 2022 trophy. The Mistress demanded an unusually lengthy apprenticeship.',evidence:'Commissioner-verified annual podiums for 2016, 2020, 2021 and 2022.'},
+{year:2018,icon:'🧮',title:'The six-point mystery',score:'6.08 points',detail:'A long-standing PF/PA mismatch in the archived 2018 standings was traced to Luke Woodard’s points against being copied as 1,402.94 instead of 1,409.02. A recovered contemporaneous league screenshot solved it years later.',evidence:'Recovered 2018 standings screenshot and reconciliation audit.'}
+];
+function renderMoments(){const year=$('momentFilter').value;const chosen=MISTRESS_MOMENTS.filter(x=>year==='all'||String(x.year)===year);$('momentGrid').innerHTML=chosen.map(x=>`<article class="moment-card"><span class="moment-icon" aria-hidden="true">${x.icon}</span><div class="year">${x.year} · MISTRESS MUSING</div><h3>${esc(x.title)}</h3><div class="moment-score">${esc(x.score)}</div><p>${esc(x.detail)}</p><div class="evidence">SOURCE: ${esc(x.evidence)}</div></article>`).join('')}
+$('momentFilter').onchange=renderMoments;renderMoments();$('openMoments').onclick=()=>navigate('moments');
+
+hydrate();
+const initial=location.hash.slice(1);if(['home','trophies','gms','seasons','race','moments','admin'].includes(initial))navigate(initial);
+})();
+</script><div class="shell" style="padding:10px 26px 18px;font-size:11px;color:#666">Shoe illustration created for this site. The original product that inspired the artwork: <a href="https://volley.com.au/products/international-low-whiteblue-136798" target="_blank" rel="noopener">Volley Australia — International Low White/Blue</a>. The illustration is independent artwork inspired by the classic canvas shoe; this is an independent fantasy league site, not affiliated with Volley Australia or ESPN.</div></body></html>
