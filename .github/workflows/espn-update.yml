@@ -1,31 +1,43 @@
 name: Update Volleys Cup from ESPN
+
 on:
   schedule:
-    # 13:20 UTC = 8:20 AM EST (Nov–Dec); scheduled jobs may run late.
+    # Tuesdays in November and December: 13:20 UTC = 8:20 AM EST.
+    # GitHub scheduled jobs can run later than their scheduled minute.
     - cron: '20 13 * 11,12 2'
   workflow_dispatch:
     inputs:
       probe_only:
-        description: 'Only test access and team matching; do not publish'
+        description: 'Test ESPN access/team matching only (no publication)'
         type: boolean
         default: true
+      deploy_only:
+        description: 'Test Render deployment of existing files (no ESPN changes)'
+        type: boolean
+        default: false
+
 permissions:
   contents: write
+
 concurrency:
   group: espn-weekly-update
   cancel-in-progress: false
+
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
         with:
           persist-credentials: true
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+
       - name: Fetch, validate, and update ESPN standings
+        if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.deploy_only == true) }}
         env:
           ESPN_S2: ${{ secrets.ESPN_S2 }}
           ESPN_SWID: ${{ secrets.ESPN_SWID }}
@@ -35,11 +47,14 @@ jobs:
           else
             python scripts/update_espn.py
           fi
+
       - name: Commit updated standings only when changed
-        if: ${{ github.event_name == 'schedule' || inputs.probe_only == false }}
+        id: publish
+        if: ${{ github.event_name == 'schedule' || (inputs.probe_only == false && inputs.deploy_only == false) }}
         run: |
           if git diff --quiet -- data/current.json; then
             echo 'No finalized new week; nothing to commit.'
+            echo 'changed=false' >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git config user.name 'volleys-cup-bot'
@@ -47,3 +62,17 @@ jobs:
           git add data/current.json
           git commit -m 'Update Volleys Cup from ESPN'
           git push
+          echo 'changed=true' >> "$GITHUB_OUTPUT"
+
+      - name: Deploy latest commit to Render
+        if: ${{ steps.publish.outputs.changed == 'true' || (github.event_name == 'workflow_dispatch' && inputs.deploy_only == true) }}
+        env:
+          RENDER_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+        run: |
+          if [ -z "$RENDER_DEPLOY_HOOK_URL" ]; then
+            echo '::error::GitHub repository secret RENDER_DEPLOY_HOOK_URL is missing.'
+            exit 1
+          fi
+          curl --fail --silent --show-error --retry 3 --retry-delay 5 \
+            --request POST "$RENDER_DEPLOY_HOOK_URL" > /dev/null
+          echo 'Render deployment requested.'
