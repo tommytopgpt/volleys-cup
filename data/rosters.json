@@ -3,10 +3,10 @@
   "league_id": 822887247,
   "season": 2026,
   "source": "ESPN Fantasy API (read-only mRoster snapshot)",
-  "captured_at_utc": "2026-11-25T12:37:45Z",
+  "captured_at_utc": "2026-11-25T18:18:27Z",
   "espn_matchup_period": 12,
   "team_count": 12,
-  "player_count": 174,
+  "player_count": 175,
   "starting_lineup_slots": {
     "Bench": 5,
     "D/ST": 1,
@@ -636,7 +636,7 @@
             21,
             23
           ],
-          "injury_status": "QUESTIONABLE"
+          "injury_status": "OUT"
         },
         {
           "player_id": 4248528,
@@ -893,6 +893,26 @@
           "injury_status": "ACTIVE"
         },
         {
+          "player_id": 4832955,
+          "name": "Emmett Johnson",
+          "position": "RB",
+          "position_id": 2,
+          "pro_team_id": 12,
+          "lineup_slot_id": 2,
+          "lineup_slot": "RB",
+          "role": "starter",
+          "eligible_slot_ids": [
+            2,
+            3,
+            7,
+            20,
+            21,
+            23,
+            25
+          ],
+          "injury_status": "ACTIVE"
+        },
+        {
           "player_id": 4702555,
           "name": "Jonah Coleman",
           "position": "RB",
@@ -909,25 +929,6 @@
             21,
             23,
             25
-          ],
-          "injury_status": "ACTIVE"
-        },
-        {
-          "player_id": 3929630,
-          "name": "Saquon Barkley",
-          "position": "RB",
-          "position_id": 2,
-          "pro_team_id": 21,
-          "lineup_slot_id": 2,
-          "lineup_slot": "RB",
-          "role": "starter",
-          "eligible_slot_ids": [
-            2,
-            3,
-            7,
-            20,
-            21,
-            23
           ],
           "injury_status": "ACTIVE"
         },
@@ -1075,11 +1076,11 @@
           "injury_status": "NORMAL"
         },
         {
-          "player_id": 4832955,
-          "name": "Emmett Johnson",
+          "player_id": 4575131,
+          "name": "Jacory Croskey-Merritt",
           "position": "RB",
           "position_id": 2,
-          "pro_team_id": 12,
+          "pro_team_id": 28,
           "lineup_slot_id": 20,
           "lineup_slot": "Bench",
           "role": "bench",
@@ -1089,17 +1090,16 @@
             7,
             20,
             21,
-            23,
-            25
+            23
           ],
           "injury_status": "ACTIVE"
         },
         {
-          "player_id": 4575131,
-          "name": "Jacory Croskey-Merritt",
+          "player_id": 3929630,
+          "name": "Saquon Barkley",
           "position": "RB",
           "position_id": 2,
-          "pro_team_id": 28,
+          "pro_team_id": 21,
           "lineup_slot_id": 20,
           "lineup_slot": "Bench",
           "role": "bench",
@@ -1714,11 +1714,11 @@
       "espn_team_id": 7,
       "players": [
         {
-          "player_id": 4685720,
-          "name": "Bryce Young",
+          "player_id": 4036378,
+          "name": "Jordan Love",
           "position": "QB",
           "position_id": 1,
-          "pro_team_id": 29,
+          "pro_team_id": 9,
           "lineup_slot_id": 0,
           "lineup_slot": "QB",
           "role": "starter",
@@ -1789,11 +1789,11 @@
           "injury_status": "ACTIVE"
         },
         {
-          "player_id": 4427095,
-          "name": "DeMario Douglas",
+          "player_id": 4603186,
+          "name": "Jack Bech",
           "position": "WR",
           "position_id": 3,
-          "pro_team_id": 17,
+          "pro_team_id": 13,
           "lineup_slot_id": 4,
           "lineup_slot": "WR",
           "role": "starter",
@@ -1895,11 +1895,11 @@
           "injury_status": "ACTIVE"
         },
         {
-          "player_id": 4036378,
-          "name": "Jordan Love",
+          "player_id": 4685720,
+          "name": "Bryce Young",
           "position": "QB",
           "position_id": 1,
-          "pro_team_id": 9,
+          "pro_team_id": 29,
           "lineup_slot_id": 20,
           "lineup_slot": "Bench",
           "role": "bench",
@@ -1923,6 +1923,26 @@
           "eligible_slot_ids": [
             2,
             3,
+            7,
+            20,
+            21,
+            23
+          ],
+          "injury_status": "ACTIVE"
+        },
+        {
+          "player_id": 4427095,
+          "name": "DeMario Douglas",
+          "position": "WR",
+          "position_id": 3,
+          "pro_team_id": 17,
+          "lineup_slot_id": 20,
+          "lineup_slot": "Bench",
+          "role": "bench",
+          "eligible_slot_ids": [
+            3,
+            4,
+            5,
             7,
             20,
             21,
@@ -1959,11 +1979,11 @@
       "espn_team_id": 5,
       "players": [
         {
-          "player_id": 4432577,
-          "name": "C.J. Stroud",
+          "player_id": 2577417,
+          "name": "Dak Prescott",
           "position": "QB",
           "position_id": 1,
-          "pro_team_id": 34,
+          "pro_team_id": 6,
           "lineup_slot_id": 0,
           "lineup_slot": "QB",
           "role": "starter",
@@ -1995,11 +2015,11 @@
           "injury_status": "ACTIVE"
         },
         {
-          "player_id": 4373626,
-          "name": "Tyler Allgeier",
+          "player_id": 4685247,
+          "name": "Braelon Allen",
           "position": "RB",
           "position_id": 2,
-          "pro_team_id": 22,
+          "pro_team_id": 20,
           "lineup_slot_id": 2,
           "lineup_slot": "RB",
           "role": "starter",
@@ -2105,11 +2125,11 @@
           "injury_status": "ACTIVE"
         },
         {
-          "player_id": 3126486,
-          "name": "Deebo Samuel Sr.",
+          "player_id": 4428331,
+          "name": "Rashee Rice",
           "position": "WR",
           "position_id": 3,
-          "pro_team_id": 25,
+          "pro_team_id": 12,
           "lineup_slot_id": 23,
           "lineup_slot": "FLEX",
           "role": "starter",
@@ -2125,11 +2145,11 @@
           "injury_status": "ACTIVE"
         },
         {
-          "player_id": 2577417,
-          "name": "Dak Prescott",
+          "player_id": 4432577,
+          "name": "C.J. Stroud",
           "position": "QB",
           "position_id": 1,
-          "pro_team_id": 6,
+          "pro_team_id": 34,
           "lineup_slot_id": 20,
           "lineup_slot": "Bench",
           "role": "bench",
@@ -2138,25 +2158,6 @@
             7,
             20,
             21
-          ],
-          "injury_status": "ACTIVE"
-        },
-        {
-          "player_id": 4685247,
-          "name": "Braelon Allen",
-          "position": "RB",
-          "position_id": 2,
-          "pro_team_id": 20,
-          "lineup_slot_id": 20,
-          "lineup_slot": "Bench",
-          "role": "bench",
-          "eligible_slot_ids": [
-            2,
-            3,
-            7,
-            20,
-            21,
-            23
           ],
           "injury_status": "ACTIVE"
         },
@@ -2180,11 +2181,30 @@
           "injury_status": "ACTIVE"
         },
         {
-          "player_id": 4428331,
-          "name": "Rashee Rice",
+          "player_id": 4373626,
+          "name": "Tyler Allgeier",
+          "position": "RB",
+          "position_id": 2,
+          "pro_team_id": 22,
+          "lineup_slot_id": 20,
+          "lineup_slot": "Bench",
+          "role": "bench",
+          "eligible_slot_ids": [
+            2,
+            3,
+            7,
+            20,
+            21,
+            23
+          ],
+          "injury_status": "ACTIVE"
+        },
+        {
+          "player_id": 3126486,
+          "name": "Deebo Samuel Sr.",
           "position": "WR",
           "position_id": 3,
-          "pro_team_id": 12,
+          "pro_team_id": 25,
           "lineup_slot_id": 20,
           "lineup_slot": "Bench",
           "role": "bench",
@@ -2817,11 +2837,11 @@
           "injury_status": "ACTIVE"
         },
         {
-          "player_id": 4361579,
-          "name": "Javonte Williams",
+          "player_id": 4259545,
+          "name": "D'Andre Swift",
           "position": "RB",
           "position_id": 2,
-          "pro_team_id": 6,
+          "pro_team_id": 3,
           "lineup_slot_id": 2,
           "lineup_slot": "RB",
           "role": "starter",
@@ -2836,11 +2856,11 @@
           "injury_status": "ACTIVE"
         },
         {
-          "player_id": 3916148,
-          "name": "Tony Pollard",
+          "player_id": 4361579,
+          "name": "Javonte Williams",
           "position": "RB",
           "position_id": 2,
-          "pro_team_id": 10,
+          "pro_team_id": 6,
           "lineup_slot_id": 2,
           "lineup_slot": "RB",
           "role": "starter",
@@ -2947,11 +2967,11 @@
           "injury_status": "ACTIVE"
         },
         {
-          "player_id": 4259545,
-          "name": "D'Andre Swift",
+          "player_id": 3916148,
+          "name": "Tony Pollard",
           "position": "RB",
           "position_id": 2,
-          "pro_team_id": 3,
+          "pro_team_id": 10,
           "lineup_slot_id": 23,
           "lineup_slot": "FLEX",
           "role": "starter",
