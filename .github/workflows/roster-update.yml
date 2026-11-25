@@ -1,0 +1,73 @@
+name: Sync Volleys Cup rosters from ESPN
+
+on:
+  schedule:
+    # Every six hours in Nov, Dec and Jan (UTC). These are current-season
+    # roster snapshots; GitHub scheduled workflows may run late.
+    # After the 2026 postseason, update the script's SEASON for next year.
+    - cron: '35 5,11,17,23 * 11,12,1 *'
+  workflow_dispatch:
+    inputs:
+      probe_only:
+        description: 'Verify all 12 ESPN rosters without publishing'
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: volleys-cup-roster-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Fetch and validate current ESPN rosters
+        env:
+          ESPN_S2: ${{ secrets.ESPN_S2 }}
+          ESPN_SWID: ${{ secrets.ESPN_SWID }}
+        run: |
+          if [ "${{ github.event_name }}" = 'workflow_dispatch' ] && [ "${{ inputs.probe_only }}" = 'true' ]; then
+            python scripts/update_rosters.py --probe
+          else
+            python scripts/update_rosters.py
+          fi
+
+      - name: Commit roster snapshot if changed
+        if: ${{ github.event_name == 'schedule' || inputs.probe_only == false }}
+        run: |
+          if [ ! -f data/rosters.json ]; then
+            echo '::error::Expected data/rosters.json but the script did not publish it.'
+            exit 1
+          fi
+          git add -- data/rosters.json
+          if git diff --cached --quiet; then
+            echo 'No roster changes; no commit required.'
+            exit 0
+          fi
+          git config user.name 'volleys-cup-bot'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Sync latest ESPN rosters'
+          # A concurrent standings commit may move main. Rebase our separate
+          # data/rosters.json change and retry instead of overwriting standings.
+          for attempt in 1 2 3; do
+            git pull --rebase origin main
+            if git push origin HEAD:main; then
+              echo 'Published roster snapshot.'
+              exit 0
+            fi
+            echo "Push conflicted; retry $attempt of 3"
+            sleep 3
+          done
+          echo '::error::Could not publish roster snapshot after three attempts.'
+          exit 1
