@@ -3,7 +3,7 @@
   "league_id": 822887247,
   "season": 2026,
   "source": "ESPN Fantasy API (read-only mRoster snapshot)",
-  "captured_at_utc": "2026-11-25T11:13:09Z",
+  "captured_at_utc": "2026-11-25T12:37:45Z",
   "espn_matchup_period": 12,
   "team_count": 12,
   "player_count": 174,
@@ -3202,11 +3202,11 @@
           "injury_status": "ACTIVE"
         },
         {
-          "player_id": -16012,
-          "name": "Chiefs D/ST",
+          "player_id": -16005,
+          "name": "Browns D/ST",
           "position": "D/ST",
           "position_id": 16,
-          "pro_team_id": 12,
+          "pro_team_id": 5,
           "lineup_slot_id": 16,
           "lineup_slot": "D/ST",
           "role": "starter",
@@ -3234,14 +3234,35 @@
           "injury_status": "ACTIVE"
         },
         {
+          "player_id": 5081432,
+          "name": "Antonio Williams",
+          "position": "WR",
+          "position_id": 3,
+          "pro_team_id": 28,
+          "lineup_slot_id": 23,
+          "lineup_slot": "FLEX",
+          "role": "starter",
+          "eligible_slot_ids": [
+            3,
+            4,
+            5,
+            7,
+            20,
+            21,
+            23,
+            25
+          ],
+          "injury_status": "ACTIVE"
+        },
+        {
           "player_id": 5081397,
           "name": "Dylan Sampson",
           "position": "RB",
           "position_id": 2,
           "pro_team_id": 5,
-          "lineup_slot_id": 23,
-          "lineup_slot": "FLEX",
-          "role": "starter",
+          "lineup_slot_id": 20,
+          "lineup_slot": "Bench",
+          "role": "bench",
           "eligible_slot_ids": [
             2,
             3,
@@ -3292,11 +3313,11 @@
           "injury_status": "DOUBTFUL"
         },
         {
-          "player_id": 5081432,
-          "name": "Antonio Williams",
+          "player_id": 4431268,
+          "name": "Chimere Dike",
           "position": "WR",
           "position_id": 3,
-          "pro_team_id": 28,
+          "pro_team_id": 10,
           "lineup_slot_id": 20,
           "lineup_slot": "Bench",
           "role": "bench",
@@ -3307,8 +3328,7 @@
             7,
             20,
             21,
-            23,
-            25
+            23
           ],
           "injury_status": "ACTIVE"
         },
@@ -3329,27 +3349,6 @@
             20,
             21,
             23
-          ],
-          "injury_status": "ACTIVE"
-        },
-        {
-          "player_id": 4870795,
-          "name": "Makai Lemon",
-          "position": "WR",
-          "position_id": 3,
-          "pro_team_id": 21,
-          "lineup_slot_id": 20,
-          "lineup_slot": "Bench",
-          "role": "bench",
-          "eligible_slot_ids": [
-            3,
-            4,
-            5,
-            7,
-            20,
-            21,
-            23,
-            25
           ],
           "injury_status": "ACTIVE"
         }
