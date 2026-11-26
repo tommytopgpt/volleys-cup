@@ -3,7 +3,7 @@
   "league_id": 822887247,
   "season": 2026,
   "source": "ESPN Fantasy API (read-only mRoster snapshot)",
-  "captured_at_utc": "2026-11-26T06:27:51Z",
+  "captured_at_utc": "2026-11-26T12:36:24Z",
   "espn_matchup_period": 12,
   "team_count": 12,
   "player_count": 175,
@@ -3021,25 +3021,6 @@
           "injury_status": "INJURY_RESERVE"
         },
         {
-          "player_id": 4360248,
-          "name": "Kyle Pitts Sr.",
-          "position": "TE",
-          "position_id": 4,
-          "pro_team_id": 1,
-          "lineup_slot_id": 20,
-          "lineup_slot": "Bench",
-          "role": "bench",
-          "eligible_slot_ids": [
-            5,
-            6,
-            7,
-            20,
-            21,
-            23
-          ],
-          "injury_status": "ACTIVE"
-        },
-        {
           "player_id": 16800,
           "name": "Davante Adams",
           "position": "WR",
@@ -3076,6 +3057,27 @@
             20,
             21,
             23
+          ],
+          "injury_status": "ACTIVE"
+        },
+        {
+          "player_id": 4880281,
+          "name": "Jordyn Tyson",
+          "position": "WR",
+          "position_id": 3,
+          "pro_team_id": 18,
+          "lineup_slot_id": 20,
+          "lineup_slot": "Bench",
+          "role": "bench",
+          "eligible_slot_ids": [
+            3,
+            4,
+            5,
+            7,
+            20,
+            21,
+            23,
+            25
           ],
           "injury_status": "ACTIVE"
         },
