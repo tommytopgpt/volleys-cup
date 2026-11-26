@@ -3,7 +3,7 @@
   "league_id": 822887247,
   "season": 2026,
   "source": "ESPN Fantasy API (read-only mRoster snapshot)",
-  "captured_at_utc": "2026-11-25T18:18:27Z",
+  "captured_at_utc": "2026-11-26T00:25:05Z",
   "espn_matchup_period": 12,
   "team_count": 12,
   "player_count": 175,
@@ -42,11 +42,11 @@
           "injury_status": "ACTIVE"
         },
         {
-          "player_id": 4379399,
-          "name": "James Cook III",
+          "player_id": 4430807,
+          "name": "Bijan Robinson",
           "position": "RB",
           "position_id": 2,
-          "pro_team_id": 2,
+          "pro_team_id": 1,
           "lineup_slot_id": 2,
           "lineup_slot": "RB",
           "role": "starter",
@@ -61,11 +61,11 @@
           "injury_status": "ACTIVE"
         },
         {
-          "player_id": 4711533,
-          "name": "Ollie Gordon II",
+          "player_id": 4379399,
+          "name": "James Cook III",
           "position": "RB",
           "position_id": 2,
-          "pro_team_id": 15,
+          "pro_team_id": 2,
           "lineup_slot_id": 2,
           "lineup_slot": "RB",
           "role": "starter",
@@ -100,11 +100,11 @@
           "injury_status": "ACTIVE"
         },
         {
-          "player_id": 4569603,
-          "name": "Malik Washington",
+          "player_id": 4701936,
+          "name": "Matthew Golden",
           "position": "WR",
           "position_id": 3,
-          "pro_team_id": 15,
+          "pro_team_id": 9,
           "lineup_slot_id": 4,
           "lineup_slot": "WR",
           "role": "starter",
@@ -171,33 +171,14 @@
           "injury_status": "ACTIVE"
         },
         {
-          "player_id": 4608686,
-          "name": "Kyle Monangai",
+          "player_id": 4711533,
+          "name": "Ollie Gordon II",
           "position": "RB",
           "position_id": 2,
-          "pro_team_id": 3,
+          "pro_team_id": 15,
           "lineup_slot_id": 23,
           "lineup_slot": "FLEX",
           "role": "starter",
-          "eligible_slot_ids": [
-            2,
-            3,
-            7,
-            20,
-            21,
-            23
-          ],
-          "injury_status": "ACTIVE"
-        },
-        {
-          "player_id": 4430807,
-          "name": "Bijan Robinson",
-          "position": "RB",
-          "position_id": 2,
-          "pro_team_id": 1,
-          "lineup_slot_id": 20,
-          "lineup_slot": "Bench",
-          "role": "bench",
           "eligible_slot_ids": [
             2,
             3,
@@ -228,6 +209,25 @@
           "injury_status": "INJURY_RESERVE"
         },
         {
+          "player_id": 4608686,
+          "name": "Kyle Monangai",
+          "position": "RB",
+          "position_id": 2,
+          "pro_team_id": 3,
+          "lineup_slot_id": 20,
+          "lineup_slot": "Bench",
+          "role": "bench",
+          "eligible_slot_ids": [
+            2,
+            3,
+            7,
+            20,
+            21,
+            23
+          ],
+          "injury_status": "ACTIVE"
+        },
+        {
           "player_id": 4430539,
           "name": "Brenton Strange",
           "position": "TE",
@@ -247,11 +247,11 @@
           "injury_status": "ACTIVE"
         },
         {
-          "player_id": 4701936,
-          "name": "Matthew Golden",
+          "player_id": 4569603,
+          "name": "Malik Washington",
           "position": "WR",
           "position_id": 3,
-          "pro_team_id": 9,
+          "pro_team_id": 15,
           "lineup_slot_id": 20,
           "lineup_slot": "Bench",
           "role": "bench",
@@ -598,7 +598,7 @@
             20,
             21
           ],
-          "injury_status": "ACTIVE"
+          "injury_status": "QUESTIONABLE"
         },
         {
           "player_id": 4890973,
@@ -747,7 +747,7 @@
             21,
             23
           ],
-          "injury_status": "ACTIVE"
+          "injury_status": "QUESTIONABLE"
         },
         {
           "player_id": 4696044,
@@ -1270,7 +1270,7 @@
             21,
             23
           ],
-          "injury_status": "ACTIVE"
+          "injury_status": "QUESTIONABLE"
         },
         {
           "player_id": -16034,
@@ -1322,7 +1322,7 @@
             21,
             23
           ],
-          "injury_status": "ACTIVE"
+          "injury_status": "QUESTIONABLE"
         },
         {
           "player_id": 4047365,
@@ -1341,7 +1341,7 @@
             21,
             23
           ],
-          "injury_status": "QUESTIONABLE"
+          "injury_status": "OUT"
         },
         {
           "player_id": 4038441,
@@ -1825,7 +1825,7 @@
             21,
             23
           ],
-          "injury_status": "ACTIVE"
+          "injury_status": "QUESTIONABLE"
         },
         {
           "player_id": -16007,
@@ -2071,7 +2071,7 @@
             21,
             23
           ],
-          "injury_status": "ACTIVE"
+          "injury_status": "QUESTIONABLE"
         },
         {
           "player_id": 4361307,
@@ -2359,7 +2359,7 @@
             21,
             23
           ],
-          "injury_status": "ACTIVE"
+          "injury_status": "QUESTIONABLE"
         },
         {
           "player_id": 3116365,
@@ -2773,7 +2773,7 @@
             21,
             23
           ],
-          "injury_status": "ACTIVE"
+          "injury_status": "QUESTIONABLE"
         },
         {
           "player_id": 3116406,
@@ -2986,22 +2986,6 @@
           "injury_status": "ACTIVE"
         },
         {
-          "player_id": -16019,
-          "name": "Giants D/ST",
-          "position": "D/ST",
-          "position_id": 16,
-          "pro_team_id": 19,
-          "lineup_slot_id": 20,
-          "lineup_slot": "Bench",
-          "role": "bench",
-          "eligible_slot_ids": [
-            16,
-            20,
-            21
-          ],
-          "injury_status": "NORMAL"
-        },
-        {
           "player_id": 4362619,
           "name": "Chris Rodriguez Jr.",
           "position": "RB",
@@ -3019,6 +3003,25 @@
             23
           ],
           "injury_status": "ACTIVE"
+        },
+        {
+          "player_id": 4568490,
+          "name": "RJ Harvey",
+          "position": "RB",
+          "position_id": 2,
+          "pro_team_id": 7,
+          "lineup_slot_id": 20,
+          "lineup_slot": "Bench",
+          "role": "bench",
+          "eligible_slot_ids": [
+            2,
+            3,
+            7,
+            20,
+            21,
+            23
+          ],
+          "injury_status": "INJURY_RESERVE"
         },
         {
           "player_id": 4360248,
@@ -3141,7 +3144,7 @@
             21,
             23
           ],
-          "injury_status": "ACTIVE"
+          "injury_status": "QUESTIONABLE"
         },
         {
           "player_id": 4685702,
@@ -3200,7 +3203,7 @@
             21,
             23
           ],
-          "injury_status": "ACTIVE"
+          "injury_status": "QUESTIONABLE"
         },
         {
           "player_id": 3116164,
@@ -3333,11 +3336,11 @@
           "injury_status": "DOUBTFUL"
         },
         {
-          "player_id": 4431268,
-          "name": "Chimere Dike",
+          "player_id": 4360438,
+          "name": "Brandon Aiyuk",
           "position": "WR",
           "position_id": 3,
-          "pro_team_id": 10,
+          "pro_team_id": 0,
           "lineup_slot_id": 20,
           "lineup_slot": "Bench",
           "role": "bench",
