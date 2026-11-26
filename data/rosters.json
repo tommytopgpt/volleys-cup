@@ -3,7 +3,7 @@
   "league_id": 822887247,
   "season": 2026,
   "source": "ESPN Fantasy API (read-only mRoster snapshot)",
-  "captured_at_utc": "2026-11-26T00:25:05Z",
+  "captured_at_utc": "2026-11-26T06:27:51Z",
   "espn_matchup_period": 12,
   "team_count": 12,
   "player_count": 175,
@@ -620,11 +620,11 @@
           "injury_status": "ACTIVE"
         },
         {
-          "player_id": 4567048,
-          "name": "Kenneth Walker III",
+          "player_id": 4038815,
+          "name": "Rico Dowdle",
           "position": "RB",
           "position_id": 2,
-          "pro_team_id": 12,
+          "pro_team_id": 23,
           "lineup_slot_id": 2,
           "lineup_slot": "RB",
           "role": "starter",
@@ -636,7 +636,7 @@
             21,
             23
           ],
-          "injury_status": "OUT"
+          "injury_status": "ACTIVE"
         },
         {
           "player_id": 4248528,
@@ -656,7 +656,7 @@
             21,
             23
           ],
-          "injury_status": "ACTIVE"
+          "injury_status": "QUESTIONABLE"
         },
         {
           "player_id": 4241478,
@@ -770,11 +770,11 @@
           "injury_status": "ACTIVE"
         },
         {
-          "player_id": 4038815,
-          "name": "Rico Dowdle",
+          "player_id": 4567048,
+          "name": "Kenneth Walker III",
           "position": "RB",
           "position_id": 2,
-          "pro_team_id": 23,
+          "pro_team_id": 12,
           "lineup_slot_id": 20,
           "lineup_slot": "Bench",
           "role": "bench",
@@ -786,7 +786,7 @@
             21,
             23
           ],
-          "injury_status": "ACTIVE"
+          "injury_status": "OUT"
         },
         {
           "player_id": 4686468,
@@ -2381,11 +2381,11 @@
           "injury_status": "ACTIVE"
         },
         {
-          "player_id": -16003,
-          "name": "Bears D/ST",
+          "player_id": -16019,
+          "name": "Giants D/ST",
           "position": "D/ST",
           "position_id": 16,
-          "pro_team_id": 3,
+          "pro_team_id": 19,
           "lineup_slot_id": 16,
           "lineup_slot": "D/ST",
           "role": "starter",
@@ -2434,6 +2434,22 @@
           "injury_status": "ACTIVE"
         },
         {
+          "player_id": -16003,
+          "name": "Bears D/ST",
+          "position": "D/ST",
+          "position_id": 16,
+          "pro_team_id": 3,
+          "lineup_slot_id": 20,
+          "lineup_slot": "Bench",
+          "role": "bench",
+          "eligible_slot_ids": [
+            16,
+            20,
+            21
+          ],
+          "injury_status": "NORMAL"
+        },
+        {
           "player_id": 4360689,
           "name": "Tyler Shough",
           "position": "QB",
@@ -2453,25 +2469,6 @@
         {
           "player_id": 3054850,
           "name": "Alvin Kamara",
-          "position": "RB",
-          "position_id": 2,
-          "pro_team_id": 18,
-          "lineup_slot_id": 20,
-          "lineup_slot": "Bench",
-          "role": "bench",
-          "eligible_slot_ids": [
-            2,
-            3,
-            7,
-            20,
-            21,
-            23
-          ],
-          "injury_status": "ACTIVE"
-        },
-        {
-          "player_id": 4569682,
-          "name": "Audric Estime",
           "position": "RB",
           "position_id": 2,
           "pro_team_id": 18,
