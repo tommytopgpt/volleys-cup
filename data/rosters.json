@@ -3,10 +3,10 @@
   "league_id": 822887247,
   "season": 2026,
   "source": "ESPN Fantasy API (read-only mRoster snapshot)",
-  "captured_at_utc": "2026-11-27T12:32:47Z",
+  "captured_at_utc": "2026-11-27T18:20:54Z",
   "espn_matchup_period": 12,
   "team_count": 12,
-  "player_count": 175,
+  "player_count": 176,
   "starting_lineup_slots": {
     "Bench": 5,
     "D/ST": 1,
@@ -1969,7 +1969,7 @@
             23,
             25
           ],
-          "injury_status": "QUESTIONABLE"
+          "injury_status": "OUT"
         }
       ]
     },
@@ -2604,7 +2604,7 @@
             21,
             23
           ],
-          "injury_status": "QUESTIONABLE"
+          "injury_status": "OUT"
         },
         {
           "player_id": 4239993,
@@ -2929,7 +2929,7 @@
             21,
             23
           ],
-          "injury_status": "QUESTIONABLE"
+          "injury_status": "DOUBTFUL"
         },
         {
           "player_id": -16030,
@@ -3315,26 +3315,6 @@
           "injury_status": "ACTIVE"
         },
         {
-          "player_id": 4047646,
-          "name": "A.J. Brown",
-          "position": "WR",
-          "position_id": 3,
-          "pro_team_id": 17,
-          "lineup_slot_id": 20,
-          "lineup_slot": "Bench",
-          "role": "bench",
-          "eligible_slot_ids": [
-            3,
-            4,
-            5,
-            7,
-            20,
-            21,
-            23
-          ],
-          "injury_status": "DOUBTFUL"
-        },
-        {
           "player_id": 4360438,
           "name": "Brandon Aiyuk",
           "position": "WR",
@@ -3351,6 +3331,27 @@
             20,
             21,
             23
+          ],
+          "injury_status": "ACTIVE"
+        },
+        {
+          "player_id": 4879194,
+          "name": "Josh Cameron",
+          "position": "WR",
+          "position_id": 3,
+          "pro_team_id": 30,
+          "lineup_slot_id": 20,
+          "lineup_slot": "Bench",
+          "role": "bench",
+          "eligible_slot_ids": [
+            3,
+            4,
+            5,
+            7,
+            20,
+            21,
+            23,
+            25
           ],
           "injury_status": "ACTIVE"
         },
@@ -3373,6 +3374,26 @@
             23
           ],
           "injury_status": "ACTIVE"
+        },
+        {
+          "player_id": 4047646,
+          "name": "A.J. Brown",
+          "position": "WR",
+          "position_id": 3,
+          "pro_team_id": 17,
+          "lineup_slot_id": 21,
+          "lineup_slot": "IR",
+          "role": "ir",
+          "eligible_slot_ids": [
+            3,
+            4,
+            5,
+            7,
+            20,
+            21,
+            23
+          ],
+          "injury_status": "DOUBTFUL"
         }
       ]
     }
