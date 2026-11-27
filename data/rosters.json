@@ -3,7 +3,7 @@
   "league_id": 822887247,
   "season": 2026,
   "source": "ESPN Fantasy API (read-only mRoster snapshot)",
-  "captured_at_utc": "2026-11-26T12:36:24Z",
+  "captured_at_utc": "2026-11-27T00:28:28Z",
   "espn_matchup_period": 12,
   "team_count": 12,
   "player_count": 175,
@@ -747,7 +747,25 @@
             21,
             23
           ],
-          "injury_status": "QUESTIONABLE"
+          "injury_status": "ACTIVE"
+        },
+        {
+          "player_id": 4837248,
+          "name": "Fernando Mendoza",
+          "position": "QB",
+          "position_id": 1,
+          "pro_team_id": 13,
+          "lineup_slot_id": 20,
+          "lineup_slot": "Bench",
+          "role": "bench",
+          "eligible_slot_ids": [
+            0,
+            7,
+            20,
+            21,
+            25
+          ],
+          "injury_status": "ACTIVE"
         },
         {
           "player_id": 4696044,
@@ -785,26 +803,6 @@
             20,
             21,
             23
-          ],
-          "injury_status": "OUT"
-        },
-        {
-          "player_id": 4686468,
-          "name": "Seth McGowan",
-          "position": "RB",
-          "position_id": 2,
-          "pro_team_id": 11,
-          "lineup_slot_id": 20,
-          "lineup_slot": "Bench",
-          "role": "bench",
-          "eligible_slot_ids": [
-            2,
-            3,
-            7,
-            20,
-            21,
-            23,
-            25
           ],
           "injury_status": "OUT"
         },
@@ -1111,7 +1109,7 @@
             21,
             23
           ],
-          "injury_status": "ACTIVE"
+          "injury_status": "QUESTIONABLE"
         },
         {
           "player_id": 4912274,
@@ -1270,7 +1268,7 @@
             21,
             23
           ],
-          "injury_status": "QUESTIONABLE"
+          "injury_status": "ACTIVE"
         },
         {
           "player_id": -16034,
@@ -1322,7 +1320,7 @@
             21,
             23
           ],
-          "injury_status": "QUESTIONABLE"
+          "injury_status": "ACTIVE"
         },
         {
           "player_id": 4047365,
@@ -1399,7 +1397,7 @@
             21,
             23
           ],
-          "injury_status": "ACTIVE"
+          "injury_status": "OUT"
         },
         {
           "player_id": 4612826,
@@ -2604,7 +2602,7 @@
             21,
             23
           ],
-          "injury_status": "ACTIVE"
+          "injury_status": "QUESTIONABLE"
         },
         {
           "player_id": 4239993,
@@ -2929,7 +2927,7 @@
             21,
             23
           ],
-          "injury_status": "ACTIVE"
+          "injury_status": "QUESTIONABLE"
         },
         {
           "player_id": -16030,
@@ -3124,7 +3122,7 @@
             20,
             21
           ],
-          "injury_status": "ACTIVE"
+          "injury_status": "QUESTIONABLE"
         },
         {
           "player_id": 3043078,
