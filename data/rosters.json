@@ -3,7 +3,7 @@
   "league_id": 822887247,
   "season": 2026,
   "source": "ESPN Fantasy API (read-only mRoster snapshot)",
-  "captured_at_utc": "2026-11-27T00:28:28Z",
+  "captured_at_utc": "2026-11-27T06:31:12Z",
   "espn_matchup_period": 12,
   "team_count": 12,
   "player_count": 175,
@@ -676,7 +676,7 @@
             21,
             23
           ],
-          "injury_status": "ACTIVE"
+          "injury_status": "QUESTIONABLE"
         },
         {
           "player_id": 4432665,
@@ -1397,7 +1397,7 @@
             21,
             23
           ],
-          "injury_status": "OUT"
+          "injury_status": "QUESTIONABLE"
         },
         {
           "player_id": 4612826,
@@ -1910,25 +1910,6 @@
           "injury_status": "ACTIVE"
         },
         {
-          "player_id": 4697815,
-          "name": "Rachaad White",
-          "position": "RB",
-          "position_id": 2,
-          "pro_team_id": 28,
-          "lineup_slot_id": 20,
-          "lineup_slot": "Bench",
-          "role": "bench",
-          "eligible_slot_ids": [
-            2,
-            3,
-            7,
-            20,
-            21,
-            23
-          ],
-          "injury_status": "ACTIVE"
-        },
-        {
           "player_id": 4427095,
           "name": "DeMario Douglas",
           "position": "WR",
@@ -1968,6 +1949,27 @@
             25
           ],
           "injury_status": "ACTIVE"
+        },
+        {
+          "player_id": 4723820,
+          "name": "Omar Cooper Jr.",
+          "position": "WR",
+          "position_id": 3,
+          "pro_team_id": 20,
+          "lineup_slot_id": 20,
+          "lineup_slot": "Bench",
+          "role": "bench",
+          "eligible_slot_ids": [
+            3,
+            4,
+            5,
+            7,
+            20,
+            21,
+            23,
+            25
+          ],
+          "injury_status": "QUESTIONABLE"
         }
       ]
     },
