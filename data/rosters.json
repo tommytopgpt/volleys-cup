@@ -3,7 +3,7 @@
   "league_id": 822887247,
   "season": 2026,
   "source": "ESPN Fantasy API (read-only mRoster snapshot)",
-  "captured_at_utc": "2026-11-27T06:31:12Z",
+  "captured_at_utc": "2026-11-27T12:32:47Z",
   "espn_matchup_period": 12,
   "team_count": 12,
   "player_count": 175,
@@ -2362,11 +2362,11 @@
           "injury_status": "QUESTIONABLE"
         },
         {
-          "player_id": 3116365,
-          "name": "Mark Andrews",
+          "player_id": 4360635,
+          "name": "Chig Okonkwo",
           "position": "TE",
           "position_id": 4,
-          "pro_team_id": 33,
+          "pro_team_id": 28,
           "lineup_slot_id": 6,
           "lineup_slot": "TE",
           "role": "starter",
