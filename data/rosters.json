@@ -3,7 +3,7 @@
   "league_id": 822887247,
   "season": 2026,
   "source": "ESPN Fantasy API (read-only mRoster snapshot)",
-  "captured_at_utc": "2026-11-27T18:20:54Z",
+  "captured_at_utc": "2026-11-28T00:23:13Z",
   "espn_matchup_period": 12,
   "team_count": 12,
   "player_count": 176,
@@ -584,11 +584,11 @@
       "espn_team_id": 2,
       "players": [
         {
-          "player_id": 4361741,
-          "name": "Brock Purdy",
+          "player_id": 4837248,
+          "name": "Fernando Mendoza",
           "position": "QB",
           "position_id": 1,
-          "pro_team_id": 25,
+          "pro_team_id": 13,
           "lineup_slot_id": 0,
           "lineup_slot": "QB",
           "role": "starter",
@@ -596,9 +596,10 @@
             0,
             7,
             20,
-            21
+            21,
+            25
           ],
-          "injury_status": "QUESTIONABLE"
+          "injury_status": "ACTIVE"
         },
         {
           "player_id": 4890973,
@@ -750,11 +751,11 @@
           "injury_status": "ACTIVE"
         },
         {
-          "player_id": 4837248,
-          "name": "Fernando Mendoza",
+          "player_id": 4361741,
+          "name": "Brock Purdy",
           "position": "QB",
           "position_id": 1,
-          "pro_team_id": 13,
+          "pro_team_id": 25,
           "lineup_slot_id": 20,
           "lineup_slot": "Bench",
           "role": "bench",
@@ -762,10 +763,9 @@
             0,
             7,
             20,
-            21,
-            25
+            21
           ],
-          "injury_status": "ACTIVE"
+          "injury_status": "OUT"
         },
         {
           "player_id": 4696044,
@@ -1147,7 +1147,7 @@
             21,
             23
           ],
-          "injury_status": "QUESTIONABLE"
+          "injury_status": "ACTIVE"
         }
       ]
     },
@@ -1823,7 +1823,7 @@
             21,
             23
           ],
-          "injury_status": "QUESTIONABLE"
+          "injury_status": "ACTIVE"
         },
         {
           "player_id": -16007,
@@ -2071,7 +2071,7 @@
             21,
             23
           ],
-          "injury_status": "QUESTIONABLE"
+          "injury_status": "ACTIVE"
         },
         {
           "player_id": 4361307,
@@ -2502,7 +2502,7 @@
             21,
             23
           ],
-          "injury_status": "QUESTIONABLE"
+          "injury_status": "OUT"
         },
         {
           "player_id": 4426515,
@@ -2549,11 +2549,11 @@
           "injury_status": "ACTIVE"
         },
         {
-          "player_id": 4882093,
-          "name": "Bhayshul Tuten",
+          "player_id": 4427366,
+          "name": "Breece Hall",
           "position": "RB",
           "position_id": 2,
-          "pro_team_id": 30,
+          "pro_team_id": 20,
           "lineup_slot_id": 2,
           "lineup_slot": "RB",
           "role": "starter",
@@ -2565,7 +2565,7 @@
             21,
             23
           ],
-          "injury_status": "QUESTIONABLE"
+          "injury_status": "ACTIVE"
         },
         {
           "player_id": 4429795,
@@ -2587,11 +2587,11 @@
           "injury_status": "ACTIVE"
         },
         {
-          "player_id": 4432620,
-          "name": "Parker Washington",
+          "player_id": 4361370,
+          "name": "Chris Olave",
           "position": "WR",
           "position_id": 3,
-          "pro_team_id": 30,
+          "pro_team_id": 18,
           "lineup_slot_id": 4,
           "lineup_slot": "WR",
           "role": "starter",
@@ -2604,7 +2604,7 @@
             21,
             23
           ],
-          "injury_status": "OUT"
+          "injury_status": "ACTIVE"
         },
         {
           "player_id": 4239993,
@@ -2624,7 +2624,7 @@
             21,
             23
           ],
-          "injury_status": "ACTIVE"
+          "injury_status": "QUESTIONABLE"
         },
         {
           "player_id": 4572680,
@@ -2678,23 +2678,24 @@
           "injury_status": "ACTIVE"
         },
         {
-          "player_id": 4427366,
-          "name": "Breece Hall",
-          "position": "RB",
-          "position_id": 2,
-          "pro_team_id": 20,
+          "player_id": 16737,
+          "name": "Mike Evans",
+          "position": "WR",
+          "position_id": 3,
+          "pro_team_id": 25,
           "lineup_slot_id": 23,
           "lineup_slot": "FLEX",
           "role": "starter",
           "eligible_slot_ids": [
-            2,
             3,
+            4,
+            5,
             7,
             20,
             21,
             23
           ],
-          "injury_status": "ACTIVE"
+          "injury_status": "QUESTIONABLE"
         },
         {
           "player_id": -16025,
@@ -2713,24 +2714,23 @@
           "injury_status": "NORMAL"
         },
         {
-          "player_id": 4361370,
-          "name": "Chris Olave",
-          "position": "WR",
-          "position_id": 3,
-          "pro_team_id": 18,
+          "player_id": 4882093,
+          "name": "Bhayshul Tuten",
+          "position": "RB",
+          "position_id": 2,
+          "pro_team_id": 30,
           "lineup_slot_id": 20,
           "lineup_slot": "Bench",
           "role": "bench",
           "eligible_slot_ids": [
+            2,
             3,
-            4,
-            5,
             7,
             20,
             21,
             23
           ],
-          "injury_status": "ACTIVE"
+          "injury_status": "OUT"
         },
         {
           "player_id": 4688813,
@@ -2753,11 +2753,11 @@
           "injury_status": "ACTIVE"
         },
         {
-          "player_id": 16737,
-          "name": "Mike Evans",
+          "player_id": 4432620,
+          "name": "Parker Washington",
           "position": "WR",
           "position_id": 3,
-          "pro_team_id": 25,
+          "pro_team_id": 30,
           "lineup_slot_id": 20,
           "lineup_slot": "Bench",
           "role": "bench",
@@ -2770,7 +2770,7 @@
             21,
             23
           ],
-          "injury_status": "QUESTIONABLE"
+          "injury_status": "OUT"
         },
         {
           "player_id": 3116406,
@@ -2872,11 +2872,11 @@
           "injury_status": "ACTIVE"
         },
         {
-          "player_id": 4869645,
-          "name": "Caleb Douglas",
+          "player_id": 4432773,
+          "name": "Brian Thomas Jr.",
           "position": "WR",
           "position_id": 3,
-          "pro_team_id": 15,
+          "pro_team_id": 30,
           "lineup_slot_id": 4,
           "lineup_slot": "WR",
           "role": "starter",
@@ -2887,8 +2887,7 @@
             7,
             20,
             21,
-            23,
-            25
+            23
           ],
           "injury_status": "ACTIVE"
         },
@@ -2964,33 +2963,14 @@
           "injury_status": "ACTIVE"
         },
         {
-          "player_id": 3916148,
-          "name": "Tony Pollard",
-          "position": "RB",
-          "position_id": 2,
-          "pro_team_id": 10,
-          "lineup_slot_id": 23,
-          "lineup_slot": "FLEX",
-          "role": "starter",
-          "eligible_slot_ids": [
-            2,
-            3,
-            7,
-            20,
-            21,
-            23
-          ],
-          "injury_status": "ACTIVE"
-        },
-        {
           "player_id": 4362619,
           "name": "Chris Rodriguez Jr.",
           "position": "RB",
           "position_id": 2,
           "pro_team_id": 30,
-          "lineup_slot_id": 20,
-          "lineup_slot": "Bench",
-          "role": "bench",
+          "lineup_slot_id": 23,
+          "lineup_slot": "FLEX",
+          "role": "starter",
           "eligible_slot_ids": [
             2,
             3,
@@ -3019,6 +2999,44 @@
             23
           ],
           "injury_status": "INJURY_RESERVE"
+        },
+        {
+          "player_id": 3916148,
+          "name": "Tony Pollard",
+          "position": "RB",
+          "position_id": 2,
+          "pro_team_id": 10,
+          "lineup_slot_id": 20,
+          "lineup_slot": "Bench",
+          "role": "bench",
+          "eligible_slot_ids": [
+            2,
+            3,
+            7,
+            20,
+            21,
+            23
+          ],
+          "injury_status": "ACTIVE"
+        },
+        {
+          "player_id": 4360248,
+          "name": "Kyle Pitts Sr.",
+          "position": "TE",
+          "position_id": 4,
+          "pro_team_id": 1,
+          "lineup_slot_id": 20,
+          "lineup_slot": "Bench",
+          "role": "bench",
+          "eligible_slot_ids": [
+            5,
+            6,
+            7,
+            20,
+            21,
+            23
+          ],
+          "injury_status": "ACTIVE"
         },
         {
           "player_id": 16800,
@@ -3057,27 +3075,6 @@
             20,
             21,
             23
-          ],
-          "injury_status": "ACTIVE"
-        },
-        {
-          "player_id": 4880281,
-          "name": "Jordyn Tyson",
-          "position": "WR",
-          "position_id": 3,
-          "pro_team_id": 18,
-          "lineup_slot_id": 20,
-          "lineup_slot": "Bench",
-          "role": "bench",
-          "eligible_slot_ids": [
-            3,
-            4,
-            5,
-            7,
-            20,
-            21,
-            23,
-            25
           ],
           "injury_status": "ACTIVE"
         },
@@ -3143,7 +3140,7 @@
             21,
             23
           ],
-          "injury_status": "QUESTIONABLE"
+          "injury_status": "ACTIVE"
         },
         {
           "player_id": 4685702,
@@ -3202,7 +3199,7 @@
             21,
             23
           ],
-          "injury_status": "QUESTIONABLE"
+          "injury_status": "ACTIVE"
         },
         {
           "player_id": 3116164,
@@ -3393,7 +3390,7 @@
             21,
             23
           ],
-          "injury_status": "DOUBTFUL"
+          "injury_status": "OUT"
         }
       ]
     }
